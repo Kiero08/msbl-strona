@@ -1,115 +1,172 @@
-/* --- PLIK style.css --- */
+/* --- MSBL: STREETBALL PRO STYLE --- */
 
-/* Reset - usuwamy domyślne marginesy */
-body, h1, h2, h3, p, ul {
+/* Reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-/* Główne style strony i TŁO */
+:root {
+    --orange: #ff4500; /* Bardziej krwisty pomarańcz */
+    --blue-dark: #0a1128; /* Głęboki granat */
+    --blue-mid: #1c2541;
+    --white: #ffffff;
+    --grey: #e0e0e0;
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    color: #e0e0e0;
-    
-    /* Obrazek tła - musi być w tym samym folderze */
-    background-image: url('tlo.png'); 
+    font-family: 'Kanit', sans-serif;
+    background-image: url('tlo.png');
     background-size: cover;
-    background-position: center;
+    background-position: center top;
     background-attachment: fixed;
-    background-color: #121212;
-    
+    background-color: var(--blue-dark);
+    color: var(--grey);
     padding: 20px;
+    overflow-x: hidden; /* Zapobiega paskom przewijania przy efektach */
 }
 
-/* Nagłówek i Stopka */
-header, footer {
+/* --- NAGŁÓWEK Z EFEKTEM "SPEED" --- */
+header {
     text-align: center;
-    padding: 2rem 0;
-    background-color: rgba(18, 18, 18, 0.85); /* Półprzezroczyste tło */
-    border-radius: 16px;
-    margin-bottom: 20px;
-    border: 1px solid #333;
+    padding: 4rem 1rem;
+    background: rgba(10, 17, 40, 0.9);
+    /* Ścięte rogi (efekt tech/sport) */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 5% 100%, 0 85%);
+    margin-bottom: 40px;
+    border-top: 5px solid var(--orange);
 }
 
 h1 {
-    font-size: 2.5rem;
-    color: #ffffff;
+    font-size: 4rem; /* Bardzo duży tekst */
+    font-weight: 900; /* Black (najgrubszy) */
+    font-style: italic; /* Pochylenie = Dynamika */
+    color: var(--white);
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 5px;
+    line-height: 0.9;
+    margin-bottom: 15px;
+    
+    /* --- EFEKT GŁĘBI 3D (STACKED SHADOWS) --- */
+    /* To tworzy twardy, sportowy cień */
+    text-shadow: 
+        2px 2px 0px var(--blue-dark),
+        4px 4px 0px var(--orange),
+        6px 6px 0px var(--blue-dark);
 }
 
 header p {
-    color: #ff6b00; /* Pomarańczowy akcent */
-    font-weight: bold;
-    font-size: 1.2rem;
+    color: var(--orange);
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px #000;
 }
 
-/* Nawigacja (Menu) */
+/* --- MENU JAKO "HUD" (Interfejs gry) --- */
 nav ul {
     list-style: none;
-    padding: 15px;
     display: flex;
     justify-content: center;
-    background: rgba(18, 18, 18, 0.9);
-    border-radius: 12px;
-    margin-bottom: 30px;
-    border: 1px solid #333;
+    gap: 15px;
+    padding: 0;
+    margin-bottom: 50px;
     flex-wrap: wrap;
-}
-
-nav ul li {
-    margin: 5px 15px;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #4dabf7; /* Niebieski akcent */
-    font-weight: 700;
+    color: var(--white);
+    background: var(--blue-mid);
+    padding: 15px 30px;
+    font-weight: 900;
+    font-style: italic;
     text-transform: uppercase;
-    transition: color 0.3s;
+    font-size: 1.2rem;
+    
+    /* Przekrzywienie przycisków */
+    transform: skew(-15deg); 
+    display: block;
+    border-left: 5px solid var(--orange);
+    transition: all 0.2s ease;
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.5);
 }
 
+/* Prostowanie tekstu wewnątrz przekrzywionego przycisku */
+nav ul li a span {
+    display: block;
+    transform: skew(15deg);
+}
+
+/* Efekt najechania - przycisk "wskakuje" */
 nav ul li a:hover {
-    color: #ff6b00; /* Zmiana koloru po najechaniu myszką */
+    background: var(--orange);
+    color: var(--white);
+    transform: skew(-15deg) translateY(-5px);
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.8);
 }
 
-/* Główna treść */
+/* --- GŁÓWNA TREŚĆ --- */
 main {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
-/* Sekcje treści */
 section {
+    background: rgba(28, 37, 65, 0.95); /* Prawie nieprzezroczysty granat */
+    padding: 40px;
     margin-bottom: 40px;
-    background: rgba(30, 30, 30, 0.92); /* Półprzezroczyste ciemne tło */
-    padding: 25px;
-    border-radius: 16px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.5);
-    border: 1px solid #444;
+    
+    /* Asymetryczne ścięcie rogów */
+    clip-path: polygon(
+        20px 0, 100% 0, 
+        100% calc(100% - 20px), calc(100% - 20px) 100%, 
+        0 100%, 0 20px
+    );
+    
+    border-left: 8px solid var(--orange);
 }
 
 h2 {
-    color: #ff6b00;
-    border-bottom: 2px solid #ff6b00;
-    padding-bottom: 15px;
-    margin-bottom: 25px;
+    font-size: 2.5rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--white);
     text-transform: uppercase;
+    margin-bottom: 25px;
+    border-bottom: 3px solid var(--orange);
+    display: inline-block;
+    padding-right: 20px;
+    
+    /* Lekki cień tekstu */
+    text-shadow: 3px 3px 0px var(--blue-dark);
 }
 
-/* Dodatki */
+p {
+    font-size: 1.15rem;
+    font-weight: 400;
+    margin-bottom: 15px;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    padding-left: 15px;
+}
+
 .highlight {
-    color: #4dabf7;
-    font-weight: bold;
+    color: var(--orange);
+    font-weight: 800;
 }
 
-footer p {
-    color: #aaa;
+footer {
+    text-align: center;
+    background: var(--blue-dark);
+    padding: 2rem;
+    border-top: 5px solid var(--orange);
+    margin-top: 50px;
 }
 
 footer a {
-    color: #ff6b00;
+    color: var(--orange);
+    font-weight: bold;
     text-decoration: none;
 }
