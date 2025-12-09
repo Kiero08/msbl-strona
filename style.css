@@ -1,15 +1,10 @@
-/* --- MSBL: STREETBALL PRO STYLE --- */
+/* --- MSBL: PRO LEAGUE STYLE V2 --- */
 
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-    --orange: #ff4500; /* Bardziej krwisty pomarańcz */
-    --blue-dark: #0a1128; /* Głęboki granat */
+    --orange: #ff4500;
+    --blue-dark: #0a1128;
     --blue-mid: #1c2541;
     --white: #ffffff;
     --grey: #e0e0e0;
@@ -24,48 +19,69 @@ body {
     background-color: var(--blue-dark);
     color: var(--grey);
     padding: 20px;
-    overflow-x: hidden; /* Zapobiega paskom przewijania przy efektach */
+    min-height: 100vh;
 }
 
-/* --- NAGŁÓWEK Z EFEKTEM "SPEED" --- */
+/* --- HEADER Z LOGO (Flexbox) --- */
 header {
-    text-align: center;
-    padding: 4rem 1rem;
-    background: rgba(10, 17, 40, 0.9);
-    /* Ścięte rogi (efekt tech/sport) */
+    background: rgba(10, 17, 40, 0.95);
     clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 5% 100%, 0 85%);
     margin-bottom: 40px;
     border-top: 5px solid var(--orange);
+    padding: 2rem;
+    
+    /* Układ flex dla logo i tekstu */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px; /* Odstęp między logo a tekstem */
+    flex-wrap: wrap; /* Żeby na telefonie spadało pod spód */
+}
+
+/* Stylizacja Logo */
+.logo {
+    height: 120px; /* Wysokość logo */
+    width: auto;
+    filter: drop-shadow(0px 0px 10px rgba(255, 69, 0, 0.5)); /* Pomarańczowa poświata */
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.header-text {
+    text-align: left;
+}
+
+/* Na telefonach centrujemy */
+@media (max-width: 768px) {
+    header { text-align: center; }
+    .header-text { text-align: center; }
 }
 
 h1 {
-    font-size: 4rem; /* Bardzo duży tekst */
-    font-weight: 900; /* Black (najgrubszy) */
-    font-style: italic; /* Pochylenie = Dynamika */
+    font-size: 3.5rem;
+    font-weight: 900;
+    font-style: italic;
     color: var(--white);
     text-transform: uppercase;
     line-height: 0.9;
-    margin-bottom: 15px;
-    
-    /* --- EFEKT GŁĘBI 3D (STACKED SHADOWS) --- */
-    /* To tworzy twardy, sportowy cień */
     text-shadow: 
         2px 2px 0px var(--blue-dark),
-        4px 4px 0px var(--orange),
-        6px 6px 0px var(--blue-dark);
+        4px 4px 0px var(--orange);
 }
 
 header p {
     color: var(--orange);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 800;
     font-style: italic;
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-shadow: 2px 2px 0px #000;
 }
 
-/* --- MENU JAKO "HUD" (Interfejs gry) --- */
+/* --- MENU --- */
 nav ul {
     list-style: none;
     display: flex;
@@ -85,8 +101,6 @@ nav ul li a {
     font-style: italic;
     text-transform: uppercase;
     font-size: 1.2rem;
-    
-    /* Przekrzywienie przycisków */
     transform: skew(-15deg); 
     display: block;
     border-left: 5px solid var(--orange);
@@ -94,68 +108,70 @@ nav ul li a {
     box-shadow: 5px 5px 0px rgba(0,0,0,0.5);
 }
 
-/* Prostowanie tekstu wewnątrz przekrzywionego przycisku */
-nav ul li a span {
-    display: block;
-    transform: skew(15deg);
-}
+nav ul li a span { display: block; transform: skew(15deg); }
 
-/* Efekt najechania - przycisk "wskakuje" */
-nav ul li a:hover {
+nav ul li a:hover, nav ul li a.active {
     background: var(--orange);
-    color: var(--white);
     transform: skew(-15deg) translateY(-5px);
     box-shadow: 8px 8px 0px rgba(0,0,0,0.8);
 }
 
-/* --- GŁÓWNA TREŚĆ --- */
-main {
-    max-width: 900px;
-    margin: 0 auto;
-}
+/* --- TREŚĆ --- */
+main { max-width: 1000px; margin: 0 auto; }
 
 section {
-    background: rgba(28, 37, 65, 0.95); /* Prawie nieprzezroczysty granat */
+    background: rgba(28, 37, 65, 0.95);
     padding: 40px;
     margin-bottom: 40px;
-    
-    /* Asymetryczne ścięcie rogów */
-    clip-path: polygon(
-        20px 0, 100% 0, 
-        100% calc(100% - 20px), calc(100% - 20px) 100%, 
-        0 100%, 0 20px
-    );
-    
+    clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
     border-left: 8px solid var(--orange);
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 900;
     font-style: italic;
     color: var(--white);
     text-transform: uppercase;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     border-bottom: 3px solid var(--orange);
     display: inline-block;
-    padding-right: 20px;
-    
-    /* Lekki cień tekstu */
-    text-shadow: 3px 3px 0px var(--blue-dark);
 }
 
-p {
-    font-size: 1.15rem;
-    font-weight: 400;
-    margin-bottom: 15px;
-    border-left: 2px solid rgba(255, 255, 255, 0.1);
-    padding-left: 15px;
+p { font-size: 1.1rem; margin-bottom: 15px; }
+
+/* --- KARTA NEWS (NAJNOWSZY WPIS) --- */
+.news-card {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #444;
+    margin-top: 20px;
 }
 
-.highlight {
+.news-date {
     color: var(--orange);
-    font-weight: 800;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    display: block;
 }
+
+.btn-more {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 15px;
+    font-style: italic;
+    clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
+    transition: background 0.3s;
+}
+
+.btn-more:hover { background: #ff6b3d; }
 
 footer {
     text-align: center;
@@ -164,9 +180,37 @@ footer {
     border-top: 5px solid var(--orange);
     margin-top: 50px;
 }
+footer a { color: var(--orange); text-decoration: none; }
+/* --- DODATEK DO FORMULARZA KONTAKTOWEGO --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
 
-footer a {
-    color: var(--orange);
-    font-weight: bold;
-    text-decoration: none;
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid #444;
+    color: var(--white);
+    font-family: 'Kanit', sans-serif;
+    font-size: 1rem;
+    border-radius: 5px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+/* Po kliknięciu w pole, ramka robi się pomarańczowa */
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    border-color: var(--orange);
+}
+
+/* Zmieniamy kolor placeholderów (tekstów podpowiedzi) */
+::placeholder {
+    color: #888;
+    font-style: italic;
 }

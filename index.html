@@ -3,47 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miejski Streetball Lębork</title>
-
+    <title>Miejski Streetball Lębork - Strona Główna</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,700;1,800;1,900&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <h1>Miejski Streetball Lębork</h1>
-        <p>Streetball w sercu miasta</p>
+        <img src="logo.png" alt="Logo MSBL" class="logo">
+        
+        <div class="header-text">
+            <h1>Miejski Streetball Lębork</h1>
+            <p>Streetball w sercu miasta</p>
+        </div>
     </header>
 
- <nav>
+    <nav>
         <ul>
-            <li><a href="#o-nas"><span>O nas</span></a></li>
-            <li><a href="#wydarzenia"><span>Wydarzenia</span></a></li>
-            <li><a href="#kontakt"><span>Kontakt</span></a></li>
+            <li><a href="index.html" class="active"><span>Start</span></a></li>
+            <li><a href="o-nas.html"><span>O nas</span></a></li>
+            <li><a href="wydarzenia.html"><span>Wydarzenia</span></a></li>
+            <li><a href="kontakt.html"><span>Kontakt</span></a></li>
         </ul>
     </nav>
 
     <main>
-        <section id="o-nas">
-            <h2>Kim jesteśmy?</h2>
-            <p>Jesteśmy sercem lęborskiego streetballu. Stowarzyszenie <span class="highlight">MSBL</span> powstało z czystej pasji do koszykówki ulicznej, miejskiej kultury i lokalnej społeczności.</p>
-            <br>
-            <p>Naszym celem jest nie tylko organizacja turniejów, ale przede wszystkim integracja mieszkańców Lęborka poprzez sport. Walczymy o lepsze boiska, organizujemy warsztaty dla młodych talentów i tworzymy przestrzeń, gdzie każdy może poczuć atmosferę prawdziwego streetballu.</p>
+        <section>
+            <h2>Witaj w grze!</h2>
+            <p>Oficjalna strona stowarzyszenia <strong>Miejski Streetball Lębork</strong>. Tutaj beton łączy się z pasją.</p>
+            <a href="o-nas.html" class="btn-more">Poznaj naszą misję</a>
         </section>
 
-        <section id="wydarzenia">
-            <h2>Nadchodzące Wydarzenia</h2>
-            <p>Tutaj wkrótce pojawią się informacje o najbliższych turniejach 3x3, otwartych treningach i spotkaniach społeczności MSBL.</p>
-            <br>
-            <p style="text-align: center; font-style: italic; color: #ccc;">Obserwuj nas, żeby niczego nie przegapić!</p>
+        <section>
+            <h2>Aktualności</h2>
+            <div class="news-card">
+                <span class="news-date">09.12.2025</span>
+                <h3>Wielkie Otwarcie Sezonu Zimowego</h3>
+                <p>Przygotujcie się na emocje! Już w ten weekend ruszamy z zapisami do ligi zimowej na hali...</p>
+                <a href="wydarzenia.html" class="btn-more">Czytaj więcej</a>
+            </div>
         </section>
     </main>
 
-    <footer id="kontakt">
-        <p>Kontakt ze stowarzyszeniem: <a href="mailto:kontakt@msbl.pl">kontakt@msbl.pl</a></p>
+    <footer>
+        <p>Kontakt: <a href="mailto:kontakt@msbl.pl">kontakt@msbl.pl</a></p>
         <p>&copy; 2025 Miejski Streetball Lębork.</p>
     </footer>
 
