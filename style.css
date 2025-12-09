@@ -12,10 +12,11 @@
 
 body {
     font-family: 'Kanit', sans-serif;
-    background-image: url('tlo.png');
-    background-size: cover;
+    background-image: url('tlo.png'); 
+    background-size: contain; /* Upewnia się, że cały obraz mieści się na ekranie */
     background-position: center top;
     background-attachment: fixed;
+    background-repeat: no-repeat; /* KLUCZOWE: Nie powtarza obrazka */
     background-color: var(--blue-dark);
     color: var(--grey);
     padding: 20px;
@@ -213,4 +214,11 @@ footer a { color: var(--orange); text-decoration: none; }
 ::placeholder {
     color: #888;
     font-style: italic;
+}
+/* --- ZASADY TYLKO DLA MAŁYCH EKRANÓW (Mobile) --- */
+@media (max-width: 768px) {
+    body {
+        /* Wymuszamy, aby puste miejsce w pionie było granatowe, a nie czarne */
+        background-color: var(--blue-dark); 
+    }
 }
