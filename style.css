@@ -33,7 +33,7 @@ header {
     background: linear-gradient(rgba(10, 17, 40, 0.5), rgba(10, 17, 40, 0.9)), url('logo.png');
     
     /* KLUCZOWA ZMIANA: */
-    background-size: 500px auto; /* Dopasuj logo do wysokości nagłówka (zamiast rozciągać) */
+    background-size: 300px auto; /* Dopasuj logo do wysokości nagłówka (zamiast rozciągać) */
     background-repeat: no-repeat; /* Nie powtarzaj logo */
     background-position: center; /* Wyśrodkuj */
     
@@ -196,5 +196,6 @@ footer a { color: var(--orange); font-weight: bold; text-decoration: none; }
     h1 { font-size: 2.5rem; letter-spacing: 1px; }
     header { padding: 3rem 1rem; }
 }
+
 
 
