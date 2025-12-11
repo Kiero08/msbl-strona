@@ -1,14 +1,10 @@
-/* --- MSBL: STREETBALL PRO STYLE V3 (Responsive Background) --- */
+/* --- MSBL: PRO STYLE V4 (Logo jako tło nagłówka) --- */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-    --orange: #ff4500; /* Bardziej krwisty pomarańcz */
-    --blue-dark: #0a1128; /* Głęboki granat */
+    --orange: #ff4500;
+    --blue-dark: #0a1128;
     --blue-mid: #1c2541;
     --white: #ffffff;
     --grey: #e0e0e0;
@@ -16,67 +12,73 @@
 
 body {
     font-family: 'Kanit', sans-serif;
+    
+    /* Główne tło strony (Graffiti) */
+    background-image: url('tlo.png'); 
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+    background-color: var(--blue-dark);
+    
     color: var(--grey);
     padding: 20px;
     min-height: 100vh;
     overflow-x: hidden;
-
-    /* --- GLOBALNE STYLE TŁA (Domyślnie dla dużych ekranów) --- */
-    background-image: url('tlo.png'); 
-    background-size: cover; /* Wypełnia całą przestrzeń (na szerokich monitorach) */
-    background-position: center top;
-    background-attachment: fixed; 
-    background-color: var(--blue-dark); 
 }
 
-/* --- NAGŁÓWEK Z EFEKTEM "SPEED" --- */
+/* --- NAGŁÓWEK Z LOGO JAKO TŁEM --- */
 header {
+    /* Ustawiamy logo.png jako tło nagłówka */
+    /* Dodajemy gradient (linear-gradient), żeby przyciemnić logo, 
+       aby biały napis był czytelny na wierzchu */
+    background: linear-gradient(rgba(10, 17, 40, 0.7), rgba(10, 17, 40, 0.9)), url('logo.png');
+    
+    background-size: cover; /* Logo wypełnia cały nagłówek */
+    background-position: center; /* Logo wyśrodkowane */
+    
     text-align: center;
-    padding: 4rem 1rem;
-    background: rgba(10, 17, 40, 0.95);
+    padding: 5rem 1rem; /* Duży odstęp, żeby nagłówek był wysoki */
+    
     clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 5% 100%, 0 85%);
     margin-bottom: 40px;
     border-top: 5px solid var(--orange);
+    border-bottom: 2px solid var(--orange);
     
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.logo {
-    height: 120px;
-    width: auto;
-    filter: drop-shadow(0px 0px 10px rgba(255, 69, 0, 0.5));
-    transition: transform 0.3s;
+    /* Cień pod nagłówkiem */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
 h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 900;
     font-style: italic;
     color: var(--white);
     text-transform: uppercase;
     line-height: 0.9;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    
+    /* Efekt 3D tekstu */
     text-shadow: 
         2px 2px 0px var(--blue-dark),
         4px 4px 0px var(--orange),
-        6px 6px 0px var(--blue-dark);
+        6px 6px 0px #000;
 }
 
 header p {
     color: var(--orange);
+    font-size: 1.5rem;
     font-weight: 800;
     font-style: italic;
-    font-size: 1.2rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 0px #000;
+    letter-spacing: 4px; /* Szerokie odstępy - efekt kinowy */
+    text-shadow: 2px 2px 4px #000;
+    background: rgba(0,0,0,0.6); /* Ciemne tło tylko pod podtytułem */
+    display: inline-block;
+    padding: 5px 15px;
+    transform: skew(-10deg);
 }
 
-/* --- NAWIGACJA (MENU) --- */
+/* --- MENU --- */
 nav ul {
     list-style: none;
     display: flex;
@@ -103,10 +105,7 @@ nav ul li a {
     box-shadow: 5px 5px 0px rgba(0,0,0,0.5);
 }
 
-nav ul li a span {
-    display: block;
-    transform: skew(15deg);
-}
+nav ul li a span { display: block; transform: skew(15deg); }
 
 nav ul li a:hover, nav ul li a.active {
     background: var(--orange);
@@ -114,23 +113,14 @@ nav ul li a:hover, nav ul li a.active {
     box-shadow: 8px 8px 0px rgba(0,0,0,0.8);
 }
 
-/* --- GŁÓWNA TREŚĆ --- */
-main {
-    max-width: 900px;
-    margin: 0 auto;
-}
+/* --- TREŚĆ --- */
+main { max-width: 900px; margin: 0 auto; }
 
 section {
     background: rgba(28, 37, 65, 0.95);
     padding: 40px;
     margin-bottom: 40px;
-    
-    clip-path: polygon(
-        20px 0, 100% 0, 
-        100% calc(100% - 20px), calc(100% - 20px) 100%, 
-        0 100%, 0 20px
-    );
-    
+    clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
     border-left: 8px solid var(--orange);
 }
 
@@ -149,23 +139,17 @@ h2 {
 
 p {
     font-size: 1.15rem;
-    font-weight: 400;
     margin-bottom: 15px;
     border-left: 2px solid rgba(255, 255, 255, 0.1);
     padding-left: 15px;
 }
 
-.highlight {
-    color: var(--orange);
-    font-weight: 800;
-}
-
-/* --- KARTA NEWS (STYLES DLA WSZYSTKICH KART) --- */
+/* --- NEWS CARD --- */
 .news-card {
     background: rgba(0, 0, 0, 0.3);
     padding: 20px;
     border-radius: 10px;
-    border: 1px solid var(--orange); /* Zmienione na pomarańczową ramkę dla kontrastu */
+    border: 1px solid var(--orange);
     margin-top: 15px;
 }
 
@@ -190,42 +174,7 @@ p {
     clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
     transition: background 0.3s;
 }
-
 .btn-more:hover { background: #ff6b3d; }
-
-
-/* --- FORMULARZ KONTAKTOWY --- */
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.contact-form input, 
-.contact-form textarea {
-    width: 100%;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.4);
-    border: 2px solid #444;
-    color: var(--white);
-    font-family: 'Kanit', sans-serif;
-    font-size: 1rem;
-    border-radius: 5px;
-    outline: none;
-    transition: border 0.3s;
-}
-
-.contact-form input:focus, 
-.contact-form textarea:focus {
-    border-color: var(--orange);
-}
-
-::placeholder {
-    color: #888;
-    font-style: italic;
-}
-
 
 /* --- STOPKA --- */
 footer {
@@ -235,60 +184,15 @@ footer {
     border-top: 5px solid var(--orange);
     margin-top: 50px;
 }
+footer a { color: var(--orange); font-weight: bold; text-decoration: none; }
 
-footer a {
-    color: var(--orange);
-    font-weight: bold;
-    text-decoration: none;
-}
-
-
-/* ########################################## */
-/* ### RESPONSIVE DESIGN (MOBILNE) ### */
-/* ########################################## */
-
-/* ZASADY TYLKO DLA MAŁYCH EKRANÓW (max 768px - telefony i tablety w pionie) */
+/* --- MOBILNE --- */
 @media (max-width: 768px) {
-    
-    /* --- NOWA REGUŁA DLA TŁA --- */
     body {
-        /* Przechodzimy z 'cover' na 'contain' na telefonach */
         background-size: contain; 
-        background-repeat: no-repeat; /* Pokazuje cały obrazek bez powielania */
-        background-color: var(--blue-dark); /* Tło dla pustych obszarów */
+        background-repeat: no-repeat; 
+        background-color: var(--blue-dark);
     }
-
-    h1 {
-        font-size: 2.5rem; /* Zmniejszenie nagłówka, żeby się zmieścił */
-        letter-spacing: 1px;
-        text-shadow: 
-            2px 2px 0px var(--blue-dark),
-            3px 3px 0px var(--orange); /* Zmniejszenie efektu 3D */
-    }
-
-    .logo {
-        height: 80px; /* Zmniejszenie logo na telefonach */
-        margin-bottom: 10px;
-    }
-    
-    /* Wyśrodkowanie tekstu nagłówka */
-    .header-text {
-        text-align: center;
-    }
-
-    /* Zmniejszenie odstępów menu */
-    nav ul li a {
-        padding: 10px 15px;
-        font-size: 1rem;
-        transform: skew(-10deg); /* Mniejsze pochylenie */
-    }
-    
-    /* Nagłówki sekcji */
-    section {
-        padding: 25px;
-    }
-    
-    h2 {
-        font-size: 1.8rem;
-    }
+    h1 { font-size: 2.5rem; letter-spacing: 1px; }
+    header { padding: 3rem 1rem; }
 }
