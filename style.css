@@ -26,25 +26,25 @@ body {
     overflow-x: hidden;
 }
 
-/* --- NAGŁÓWEK Z LOGO JAKO TŁEM --- */
+/* --- POPRAWIONY NAGŁÓWEK --- */
 header {
-    /* Ustawiamy logo.png jako tło nagłówka */
-    /* Dodajemy gradient (linear-gradient), żeby przyciemnić logo, 
-       aby biały napis był czytelny na wierzchu */
-    background: linear-gradient(rgba(10, 17, 40, 0.7), rgba(10, 17, 40, 0.9)), url('logo.png');
+    /* Ustawiamy gradient + logo */
+    /* Zmniejszyłem trochę zaciemnienie (0.5 i 0.8), żeby logo było lepiej widać */
+    background: linear-gradient(rgba(10, 17, 40, 0.5), rgba(10, 17, 40, 0.9)), url('logo.png');
     
-    background-size: cover; /* Logo wypełnia cały nagłówek */
-    background-position: center; /* Logo wyśrodkowane */
+    /* KLUCZOWA ZMIANA: */
+    background-size: contain; /* Dopasuj logo do wysokości nagłówka (zamiast rozciągać) */
+    background-repeat: no-repeat; /* Nie powtarzaj logo */
+    background-position: center; /* Wyśrodkuj */
     
     text-align: center;
-    padding: 5rem 1rem; /* Duży odstęp, żeby nagłówek był wysoki */
+    padding: 4rem 1rem;
     
+    /* Reszta bez zmian */
     clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 5% 100%, 0 85%);
     margin-bottom: 40px;
     border-top: 5px solid var(--orange);
     border-bottom: 2px solid var(--orange);
-    
-    /* Cień pod nagłówkiem */
     box-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
@@ -196,3 +196,4 @@ footer a { color: var(--orange); font-weight: bold; text-decoration: none; }
     h1 { font-size: 2.5rem; letter-spacing: 1px; }
     header { padding: 3rem 1rem; }
 }
+
