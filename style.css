@@ -153,8 +153,9 @@ nav a:hover { color: var(--primary); }
 }
 .btn-text:hover { border-bottom-color: var(--primary); color: white; }
 
-/* 6. KONTERY I SEKCJE */
+/* 6. KONTERY GŁÓWNE */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
 
 /* 7. SLIDER NA GŁÓWNEJ */
 .events-slider-section { padding: 50px 0 100px 0; }
@@ -212,6 +213,7 @@ nav a:hover { color: var(--primary); }
 .event-date .day { display: block; font-size: 2.5rem; font-weight: 700; line-height: 1; font-family: var(--font-heading); }
 .event-date .month { color: var(--secondary); font-weight: 700; text-transform: uppercase; }
 
+
 /* 9. O NAS I ZESPÓŁ */
 .about-section { padding-bottom: 50px; }
 .content-box {
@@ -247,27 +249,41 @@ nav a:hover { color: var(--primary); }
 .board-card .team-role { color: var(--gold); }
 
 
-/* 10. KONTAKT I FORMULARZ (NAPRAWA) */
-.contact-page-section { padding: 50px 0; }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
-
-.contact-info-card {
-    background: var(--glass); padding: 40px; border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 30px;
+/* 10. KARTY INFORMACYJNE DOŁĄCZ (NAPRAWA - KLASY JOIN-CARD) */
+.join-options { padding: 50px 5%; }
+.join-options .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
 }
-/* KARTA DOŁĄCZ (FORMULARZ) - Używa klasy .form-container */
+.join-card {
+    background: var(--glass); /* Szklane tło */
+    padding: 40px;
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 5px solid var(--secondary);
+    border-radius: 10px; text-align: center;
+    transition: transform 0.3s, background 0.3s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.join-card:hover {
+    transform: translateY(-10px);
+    background: rgba(11, 17, 32, 0.98);
+}
+.card-icon { color: var(--secondary); font-size: 2.5rem; margin-bottom: 20px; }
+.join-card h3 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 15px; text-transform: uppercase; }
+.join-card p { color: #ccc; font-size: 0.95rem; margin-bottom: 20px; }
+
+
+/* 11. FORMULARZ DOŁĄCZ/KONTAKT */
 .form-section {
     padding: 50px 5% 100px 5%;
-    display: flex;
-    justify-content: center;
+    display: flex; justify-content: center;
 }
-
 .form-container {
-    width: 100%;
-    max-width: 700px;
-    background: var(--glass); /* Szklane tło */
-    padding: 50px;
-    border-radius: 15px;
+    width: 100%; max-width: 700px;
+    background: var(--glass); 
+    padding: 50px; border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
 }
@@ -287,6 +303,17 @@ nav a:hover { color: var(--primary); }
 }
 .full-width { width: 100%; }
 
+/* 12. KONTAKT INFO I MAPA */
+.contact-page-section { padding: 50px 0; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+
+.contact-info-card {
+    background: var(--glass); padding: 40px; border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 30px;
+}
+.contact-list li { margin-bottom: 15px; display: flex; align-items: center; color: #ddd; }
+.contact-list i { color: var(--primary); width: 30px; text-align: center; margin-right: 15px; }
+
 .map-container {
     margin-top: 50px; height: 400px; border-radius: 15px; overflow: hidden;
     border: 1px solid rgba(255,255,255,0.2);
@@ -294,20 +321,20 @@ nav a:hover { color: var(--primary); }
 .map-container iframe { width: 100%; height: 100%; filter: invert(90%) hue-rotate(180deg) brightness(90%); }
 
 
-/* 11. STOPKA */
+/* 13. STOPKA */
 .cta-section { padding: 80px 20px; text-align: center; background: rgba(0, 242, 255, 0.05); }
 footer { text-align: center; padding: 40px; background: #000; color: #666; }
 
-/* 12. RESPONSIVE */
+/* 14. RESPONSIVE */
 @media (max-width: 900px) {
     .header-content { flex-direction: column; }
     nav ul { flex-wrap: wrap; justify-content: center; margin-top: 20px; }
-    .split-layout, .contact-grid, .event-row { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
+    .split-layout, .contact-grid, .event-row, .join-options .container { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
     .hero h1 { font-size: 3rem; }
     .page-hero h1 { font-size: 2.5rem; }
     .section-title { font-size: 2rem; }
     .glass-title-box { padding: 15px 30px; width: 90%; }
-    .form-container { padding: 30px 20px; } /* Mniejszy padding dla formularzy */
+    .form-container { padding: 30px 20px; } 
 
     .event-details { text-align: center; }
     .event-action { width: 100%; margin-top: 20px; }
