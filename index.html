@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stowarzyszenie Północna Strona Koszykówki</title>
+    <title>Północna Strona Koszykówki</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -12,18 +12,14 @@
 
     <header>
         <div class="header-content">
-            <div class="logo-container">
-                <a href="index.html">
-                    <img src="logo.png" alt="Północna Strona Koszykówki Logo">
-                </a>
-            </div>
+            <div class="logo-container"><a href="index.html"><img src="logo.png" alt="Logo"></a></div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Strona Główna</a></li>
+                    <li><a href="index.html" style="color: var(--primary);">Strona Główna</a></li>
                     <li><a href="o-nas.html">O nas</a></li>
                     <li><a href="wydarzenia.html">Wydarzenia</a></li>
                     <li><a href="dolacz.html">Dołącz</a></li>
-                    <li><a href="#kontakt" class="nav-btn">Kontakt</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
                 </ul>
             </nav>
         </div>
@@ -35,111 +31,84 @@
             <span class="sub-title">STOWARZYSZENIE</span>
             <h1>PÓŁNOCNA STRONA <br><span class="highlight">KOSZYKÓWKI</span></h1>
             <p>Budujemy koszykarską tożsamość nad Bałtykiem. Pasja, rywalizacja, społeczność.</p>
-            <div class="hero-buttons">
-                <a href="dolacz.html" class="btn btn-primary">Dołącz do gry <i class="fas fa-arrow-right"></i></a>
-                <a href="o-nas.html" class="btn btn-secondary">Poznaj nas</a>
-            </div>
+            <a href="dolacz.html" class="btn btn-primary">Dołącz do gry</a>
+            <a href="o-nas.html" class="btn btn-secondary">Poznaj nas</a>
         </div>
     </section>
 
     <section class="events-slider-section">
         <div class="container">
-            
             <div class="glass-title-wrapper">
                 <div class="glass-title-box">
-                    <span class="sub-title" style="display: block; margin-bottom: 10px;">BĄDŹ NA BIEŻĄCO</span>
+                    <span class="sub-title" style="display:block; margin-bottom:5px;">BĄDŹ NA BIEŻĄCO</span>
                     <h2 class="section-title">NAJBLIŻSZE WYDARZENIA</h2>
                 </div>
             </div>
-            
+
             <div class="slider-container">
                 <div class="slider-track" id="sliderTrack">
-                    
                     <div class="slide">
                         <div class="slide-date">15 MAJ</div>
                         <h3>Turniej Otwarcia Lata 3x3</h3>
-                        <p>Wielkie otwarcie sezonu! Rywalizacja 3x3 przy molo w Kołobrzegu. Nagrody rzeczowe, muzyka na żywo i strefa chillout.</p>
-                        <a href="wydarzenia.html" class="btn-text">Więcej informacji &rarr;</a>
+                        <p>Wielkie otwarcie sezonu przy molo w Kołobrzegu.</p>
+                        <a href="wydarzenia.html" class="btn-text">Szczegóły &rarr;</a>
                     </div>
-
                     <div class="slide">
                         <div class="slide-date">28 CZE</div>
                         <h3>Nocny Maraton Koszykówki</h3>
-                        <p>Gramy non-stop do 2 w nocy w Hali Milenium. Sprawdź swoją wytrzymałość w starciu z najlepszymi ekipami z regionu.</p>
-                        <a href="wydarzenia.html" class="btn-text">Więcej informacji &rarr;</a>
+                        <p>Gramy non-stop do 2 w nocy w Hali Milenium.</p>
+                        <a href="wydarzenia.html" class="btn-text">Szczegóły &rarr;</a>
                     </div>
-
                     <div class="slide">
                         <div class="slide-date">10 LIP</div>
                         <h3>Camp Szkoleniowy Junior</h3>
-                        <p>3 dni intensywnych treningów dla młodzieży z gośćmi specjalnymi i trenerami z ekstraklasy.</p>
-                        <a href="wydarzenia.html" class="btn-text">Więcej informacji &rarr;</a>
+                        <p>Intensywne treningi dla młodzieży z gwiazdami.</p>
+                        <a href="wydarzenia.html" class="btn-text">Szczegóły &rarr;</a>
                     </div>
-
                 </div>
-                
                 <div class="slider-dots" id="sliderDots"></div>
             </div>
             
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="wydarzenia.html" class="btn btn-secondary">Zobacz pełny kalendarz</a>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="wydarzenia.html" class="btn btn-secondary">Pełny kalendarz</a>
             </div>
         </div>
     </section>
 
-    <section id="kontakt" class="cta-section">
+    <section class="cta-section">
         <div class="cta-content">
-            <h2>Masz pytania? Chcesz wesprzeć stowarzyszenie?</h2>
-            <p>Jesteśmy otwarci na współpracę z partnerami, sponsorami i wolontariuszami.</p>
-            <a href="mailto:kontakt@polnocnastrona.pl" class="btn btn-primary">Napisz do nas</a>
+            <h2>Masz pytania?</h2>
+            <a href="kontakt.html" class="btn btn-primary">Skontaktuj się</a>
         </div>
     </section>
 
     <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Stowarzyszenie Północna Strona Koszykówki.</p>
-        </div>
+        <p>&copy; 2024 Stowarzyszenie Północna Strona Koszykówki.</p>
     </footer>
 
     <script>
         const track = document.getElementById('sliderTrack');
         const slides = document.querySelectorAll('.slide');
         const dotsContainer = document.getElementById('sliderDots');
-        let currentIndex = 0;
-        
-        // Tworzenie kropek
-        slides.forEach((_, idx) => {
+        let index = 0;
+
+        slides.forEach((_, i) => {
             const dot = document.createElement('div');
             dot.classList.add('dot');
-            if (idx === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => {
-                goToSlide(idx);
-                resetInterval();
-            });
+            if(i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => { index = i; updateSlider(); resetTimer(); });
             dotsContainer.appendChild(dot);
         });
-
         const dots = document.querySelectorAll('.dot');
 
-        function goToSlide(index) {
-            currentIndex = index;
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[currentIndex].classList.add('active');
+        function updateSlider() {
+            track.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach(d => d.classList.remove('active'));
+            dots[index].classList.add('active');
         }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % slides.length;
-            goToSlide(currentIndex);
-        }
-
-        let slideInterval = setInterval(nextSlide, 4000);
-
-        function resetInterval() {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(nextSlide, 4000);
-        }
+        function nextSlide() { index = (index + 1) % slides.length; updateSlider(); }
+        let timer = setInterval(nextSlide, 4000);
+        function resetTimer() { clearInterval(timer); timer = setInterval(nextSlide, 4000); }
     </script>
-
 </body>
 </html>
