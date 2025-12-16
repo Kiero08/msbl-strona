@@ -44,9 +44,12 @@
 
     <section class="events-slider-section">
         <div class="container">
-            <div class="section-header" style="text-align: center;">
-                <span class="sub-title">BĄDŹ NA BIEŻĄCO</span>
-                <h2 class="section-title" style="margin-bottom: 30px; font-size: 3rem;">NAJBLIŻSZE WYDARZENIA</h2>
+            
+            <div class="glass-title-wrapper">
+                <div class="glass-title-box">
+                    <span class="sub-title" style="display: block; margin-bottom: 10px;">BĄDŹ NA BIEŻĄCO</span>
+                    <h2 class="section-title">NAJBLIŻSZE WYDARZENIA</h2>
+                </div>
             </div>
             
             <div class="slider-container">
@@ -111,7 +114,7 @@
             if (idx === 0) dot.classList.add('active');
             dot.addEventListener('click', () => {
                 goToSlide(idx);
-                resetInterval(); // Resetuje czas przy kliknięciu ręcznym
+                resetInterval();
             });
             dotsContainer.appendChild(dot);
         });
