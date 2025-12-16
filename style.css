@@ -6,7 +6,8 @@
     --secondary: #ff6600; /* Intensywny pomarańcz */
     --gold: #ffd700;      /* ZŁOTY - do wyróżnienia Zarządu */
     --dark-bg: #0b1120;
-    --glass: rgba(11, 17, 32, 0.85); /* Ciemne szkło */
+    --glass: rgba(11, 17, 32, 0.75); /* Ujednolicone ciemne szkło */
+    --solid-panel: #0f172a;
     --text-main: #ffffff;
     --font-heading: 'Oswald', sans-serif;
     --font-body: 'Roboto', sans-serif;
@@ -370,7 +371,7 @@ nav a:hover {
 .full-width { width: 100%; margin-top: 20px; font-size: 1.1rem; }
 
 /* =========================================
-   7. SEKCJA "O NAS" (TEKST) - NAPRAWIONA
+   7. SEKCJA "O NAS" (SZKLANE PUDEŁKA)
    ========================================= */
 .about-section {
     padding: 0 5% 50px 5%;
@@ -379,15 +380,11 @@ nav a:hover {
     z-index: 10;
 }
 
-/* To jest klasa, która odpowiada za tło pod tekstem "Skąd jesteśmy" */
+/* Główny box z tekstem */
 .content-box {
-    /* Tu był błąd - teraz przywracamy szkło: */
-    background: rgba(11, 17, 32, 0.75); 
-    
-    /* Efekt rozmycia tła (kluczowy dla efektu szkła) */
+    background: var(--glass); 
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     padding: 60px;
@@ -424,7 +421,7 @@ nav a:hover {
 
 .text-column p {
     font-size: 1.05rem;
-    color: #e2e8f0; /* Jasny szary dla czytelności na szkle */
+    color: #e2e8f0;
     line-height: 1.8;
     margin-bottom: 20px;
 }
@@ -443,29 +440,65 @@ nav a:hover {
 }
 
 /* =========================================
-   8. SEKCJA ZESPOŁU
+   8. STYLE DLA TYTUŁÓW W RAMCE (NOWOŚĆ)
    ========================================= */
-.team-section { padding: 50px 5% 50px 5%; }
-
-.section-title {
+/* Wrapper centrujący */
+.glass-title-wrapper {
     text-align: center;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Sam szklany box na tytuł */
+.glass-title-box {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px 60px; /* Duży padding na boki */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+    display: inline-block; /* Dopasowuje szerokość do tekstu */
+}
+
+/* Pasek na górze tytułu */
+.glass-title-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
+}
+
+.team-section { padding: 30px 5% 50px 5%; }
+
+/* Styl napisu wewnątrz ramki */
+.section-title {
     font-family: var(--font-heading);
-    font-size: 4rem; 
-    margin-bottom: 60px;
+    font-size: 3.5rem; /* Troszkę mniejszy żeby wszedł w ramkę */
     text-transform: uppercase;
     color: transparent;
     -webkit-text-stroke: 2px var(--secondary);
     filter: drop-shadow(0 0 5px rgba(255, 102, 0, 0.3));
     letter-spacing: 2px;
+    margin: 0; /* Box ma padding, margines zbędny */
+    line-height: 1.2;
 }
 
+/* =========================================
+   9. KARTY ZESPOŁU
+   ========================================= */
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 40px;
 }
 
-/* Domyślna Karta (Dla Komisji - styl standardowy) */
 .team-card {
     background: rgba(11, 17, 32, 0.75);
     backdrop-filter: blur(15px);
@@ -529,16 +562,16 @@ nav a:hover {
 }
 
 /* =========================================
-   9. WYRÓŻNIENIE ZARZĄDU (ZŁOTE)
+   10. WYRÓŻNIENIE ZARZĄDU (ZŁOTE)
    ========================================= */
 .board-card {
-    border: 1px solid rgba(255, 215, 0, 0.5); /* Złota ramka */
+    border: 1px solid rgba(255, 215, 0, 0.5); 
     box-shadow: 0 10px 40px rgba(0,0,0,0.6);
 }
 
 .board-card:hover {
     border-color: var(--gold);
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3); /* Złota poświata */
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3); 
 }
 
 .board-card .team-photo {
@@ -552,7 +585,7 @@ nav a:hover {
 }
 
 /* =========================================
-   10. STOPKA
+   11. STOPKA
    ========================================= */
 .cta-section {
     padding: 80px 20px;
@@ -586,7 +619,8 @@ footer {
     }
     .hero h1 { font-size: 3rem; }
     .page-hero h1 { font-size: 2.5rem; }
-    .section-title { font-size: 2.5rem; }
+    .section-title { font-size: 2rem; }
+    .glass-title-box { padding: 15px 30px; width: 90%; }
     .logo-container img { height: 70px; }
     .form-container { padding: 30px 20px; }
     .page-hero { padding-top: 180px; } 
