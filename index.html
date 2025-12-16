@@ -3,50 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basket Kołobrzeg - Strona Główna</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Stowarzyszenie Północna Strona Koszykówki</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
     <header>
-        <div class="logo-container">
-            <img src="logo.png" alt="Logo Basket">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="logo.png" alt="Północna Strona Koszykówki Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#o-nas">O nas</a></li>
+                    <li><a href="#projekty">Projekty</a></li>
+                    <li><a href="#dolacz">Dołącz</a></li>
+                    <li><a href="#kontakt" class="nav-btn">Kontakt</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#">Strona Główna</a></li>
-                <li><a href="#">Drużyna</a></li>
-                <li><a href="#">Terminarz</a></li>
-                <li><a href="#">Kontakt</a></li>
-            </ul>
-        </nav>
     </header>
 
     <section class="hero">
-        <h1>BASKET KOŁOBRZEG</h1>
-        <p>Pasja, energia i lokalny charakter. Dołącz do nas i poczuj sportowe emocje w wyjątkowej oprawie.</p>
-        <a href="#" class="cta-button">Dołącz do nas</a>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="sub-title">STOWARZYSZENIE</span>
+            <h1>PÓŁNOCNA STRONA <br><span class="highlight">KOSZYKÓWKI</span></h1>
+            <p>Budujemy koszykarską tożsamość nad Bałtykiem. Pasja, rywalizacja, społeczność.</p>
+            <div class="hero-buttons">
+                <a href="#dolacz" class="btn btn-primary">Dołącz do gry <i class="fas fa-arrow-right"></i></a>
+                <a href="#o-nas" class="btn btn-secondary">Poznaj nas</a>
+            </div>
+        </div>
     </section>
 
-    <section class="content-section">
-        <div class="glass-card">
-            <h3>Aktualności</h3>
-            <p>Sprawdź najnowsze wyniki meczów i informacje z życia klubu. Jesteśmy na fali!</p>
+    <section id="o-nas" class="features">
+        <div class="container">
+            <div class="feature-card">
+                <i class="fas fa-basketball-ball icon"></i>
+                <h3>Szkolenie</h3>
+                <p>Organizujemy profesjonalne campy i treningi dla młodzieży, podnosząc poziom koszykówki w regionie.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-users icon"></i>
+                <h3>Społeczność</h3>
+                <p>Łączymy pokolenia pasjonatów. Od kibiców, przez amatorów, aż po zawodowców. Razem tworzymy siłę.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-trophy icon"></i>
+                <h3>Rozwój</h3>
+                <p>Wspieramy lokalne talenty i promujemy zdrowy styl życia poprzez aktywność fizyczną.</p>
+            </div>
         </div>
-        <div class="glass-card">
-            <h3>Treningi</h3>
-            <p>Harmonogram zajęć dla wszystkich grup wiekowych. Trenuj z najlepszymi w mieście.</p>
-        </div>
-        <div class="glass-card">
-            <h3>O Klubie</h3>
-            <p>Historia, misja i ludzie, którzy tworzą naszą społeczność. Jesteśmy dumni z naszego miasta.</p>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Masz pytania? Chcesz wesprzeć stowarzyszenie?</h2>
+            <p>Jesteśmy otwarci na współpracę z partnerami, sponsorami i wolontariuszami.</p>
+            <a href="mailto:kontakt@polnocnastrona.pl" class="btn btn-primary">Napisz do nas</a>
         </div>
     </section>
 
     <footer>
-        &copy; 2023 Basket Kołobrzeg. Wszelkie prawa zastrzeżone. <br>
-        Projekt tła i strony: AI Assistant.
+        <div class="footer-content">
+            <p>&copy; 2024 Stowarzyszenie Północna Strona Koszykówki. <br>Design by AI Assistant.</p>
+        </div>
     </footer>
 
 </body>
