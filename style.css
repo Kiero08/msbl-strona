@@ -402,3 +402,125 @@ footer {
     .form-container { padding: 30px 20px; }
     .page-hero { padding-top: 180px; } /* Większy odstęp na mobilkach */
 }
+/* --- STYLE DLA PODSTRONY "O NAS" --- */
+
+/* Sekcja z tekstem (Misja) */
+.about-section {
+    padding: 0 5% 50px 5%;
+    margin-top: -50px; /* Lekkie nasunięcie na hero */
+    position: relative;
+    z-index: 10;
+}
+
+.glass-panel {
+    background: var(--glass);
+    padding: 60px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.glass-panel h2 {
+    font-family: var(--font-heading);
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.glass-panel p {
+    font-size: 1.1rem;
+    color: #ddd;
+    line-height: 1.8;
+}
+
+/* Sekcja Zespół */
+.team-section {
+    padding: 50px 5% 100px 5%;
+}
+
+.section-title {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.team-card {
+    background: rgba(0, 0, 0, 0.4); /* Nieco ciemniejsze tło dla kart osób */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 40px 20px;
+    text-align: center;
+    transition: 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.team-card:hover {
+    background: var(--glass);
+    transform: translateY(-10px);
+    border-color: var(--primary);
+}
+
+/* Okrągłe miejsce na zdjęcie */
+.team-photo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--dark-bg), #222);
+    border: 3px solid var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--secondary);
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+    overflow: hidden; /* To ważne, jeśli wstawisz prawdziwe zdjęcie img */
+}
+
+/* Jeśli w przyszłości wstawisz <img> do .team-photo: */
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: white;
+}
+
+.team-role {
+    display: block;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.team-card p {
+    font-size: 0.9rem;
+    color: #bbb;
+}
+
+/* Dostosowanie RWD */
+@media (max-width: 768px) {
+    .glass-panel { padding: 30px; }
+    .glass-panel h2 { font-size: 2rem; }
+}
