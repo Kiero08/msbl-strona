@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dołącz do nas - Północna Strona Koszykówki</title>
+    <title>O nas - Północna Strona Koszykówki</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-<header>
+    <header>
         <div class="header-content">
             <div class="logo-container">
                 <a href="index.html"><img src="logo.png" alt="Logo"></a>
@@ -31,81 +31,59 @@
     <section class="page-hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <span class="sub-title">DOŁĄCZ DO EKIPY</span>
-            <h1>WYBIERZ SWOJĄ <br><span class="highlight">ROLĘ</span></h1>
-            <p>Niezależnie od tego, czy grasz, kibicujesz, czy wspierasz biznesowo – jest tu dla Ciebie miejsce. Zbudujmy to razem.</p>
+            <span class="sub-title">POZNAJ NASZĄ HISTORIĘ</span>
+            <h1>LUDZIE Z <br><span class="highlight">PASJĄ</span></h1>
+            <p>Nie jesteśmy tylko klubem. Jesteśmy rodziną, która łączy miłość do basketu z miłością do Kołobrzegu.</p>
         </div>
     </section>
 
-    <section class="join-options">
+    <section class="about-section">
         <div class="container">
-            <div class="join-card">
-                <div class="card-icon"><i class="fas fa-running"></i></div>
-                <h3>Zawodnik</h3>
-                <p>Chcesz trenować pod okiem profesjonalistów? Rozwiń swoje umiejętności w naszych grupach.</p>
-                <a href="#formularz" class="btn-text" onclick="setRole('Zawodnik')">Aplikuj teraz <i class="fas fa-arrow-down"></i></a>
-            </div>
-            <div class="join-card">
-                <div class="card-icon"><i class="fas fa-hand-holding-heart"></i></div>
-                <h3>Wolontariusz</h3>
-                <p>Pomóż nam przy organizacji meczów i eventów. Zdobądź doświadczenie i poznaj ludzi.</p>
-                <a href="#formularz" class="btn-text" onclick="setRole('Wolontariusz')">Zgłoś się <i class="fas fa-arrow-down"></i></a>
-            </div>
-            <div class="join-card">
-                <div class="card-icon"><i class="fas fa-briefcase"></i></div>
-                <h3>Sponsor</h3>
-                <p>Wesprzyj lokalny sport i promuj swoją firmę w dynamicznym środowisku koszykarskim.</p>
-                <a href="#formularz" class="btn-text" onclick="setRole('Sponsor')">Współpracuj <i class="fas fa-arrow-down"></i></a>
+            <div class="glass-panel">
+                <h2>Nasza Misja</h2>
+                <p>Stowarzyszenie "Północna Strona Koszykówki" powstało z inicjatywy lokalnych pasjonatów. Naszym celem jest nie tylko szkolenie przyszłych mistrzów parkietu, ale przede wszystkim budowanie silnej, wspierającej się społeczności.</p>
+                <br>
+                <p>Wierzymy, że sport to najlepsza szkoła charakteru. Uczymy zasad fair play, pracy zespołowej i wytrwałości w dążeniu do celu. Działamy na rzecz promocji zdrowego trybu życia w naszym regionie.</p>
             </div>
         </div>
     </section>
 
-    <section id="formularz" class="form-section">
-        <div class="form-container">
-            <h2>Wypełnij zgłoszenie</h2>
-            <form action="#">
-                <div class="form-group">
-                    <label for="name">Imię i Nazwisko / Nazwa Firmy</label>
-                    <input type="text" id="name" placeholder="Wpisz tutaj...">
-                </div>
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">Nasz Zespół</h2>
+            <div class="team-grid">
                 
-                <div class="form-group">
-                    <label for="email">Adres Email</label>
-                    <input type="email" id="email" placeholder="adres@email.com">
+                <div class="team-card">
+                    <div class="team-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Jan Kowalski</h3>
+                    <span class="team-role">Prezes Stowarzyszenia</span>
+                    <p>Założyciel i główny pomysłodawca. Od 20 lat związany z koszykówką.</p>
                 </div>
 
-                <div class="form-group">
-                    <label for="role">Interesuje mnie rola:</label>
-                    <select id="role">
-                        <option value="Zawodnik">Zawodnik</option>
-                        <option value="Wolontariusz">Wolontariusz</option>
-                        <option value="Sponsor">Sponsor / Partner</option>
-                        <option value="Inne">Inne / Kibic</option>
-                    </select>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <i class="fas fa-basketball-ball"></i>
+                    </div>
+                    <h3>Anna Nowak</h3>
+                    <span class="team-role">Główny Trener</span>
+                    <p>Wychowała pokolenia młodych talentów. Specjalistka od taktyki.</p>
                 </div>
 
-                <div class="form-group">
-                    <label for="message">Wiadomość</label>
-                    <textarea id="message" rows="5" placeholder="Napisz o swoim doświadczeniu, wieku lub pomyśle na współpracę..."></textarea>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Piotr Wiśniewski</h3>
+                    <span class="team-role">Dyrektor Sportowy</span>
+                    <p>Odpowiada za organizację eventów i rozwój strategiczny klubu.</p>
                 </div>
 
-                <button type="submit" class="btn btn-primary full-width">Wyślij zgłoszenie</button>
-            </form>
+            </div>
         </div>
     </section>
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 Stowarzyszenie Północna Strona Koszykówki. <br>Projekt tła i strony: AI Assistant.</p>
-        </div>
-    </footer>
-
-    <script>
-        function setRole(roleName) {
-            document.getElementById('role').value = roleName;
-        }
-    </script>
-
-</body>
-</html>
-
+            <p>&copy; 2
