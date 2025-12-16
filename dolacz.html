@@ -19,8 +19,8 @@
                 <ul>
                     <li><a href="index.html">Strona Główna</a></li>
                     <li><a href="index.html#o-nas">O nas</a></li>
-                    <li><a href="dolacz.html" class="active-link">Dołącz</a></li>
-                    <li><a href="#kontakt" class="nav-btn">Kontakt</a></li>
+                    <li><a href="dolacz.html" style="color: var(--primary);">Dołącz</a></li>
+                    <li><a href="index.html#kontakt" class="nav-btn">Kontakt</a></li>
                 </ul>
             </nav>
         </div>
@@ -29,8 +29,9 @@
     <section class="page-hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>WYBIERZ SWOJĄ <span class="highlight">ROLĘ</span></h1>
-            <p>Niezależnie od tego, czy grasz, kibicujesz, czy wspierasz biznesowo – jest tu dla Ciebie miejsce.</p>
+            <span class="sub-title">DOŁĄCZ DO EKIPY</span>
+            <h1>WYBIERZ SWOJĄ <br><span class="highlight">ROLĘ</span></h1>
+            <p>Niezależnie od tego, czy grasz, kibicujesz, czy wspierasz biznesowo – jest tu dla Ciebie miejsce. Zbudujmy to razem.</p>
         </div>
     </section>
 
@@ -39,36 +40,36 @@
             <div class="join-card">
                 <div class="card-icon"><i class="fas fa-running"></i></div>
                 <h3>Zawodnik</h3>
-                <p>Chcesz trenować pod okiem profesjonalistów? Dołącz do naszych grup młodzieżowych.</p>
-                <a href="#formularz" class="btn-text" onclick="setRole('Zawodnik')">Aplikuj teraz &rarr;</a>
+                <p>Chcesz trenować pod okiem profesjonalistów? Rozwiń swoje umiejętności w naszych grupach.</p>
+                <a href="#formularz" class="btn-text" onclick="setRole('Zawodnik')">Aplikuj teraz <i class="fas fa-arrow-down"></i></a>
             </div>
             <div class="join-card">
                 <div class="card-icon"><i class="fas fa-hand-holding-heart"></i></div>
                 <h3>Wolontariusz</h3>
                 <p>Pomóż nam przy organizacji meczów i eventów. Zdobądź doświadczenie i poznaj ludzi.</p>
-                <a href="#formularz" class="btn-text" onclick="setRole('Wolontariusz')">Zgłoś się &rarr;</a>
+                <a href="#formularz" class="btn-text" onclick="setRole('Wolontariusz')">Zgłoś się <i class="fas fa-arrow-down"></i></a>
             </div>
             <div class="join-card">
                 <div class="card-icon"><i class="fas fa-briefcase"></i></div>
-                <h3>Partner / Sponsor</h3>
-                <p>Wesprzyj lokalny sport i promuj swoją firmę w dynamicznym środowisku.</p>
-                <a href="#formularz" class="btn-text" onclick="setRole('Sponsor')">Współpracuj &rarr;</a>
+                <h3>Sponsor</h3>
+                <p>Wesprzyj lokalny sport i promuj swoją firmę w dynamicznym środowisku koszykarskim.</p>
+                <a href="#formularz" class="btn-text" onclick="setRole('Sponsor')">Współpracuj <i class="fas fa-arrow-down"></i></a>
             </div>
         </div>
     </section>
 
     <section id="formularz" class="form-section">
-        <div class="form-container glass-card">
+        <div class="form-container">
             <h2>Wypełnij zgłoszenie</h2>
             <form action="#">
                 <div class="form-group">
-                    <label for="name">Imię i Nazwisko</label>
-                    <input type="text" id="name" placeholder="Jan Kowalski">
+                    <label for="name">Imię i Nazwisko / Nazwa Firmy</label>
+                    <input type="text" id="name" placeholder="Wpisz tutaj...">
                 </div>
                 
                 <div class="form-group">
                     <label for="email">Adres Email</label>
-                    <input type="email" id="email" placeholder="jan@przyklad.pl">
+                    <input type="email" id="email" placeholder="adres@email.com">
                 </div>
 
                 <div class="form-group">
@@ -77,13 +78,13 @@
                         <option value="Zawodnik">Zawodnik</option>
                         <option value="Wolontariusz">Wolontariusz</option>
                         <option value="Sponsor">Sponsor / Partner</option>
-                        <option value="Inne">Inne</option>
+                        <option value="Inne">Inne / Kibic</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="message">Wiadomość (wiek, doświadczenie, pytania)</label>
-                    <textarea id="message" rows="5" placeholder="Napisz nam coś o sobie..."></textarea>
+                    <label for="message">Wiadomość</label>
+                    <textarea id="message" rows="5" placeholder="Napisz o swoim doświadczeniu, wieku lub pomyśle na współpracę..."></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary full-width">Wyślij zgłoszenie</button>
@@ -93,7 +94,7 @@
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 Stowarzyszenie Północna Strona Koszykówki.</p>
+            <p>&copy; 2024 Stowarzyszenie Północna Strona Koszykówki. <br>Projekt tła i strony: AI Assistant.</p>
         </div>
     </footer>
 
