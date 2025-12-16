@@ -42,25 +42,80 @@
         </div>
     </section>
 
-    <section id="o-nas" class="features">
+<section class="events-slider-section">
         <div class="container">
-            <div class="feature-card">
-                <i class="fas fa-basketball-ball icon"></i>
-                <h3>Szkolenie</h3>
-                <p>Organizujemy profesjonalne campy i treningi dla młodzieży, podnosząc poziom koszykówki w regionie.</p>
+            <div class="section-header">
+                <span class="sub-title">BĄDŹ NA BIEŻĄCO</span>
+                <h2 class="section-title" style="margin-bottom: 30px; font-size: 3rem;">NAJBLIŻSZE WYDARZENIA</h2>
             </div>
-            <div class="feature-card">
-                <i class="fas fa-users icon"></i>
-                <h3>Społeczność</h3>
-                <p>Łączymy pokolenia pasjonatów. Od kibiców, przez amatorów, aż po zawodowców. Razem tworzymy siłę.</p>
+            
+            <div class="slider-container glass-panel">
+                <div class="slider-track" id="sliderTrack">
+                    
+                    <div class="slide">
+                        <div class="slide-date">15 MAJ</div>
+                        <h3>Turniej Otwarcia Lata 3x3</h3>
+                        <p>Wielkie otwarcie sezonu! Rywalizacja 3x3 przy molo. Nagrody i muzyka.</p>
+                        <a href="wydarzenia.html" class="btn-text">Szczegóły &rarr;</a>
+                    </div>
+
+                    <div class="slide">
+                        <div class="slide-date">28 CZE</div>
+                        <h3>Nocny Maraton Koszykówki</h3>
+                        <p>Gramy non-stop do 2 w nocy w Hali Milenium. Sprawdź swoją wytrzymałość!</p>
+                        <a href="wydarzenia.html" class="btn-text">Szczegóły &rarr;</a>
+                    </div>
+
+                    <div class="slide">
+                        <div class="slide-date">10 LIP</div>
+                        <h3>Camp Szkoleniowy Junior</h3>
+                        <p>3 dni intensywnych treningów dla młodzieży z gośćmi specjalnymi.</p>
+                        <a href="wydarzenia.html" class="btn-text">Szczegóły &rarr;</a>
+                    </div>
+
+                </div>
+                
+                <div class="slider-dots" id="sliderDots"></div>
             </div>
-            <div class="feature-card">
-                <i class="fas fa-trophy icon"></i>
-                <h3>Rozwój</h3>
-                <p>Wspieramy lokalne talenty i promujemy zdrowy styl życia poprzez aktywność fizyczną.</p>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="wydarzenia.html" class="btn btn-secondary">Zobacz pełny kalendarz</a>
             </div>
         </div>
     </section>
+
+    <script>
+        const track = document.getElementById('sliderTrack');
+        const slides = document.querySelectorAll('.slide');
+        const dotsContainer = document.getElementById('sliderDots');
+        let currentIndex = 0;
+        
+        // Tworzenie kropek
+        slides.forEach((_, idx) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (idx === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(idx));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function goToSlide(index) {
+            currentIndex = index;
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            goToSlide(currentIndex);
+        }
+
+        // Automatyczne przewijanie co 4 sekundy
+        setInterval(nextSlide, 4000);
+    </script>
 
     <section id="kontakt" class="cta-section">
         <div class="cta-content">
@@ -78,4 +133,5 @@
 
 </body>
 </html>
+
 
