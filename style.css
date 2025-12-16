@@ -627,3 +627,180 @@ footer {
     .split-layout { grid-template-columns: 1fr; gap: 40px; }
     .content-box { padding: 30px; }
 }
+/* =========================================
+   12. PODSTRONA WYDARZENIA (LISTA)
+   ========================================= */
+.events-list-section {
+    padding: 0 5% 50px 5%;
+    margin-top: -50px;
+    position: relative;
+    z-index: 10;
+}
+
+.event-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding: 30px;
+    /* Styl szklany dziedziczony z glass-panel, ale dodajemy flex */
+    gap: 30px;
+    transition: transform 0.3s;
+}
+
+.event-row:hover {
+    transform: translateX(10px);
+    border-color: var(--primary);
+}
+
+.event-date {
+    background: rgba(0,0,0,0.5);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 100px;
+    border: 1px solid var(--secondary);
+}
+
+.event-date .day {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+}
+
+.event-date .month {
+    display: block;
+    color: var(--secondary);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.event-details {
+    flex-grow: 1;
+}
+
+.event-details h3 {
+    font-family: var(--font-heading);
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.event-meta {
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.event-meta i { margin-right: 5px; }
+
+/* RWD dla listy wydarzeń */
+@media (max-width: 768px) {
+    .event-row {
+        flex-direction: column;
+        text-align: center;
+    }
+    .event-action {
+        width: 100%;
+    }
+    .event-action .btn {
+        display: block;
+        width: 100%;
+        margin: 10px 0 0 0;
+        text-align: center;
+    }
+    .event-row:hover { transform: translateY(-5px); }
+}
+
+
+/* =========================================
+   13. SLIDER WYDARZEŃ (NA STRONĘ GŁÓWNĄ)
+   ========================================= */
+.events-slider-section {
+    padding: 80px 5%;
+    overflow: hidden; /* Ukrywa slajdy poza kadrem */
+}
+
+.slider-container {
+    width: 100%;
+    max-width: 800px; /* Szerokość slidera */
+    margin: 0 auto;
+    overflow: hidden; /* Kluczowe dla slidera */
+    position: relative;
+    padding: 0 !important; /* Resetujemy padding glass-panel dla slidera */
+    border-radius: 20px;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.slide {
+    min-width: 100%; /* Każdy slajd zajmuje 100% szerokości kontenera */
+    padding: 60px 40px;
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-date {
+    background: var(--secondary);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
+}
+
+.slide h3 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.slide p {
+    color: #ddd;
+    max-width: 600px;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+/* Kropki nawigacji */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding-bottom: 20px;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dot.active {
+    background: var(--primary);
+    transform: scale(1.2);
+}
