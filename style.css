@@ -6,10 +6,9 @@
 :root {
     --primary: #00f2ff; /* Neonowy cyjan */
     --secondary: #ff6600; /* Intensywny pomarańcz */
-    --gold: #ffd700;      /* Złoty */
+    --gold: #ffd700;      /* ZŁOTY */
     --dark-bg: #0b1120;
-    /* Zwiększone krycie szkła dla lepszej czytelności (0.9 zamiast 0.75) */
-    --glass: rgba(11, 17, 32, 0.92); 
+    --glass: rgba(11, 17, 32, 0.92); /* Ujednolicone ciemne szkło */
     --text-main: #ffffff;
     --font-heading: 'Oswald', sans-serif;
     --font-body: 'Roboto', sans-serif;
@@ -106,7 +105,7 @@ nav a:hover { color: var(--primary); }
 }
 .hero p { max-width: 700px; margin: 0 auto 40px auto; color: #ddd; font-size: 1.2rem; }
 
-/* 4. SZKLANE RAMKI DLA NAGŁÓWKÓW (Nowość) */
+/* 4. SZKLANE RAMKI DLA NAGŁÓWKÓW */
 .glass-title-wrapper {
     display: flex; justify-content: center; width: 100%;
     margin-bottom: 20px;
@@ -157,48 +156,33 @@ nav a:hover { color: var(--primary); }
 /* 6. KONTERY I SEKCJE */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* 7. SLIDER NA GŁÓWNEJ (NAPRAWA) */
+/* 7. SLIDER NA GŁÓWNEJ */
 .events-slider-section { padding: 50px 0 100px 0; }
-
 .slider-container {
     width: 100%; max-width: 900px; margin: 0 auto;
     overflow: hidden; position: relative;
-    /* Szklany styl slidera */
     background: var(--glass);
     backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-    padding-bottom: 40px; /* Miejsce na kropki */
+    padding-bottom: 40px;
 }
 .slider-container::before {
     content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
     background: linear-gradient(90deg, var(--secondary), var(--primary)); z-index: 5;
 }
-
-.slider-track {
-    display: flex; /* KLUCZOWE - ustawia slajdy w rzędzie */
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
-}
-
+.slider-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
 .slide {
-    min-width: 100%; /* KLUCZOWE - każdy slajd zajmuje 100% widoku */
-    padding: 60px 40px;
-    text-align: center;
+    min-width: 100%; padding: 60px 40px; text-align: center;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
-
-.slide h3 {
-    font-family: var(--font-heading); font-size: 2.5rem;
-    color: white; margin: 20px 0; text-transform: uppercase;
-}
+.slide h3 { font-family: var(--font-heading); font-size: 2.5rem; color: white; margin: 20px 0; text-transform: uppercase; }
 .slide p { color: #e2e8f0; font-size: 1.1rem; max-width: 700px; margin-bottom: 30px; }
 .slide-date {
     background: var(--secondary); color: white; padding: 5px 20px;
     border-radius: 50px; font-weight: 700; font-family: var(--font-heading);
 }
-
 .slider-dots {
     position: absolute; bottom: 20px; width: 100%;
     display: flex; justify-content: center; gap: 10px; z-index: 10;
@@ -210,20 +194,16 @@ nav a:hover { color: var(--primary); }
 .dot.active { background: var(--primary); transform: scale(1.2); }
 
 
-/* 8. LISTA WYDARZEŃ (PODSTRONA WYDARZENIA) */
+/* 8. LISTA WYDARZEŃ */
 .events-list-section { padding: 50px 0; }
-
 .event-row {
     display: flex; align-items: center; gap: 30px;
-    background: var(--glass); /* Szklane tło dla każdego wiersza */
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    padding: 30px; margin-bottom: 30px;
+    background: var(--glass);
+    backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px; padding: 30px; margin-bottom: 30px;
     transition: transform 0.3s;
 }
 .event-row:hover { transform: translateX(10px); border-color: var(--primary); }
-
 .event-date {
     background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px;
     text-align: center; min-width: 100px; border: 1px solid var(--secondary);
@@ -231,12 +211,6 @@ nav a:hover { color: var(--primary); }
 }
 .event-date .day { display: block; font-size: 2.5rem; font-weight: 700; line-height: 1; font-family: var(--font-heading); }
 .event-date .month { color: var(--secondary); font-weight: 700; text-transform: uppercase; }
-
-.event-details { flex-grow: 1; }
-.event-details h3 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 10px; text-transform: uppercase; color: white; }
-.event-meta { color: var(--primary); font-weight: 700; font-size: 0.9rem; margin-bottom: 10px; }
-.event-details p { color: #ddd; }
-.event-action { flex-shrink: 0; }
 
 /* 9. O NAS I ZESPÓŁ */
 .about-section { padding-bottom: 50px; }
@@ -273,7 +247,7 @@ nav a:hover { color: var(--primary); }
 .board-card .team-role { color: var(--gold); }
 
 
-/* 10. KONTAKT (NAPRAWA) */
+/* 10. KONTAKT I FORMULARZ (NAPRAWA) */
 .contact-page-section { padding: 50px 0; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
 
@@ -281,22 +255,35 @@ nav a:hover { color: var(--primary); }
     background: var(--glass); padding: 40px; border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 30px;
 }
-.contact-info-card h3 {
-    font-family: var(--font-heading); color: white; margin-bottom: 20px;
-    font-size: 1.5rem; border-bottom: 1px solid var(--primary); display: inline-block;
+/* KARTA DOŁĄCZ (FORMULARZ) - Używa klasy .form-container */
+.form-section {
+    padding: 50px 5% 100px 5%;
+    display: flex;
+    justify-content: center;
 }
-.contact-list li { margin-bottom: 15px; display: flex; align-items: center; color: #ddd; }
-.contact-list i { color: var(--primary); width: 30px; text-align: center; margin-right: 15px; }
 
 .form-container {
-    background: var(--glass); padding: 40px; border-radius: 15px;
+    width: 100%;
+    max-width: 700px;
+    background: var(--glass); /* Szklane tło */
+    padding: 50px;
+    border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
 }
-.form-group { margin-bottom: 20px; }
-.form-group label { display: block; color: var(--primary); margin-bottom: 5px; font-weight: 700; }
-.form-group input, .form-group textarea, .form-group select {
-    width: 100%; padding: 12px; background: rgba(0,0,0,0.5);
-    border: 1px solid #444; border-radius: 5px; color: white;
+.form-container h2 {
+    font-family: var(--font-heading); color: white; margin-bottom: 30px;
+    text-align: center; font-size: 2.2rem; text-transform: uppercase;
+}
+.form-group { margin-bottom: 25px; }
+.form-group label {
+    display: block; margin-bottom: 10px; font-weight: 700;
+    color: var(--primary); font-size: 0.9rem; text-transform: uppercase;
+}
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 15px; background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 5px;
+    color: white; font-family: var(--font-body); font-size: 1rem;
 }
 .full-width { width: 100%; }
 
@@ -317,7 +304,12 @@ footer { text-align: center; padding: 40px; background: #000; color: #666; }
     nav ul { flex-wrap: wrap; justify-content: center; margin-top: 20px; }
     .split-layout, .contact-grid, .event-row { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
     .hero h1 { font-size: 3rem; }
+    .page-hero h1 { font-size: 2.5rem; }
+    .section-title { font-size: 2rem; }
+    .glass-title-box { padding: 15px 30px; width: 90%; }
+    .form-container { padding: 30px 20px; } /* Mniejszy padding dla formularzy */
+
     .event-details { text-align: center; }
     .event-action { width: 100%; margin-top: 20px; }
-    .event-action .btn { width: 100%; }
+    .event-action .btn { width: 100%; margin: 0; }
 }
