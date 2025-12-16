@@ -24,11 +24,10 @@ body {
     line-height: 1.6;
     background-color: var(--dark-bg);
     position: relative;
-    overflow-x: hidden; /* Zapobiega poziomemu przewijaniu */
+    overflow-x: hidden;
 }
 
 /* --- TŁO SKALOWANE (PSEUDO-ELEMENT) --- */
-/* To sprawia, że tło tlo.png zawsze pokrywa cały ekran i nie skacze na telefonach */
 body::before {
     content: '';
     position: fixed;
@@ -36,7 +35,7 @@ body::before {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -999; /* Zawsze na samym spodzie */
+    z-index: -999;
     background-image: url('tlo.png'); 
     background-size: cover;
     background-position: center center;
@@ -114,7 +113,6 @@ nav a:hover {
    3. SEKCJE HERO (NAGŁÓWKI STRON)
    ========================================= */
 
-/* Wspólne tło przyciemniające (Overlay) */
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -125,7 +123,6 @@ nav a:hover {
     z-index: -1;
 }
 
-/* Główny Hero (Strona Główna) */
 .hero {
     min-height: 100vh; 
     display: flex;
@@ -136,7 +133,6 @@ nav a:hover {
     padding: 120px 20px 50px 20px;
 }
 
-/* Hero na podstronach (O nas, Dołącz) - jest niższy */
 .page-hero {
     min-height: 50vh;
     display: flex;
@@ -144,7 +140,7 @@ nav a:hover {
     justify-content: center;
     text-align: center;
     position: relative;
-    padding-top: 140px; /* Miejsce na menu */
+    padding-top: 140px;
     padding-bottom: 50px;
 }
 
@@ -204,7 +200,6 @@ nav a:hover {
     letter-spacing: 1px;
     transition: all 0.3s;
     margin: 10px;
-    /* Ścięte rogi */
     clip-path: polygon(10% 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%);
 }
 
@@ -259,14 +254,12 @@ nav a:hover {
     margin: 0 auto;
 }
 
-/* Grid dla kart */
 .container:has(.feature-card), 
 .container:has(.join-card) { 
     display: grid; 
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 40px; 
 }
-/* Fallback dla starszych przeglądarek */
 .features .container, .join-options .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -379,7 +372,7 @@ nav a:hover {
 .full-width { width: 100%; margin-top: 20px; font-size: 1.1rem; }
 
 /* =========================================
-   7. NOWY UKŁAD "O NAS" (CZYTELNY)
+   7. SEKCJA "O NAS"
    ========================================= */
 .about-section {
     padding: 0 5% 50px 5%;
@@ -388,7 +381,6 @@ nav a:hover {
     z-index: 10;
 }
 
-/* Ciemne, solidne pudełko na tekst */
 .content-box {
     background: var(--solid-panel);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -399,10 +391,72 @@ nav a:hover {
     overflow: hidden;
 }
 
-/* Ozdobny pasek gradientowy na górze
+.content-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    text-align: left;
+}
+
+.text-column h2 {
+    font-family: var(--font-heading);
+    color: white;
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--primary);
+}
+
+.text-column p {
+    font-size: 1.05rem;
+    color: #cbd5e1;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.values-list { list-style: none; margin-top: 20px; }
+.values-list li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    color: white;
+}
+.values-list li i {
+    color: var(--secondary);
+    margin-right: 15px;
+}
+
 /* =========================================
-   POPRAWIONY WYGLĄD ZARZĄDU (GLASS + KOLORY LOGA)
+   8. SEKCJA ZESPOŁU (POPRAWIONA)
    ========================================= */
+.team-section { padding: 50px 5% 100px 5%; }
+
+/* --- TYTUŁ SEKCJI ZARZĄD (Styl "Outline" jak nagłówek) --- */
+.section-title {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 4rem; /* Większy rozmiar */
+    margin-bottom: 60px;
+    text-transform: uppercase;
+    
+    /* Efekt przezroczystości z obrysem */
+    color: transparent;
+    -webkit-text-stroke: 2px var(--secondary); /* Pomarańczowy obrys */
+    
+    filter: drop-shadow(0 0 5px rgba(255, 102, 0, 0.3));
+    letter-spacing: 2px;
+}
 
 /* Kontener kart */
 .team-grid {
@@ -411,19 +465,12 @@ nav a:hover {
     gap: 40px;
 }
 
-/* Karta z efektem SZKŁA */
+/* Karta z efektem SZKŁA (Poprawiona) */
 .team-card {
-    /* Tło: Ciemny granat, ale półprzezroczysty (0.75) */
-    background: rgba(11, 17, 32, 0.75); 
-    
-    /* Rozmycie tła pod kartą - to klucz do czytelności na szkle */
+    background: rgba(11, 17, 32, 0.75); /* Półprzezroczyste */
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    
-    /* Ramka: Delikatny Cyjan */
     border: 1px solid rgba(0, 242, 255, 0.3);
-    
-    /* Zaokrąglenie i cienie */
     border-radius: 15px;
     padding: 40px 20px;
     text-align: center;
@@ -433,47 +480,37 @@ nav a:hover {
     overflow: hidden;
 }
 
-/* Efekt po najechaniu myszką */
 .team-card:hover {
     transform: translateY(-10px);
-    /* Tło robi się nieco jaśniejsze przy najechaniu */
     background: rgba(11, 17, 32, 0.9);
-    /* Ramka świeci mocniej */
-    border-color: var(--secondary); /* Zmiana na pomarańcz */
+    border-color: var(--secondary);
     box-shadow: 0 0 25px rgba(255, 102, 0, 0.2);
 }
 
-/* --- ZDJĘCIE / IKONA --- */
 .team-photo {
     width: 120px;
     height: 120px;
     margin: 0 auto 20px auto;
     border-radius: 50%;
-    /* Wnętrze kółka */
     background: radial-gradient(circle, #222 0%, var(--dark-bg) 100%);
-    /* Ramka zdjęcia: Cyjan (jak logo) */
     border: 3px solid var(--primary);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-    color: white; /* Ikona w środku biała */
-    box-shadow: 0 0 15px rgba(0, 242, 255, 0.4); /* Cyjanowa poświata */
+    color: white;
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
 }
 
-/* --- TEKSTY --- */
-
-/* Imię i Nazwisko - BIAŁE dla maksymalnej czytelności */
 .team-card h3 {
     font-family: var(--font-heading);
     font-size: 1.8rem;
     margin-bottom: 5px;
     text-transform: uppercase;
     color: #ffffff; 
-    text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* Cień pod tekstem */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
-/* Rola (Prezes, Trener) - POMARAŃCZOWA (jak piłka w logo) */
 .team-role {
     display: block;
     color: var(--secondary); 
@@ -484,10 +521,59 @@ nav a:hover {
     letter-spacing: 2px;
 }
 
-/* Opis - Bardzo jasny szary (żeby nie zginął na szkle) */
 .team-card p {
     font-size: 1rem;
     color: #e2e8f0; 
     line-height: 1.6;
     font-weight: 300;
+}
+
+/* =========================================
+   9. STOPKA I CTA
+   ========================================= */
+.cta-section {
+    padding: 80px 20px;
+    background: rgba(0, 242, 255, 0.05);
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    backdrop-filter: blur(5px);
+}
+
+.cta-content h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    background: #000;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   10. RESPONSYWNOŚĆ (MOBILE)
+   ========================================= */
+@media (max-width: 900px) {
+    .header-content { flex-direction: column; }
+    nav ul { 
+        margin-top: 20px; 
+        flex-wrap: wrap; 
+        justify-content: center; 
+        gap: 15px; 
+    }
+    
+    .hero h1 { font-size: 3rem; }
+    .page-hero h1 { font-size: 2.5rem; }
+    .section-title { font-size: 2.5rem; } /* Mniejszy tytuł na telefonie */
+    
+    .logo-container img { height: 70px; }
+    
+    .form-container { padding: 30px 20px; }
+    .page-hero { padding-top: 180px; } 
+    
+    .split-layout { grid-template-columns: 1fr; gap: 40px; }
+    .content-box { padding: 30px; }
 }
