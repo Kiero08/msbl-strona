@@ -400,3 +400,94 @@ nav a:hover {
 }
 
 /* Ozdobny pasek gradientowy na górze
+/* =========================================
+   POPRAWIONY WYGLĄD ZARZĄDU (GLASS + KOLORY LOGA)
+   ========================================= */
+
+/* Kontener kart */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+/* Karta z efektem SZKŁA */
+.team-card {
+    /* Tło: Ciemny granat, ale półprzezroczysty (0.75) */
+    background: rgba(11, 17, 32, 0.75); 
+    
+    /* Rozmycie tła pod kartą - to klucz do czytelności na szkle */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    
+    /* Ramka: Delikatny Cyjan */
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    
+    /* Zaokrąglenie i cienie */
+    border-radius: 15px;
+    padding: 40px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efekt po najechaniu myszką */
+.team-card:hover {
+    transform: translateY(-10px);
+    /* Tło robi się nieco jaśniejsze przy najechaniu */
+    background: rgba(11, 17, 32, 0.9);
+    /* Ramka świeci mocniej */
+    border-color: var(--secondary); /* Zmiana na pomarańcz */
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.2);
+}
+
+/* --- ZDJĘCIE / IKONA --- */
+.team-photo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    /* Wnętrze kółka */
+    background: radial-gradient(circle, #222 0%, var(--dark-bg) 100%);
+    /* Ramka zdjęcia: Cyjan (jak logo) */
+    border: 3px solid var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white; /* Ikona w środku biała */
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.4); /* Cyjanowa poświata */
+}
+
+/* --- TEKSTY --- */
+
+/* Imię i Nazwisko - BIAŁE dla maksymalnej czytelności */
+.team-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: #ffffff; 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* Cień pod tekstem */
+}
+
+/* Rola (Prezes, Trener) - POMARAŃCZOWA (jak piłka w logo) */
+.team-role {
+    display: block;
+    color: var(--secondary); 
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 5px 0 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Opis - Bardzo jasny szary (żeby nie zginął na szkle) */
+.team-card p {
+    font-size: 1rem;
+    color: #e2e8f0; 
+    line-height: 1.6;
+    font-weight: 300;
+}
