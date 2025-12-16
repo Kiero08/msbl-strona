@@ -1,9 +1,9 @@
 /* --- ZMIENNE I RESET --- */
 :root {
-    --primary: #00f2ff; /* Neonowy cyjan (pasuje do zorzy) */
-    --secondary: #ff6600; /* Intensywny pomarańcz (koszykówka) */
-    --dark-bg: #0b1120; /* Bardzo ciemny granat */
-    --glass: rgba(11, 17, 32, 0.85); /* Ciemne szkło */
+    --primary: #00f2ff; /* Neonowy cyjan */
+    --secondary: #ff6600; /* Intensywny pomarańcz */
+    --dark-bg: #0b1120; /* Kolor zapasowy tła */
+    --glass: rgba(11, 17, 32, 0.85); /* Ciemne szkło dla kart */
     --text-main: #ffffff;
     --font-heading: 'Oswald', sans-serif;
     --font-body: 'Roboto', sans-serif;
@@ -15,17 +15,35 @@
     box-sizing: border-box;
 }
 
+/* --- NOWA METODA NA TŁO (SKALOWANIE DO EKRANU) --- */
 body {
     font-family: var(--font-body);
-    background-color: var(--dark-bg);
     color: var(--text-main);
-    /* WAŻNE: Upewnij się, że nazwa pliku to tlo.png */
-    background-image: url('tlo.png'); 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
     line-height: 1.6;
+    position: relative;
+    /* Zapasowy kolor, gdyby tło się nie załadowało */
+    background-color: var(--dark-bg);
 }
+
+/* To tworzy "wirtualną warstwę" z tłem pod spodem */
+body::before {
+    content: '';
+    position: fixed; /* Tło przyklejone do ekranu */
+    top: 0;
+    left: 0;
+    width: 100vw; /* 100% szerokości widoku */
+    height: 100vh; /* 100% wysokości widoku */
+    z-index: -1; /* Umieszcza tło pod treścią */
+    
+    /* Upewnij się, że plik nazywa się tlo.png */
+    background-image: url('tlo.png'); 
+    
+    /* KLUCZOWE DLA SKALOWANIA: */
+    background-size: cover; /* Skaluje obraz, aby WYPEŁNIŁ cały ekran (może przyciąć boki) */
+    background-position: center center; /* Centruje obraz */
+    background-repeat: no-repeat;
+}
+
 
 /* --- NAGŁÓWEK --- */
 header {
@@ -48,10 +66,9 @@ header {
     align-items: center;
 }
 
-/* ZWIĘKSZONE LOGO */
 .logo-container img {
-    height: 100px; /* Duże, wyraźne logo */
-    filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.3)); /* Lekka poświata */
+    height: 100px;
+    filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.3));
     transition: transform 0.3s;
 }
 
@@ -95,23 +112,24 @@ nav a:hover {
 
 /* --- HERO SECTION --- */
 .hero {
-    height: 100vh;
+    /* Min-height zapewnia, że hero jest na cały ekran, ale pozwoli na scrollowanie jeśli treść jest długa */
+    min-height: 100vh; 
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
-    padding: 0 20px;
+    padding: 100px 20px 20px 20px; /* Dodatkowy padding z góry, żeby header nie zasłaniał */
 }
 
-/* Ciemniejsza warstwa, żeby tekst był czytelny na tle miasta */
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%);
+    /* Delikatniejsze przyciemnienie, żeby tło było lepiej widoczne */
+    background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
     z-index: 1;
 }
 
@@ -142,7 +160,7 @@ nav a:hover {
 
 .hero h1 .highlight {
     color: transparent;
-    -webkit-text-stroke: 2px var(--secondary); /* Efekt obrysu (outline) */
+    -webkit-text-stroke: 2px var(--secondary);
 }
 
 .hero p {
@@ -163,7 +181,7 @@ nav a:hover {
     letter-spacing: 1px;
     transition: all 0.3s;
     margin: 0 10px;
-    clip-path: polygon(10% 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%); /* Ścięte rogi - styl sportowy */
+    clip-path: polygon(10% 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%);
 }
 
 .btn-primary {
@@ -191,6 +209,8 @@ nav a:hover {
 /* --- SEKCJA KARTY (O NAS) --- */
 .features {
     padding: 100px 5%;
+    /* Dodajemy tło do sekcji, żeby oddzielić ją wizualnie */
+    background: rgba(0,0,0,0.4); 
 }
 
 .container {
@@ -204,11 +224,13 @@ nav a:hover {
 .feature-card {
     background: var(--glass);
     padding: 40px;
-    border-left: 5px solid var(--primary); /* Akcent z lewej */
+    border-left: 5px solid var(--primary);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Wsparcie dla Safari */
     transition: transform 0.3s, background 0.3s;
     position: relative;
     overflow: hidden;
+    border-radius: 10px; /* Lekkie zaokrąglenie rogów kart */
 }
 
 .feature-card:hover {
@@ -233,9 +255,10 @@ nav a:hover {
 /* --- CTA SECTION --- */
 .cta-section {
     padding: 80px 20px;
-    background: rgba(0, 242, 255, 0.1); /* Delikatny cyjan w tle */
+    background: rgba(0, 242, 255, 0.1);
     text-align: center;
     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     border-top: 1px solid rgba(255,255,255,0.1);
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
@@ -265,6 +288,10 @@ footer {
         flex-wrap: wrap;
         justify-content: center;
         gap: 15px;
+    }
+    /* Na telefonach zmniejszamy padding w hero */
+    .hero {
+         padding-top: 150px;
     }
     .hero h1 {
         font-size: 3rem;
