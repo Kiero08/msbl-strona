@@ -4,7 +4,7 @@
 :root {
     --primary: #00f2ff; /* Neonowy cyjan */
     --secondary: #ff6600; /* Intensywny pomarańcz */
-    --gold: #ffd700;      /* ZŁOTY - do wyróżnienia Zarządu */
+    --gold: #ffd700;      /* ZŁOTY */
     --dark-bg: #0b1120;
     --glass: rgba(11, 17, 32, 0.85); /* Ciemne szkło */
     --text-main: #ffffff;
@@ -42,7 +42,7 @@ body::before {
 }
 
 /* =========================================
-   2. NAGŁÓWEK (HEADER) I NAWIGACJA
+   2. NAGŁÓWEK (HEADER)
    ========================================= */
 header {
     position: fixed;
@@ -370,7 +370,7 @@ nav a:hover {
 .full-width { width: 100%; margin-top: 20px; font-size: 1.1rem; }
 
 /* =========================================
-   7. SEKCJA "O NAS" (SZKLANE PUDEŁKA)
+   7. SEKCJA "O NAS"
    ========================================= */
 .about-section {
     padding: 0 5% 50px 5%;
@@ -557,7 +557,7 @@ nav a:hover {
 }
 
 /* =========================================
-   10. WYRÓŻNIENIE ZARZĄDU (ZŁOTE)
+   10. WYRÓŻNIENIE ZARZĄDU
    ========================================= */
 .board-card {
     border: 1px solid rgba(255, 215, 0, 0.5); 
@@ -580,7 +580,7 @@ nav a:hover {
 }
 
 /* =========================================
-   11. PODSTRONA WYDARZENIA (LISTA)
+   11. PODSTRONA WYDARZENIA (LISTA) - POPRAWIONA
    ========================================= */
 .events-list-section {
     padding: 0 5% 50px 5%;
@@ -589,6 +589,7 @@ nav a:hover {
     z-index: 10;
 }
 
+/* To jest styl karty dla każdego wiersza wydarzenia */
 .event-row {
     display: flex;
     align-items: center;
@@ -597,29 +598,30 @@ nav a:hover {
     padding: 30px;
     gap: 30px;
     transition: transform 0.3s;
-}
-
-/* Tutaj dodajemy styl glass-panel bezpośrednio, jeśli używasz klasy w html */
-.glass-panel {
+    
+    /* DODANE STYLE SZKŁA */
     background: var(--glass);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .event-row:hover {
     transform: translateX(10px);
     border-color: var(--primary);
+    background: rgba(11, 17, 32, 0.95);
 }
 
 .event-date {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.4);
     padding: 15px;
     border-radius: 10px;
     text-align: center;
     min-width: 100px;
     border: 1px solid var(--secondary);
+    flex-shrink: 0; /* Data się nie zgniata */
 }
 
 .event-date .day {
@@ -641,6 +643,7 @@ nav a:hover {
 
 .event-details {
     flex-grow: 1;
+    text-align: left; /* Wymuszenie wyrównania do lewej */
 }
 
 .event-details h3 {
@@ -658,8 +661,17 @@ nav a:hover {
     font-size: 0.9rem;
 }
 
+.event-details p {
+    color: #e2e8f0;
+    font-size: 1rem;
+}
+
+.event-action {
+    flex-shrink: 0;
+}
+
 /* =========================================
-   12. SLIDER WYDARZEŃ (NA STRONĘ GŁÓWNĄ)
+   12. SLIDER WYDARZEŃ
    ========================================= */
 .events-slider-section {
     padding: 80px 5%;
@@ -672,16 +684,12 @@ nav a:hover {
     margin: 0 auto;
     overflow: hidden;
     position: relative;
-    
-    /* STYL SZKŁA */
     background: var(--glass);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-    
-    /* Padding */
     padding: 0 0 40px 0; 
 }
 
@@ -743,7 +751,6 @@ nav a:hover {
     line-height: 1.6;
 }
 
-/* Kropki nawigacji */
 .slider-dots {
     display: flex;
     justify-content: center;
@@ -817,6 +824,10 @@ footer {
     .split-layout { grid-template-columns: 1fr; gap: 40px; }
     .content-box { padding: 30px; }
     
+    /* Poprawki dla listy wydarzeń na telefonie */
     .event-row { flex-direction: column; text-align: center; }
+    .event-action { width: 100%; margin-top: 20px; }
+    .event-action .btn { margin: 0; width: 100%; }
+    
     .slide h3 { font-size: 2rem; }
 }
