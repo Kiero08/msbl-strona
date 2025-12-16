@@ -6,8 +6,7 @@
     --secondary: #ff6600; /* Intensywny pomarańcz */
     --gold: #ffd700;      /* ZŁOTY - do wyróżnienia Zarządu */
     --dark-bg: #0b1120;
-    --glass: rgba(11, 17, 32, 0.75); /* Ujednolicone ciemne szkło */
-    --solid-panel: #0f172a;
+    --glass: rgba(11, 17, 32, 0.85); /* Ciemne szkło */
     --text-main: #ffffff;
     --font-heading: 'Oswald', sans-serif;
     --font-body: 'Roboto', sans-serif;
@@ -380,7 +379,6 @@ nav a:hover {
     z-index: 10;
 }
 
-/* Główny box z tekstem */
 .content-box {
     background: var(--glass); 
     backdrop-filter: blur(15px);
@@ -440,31 +438,29 @@ nav a:hover {
 }
 
 /* =========================================
-   8. STYLE DLA TYTUŁÓW W RAMCE (NOWOŚĆ)
+   8. STYLE DLA TYTUŁÓW W RAMCE
    ========================================= */
-/* Wrapper centrujący */
 .glass-title-wrapper {
     text-align: center;
     margin-bottom: 50px;
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
-/* Sam szklany box na tytuł */
 .glass-title-box {
     background: var(--glass);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
-    padding: 20px 60px; /* Duży padding na boki */
+    padding: 20px 60px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     position: relative;
     overflow: hidden;
-    display: inline-block; /* Dopasowuje szerokość do tekstu */
+    display: inline-block;
 }
 
-/* Pasek na górze tytułu */
 .glass-title-box::before {
     content: '';
     position: absolute;
@@ -475,24 +471,23 @@ nav a:hover {
     background: linear-gradient(90deg, var(--secondary), var(--primary));
 }
 
-.team-section { padding: 30px 5% 50px 5%; }
-
-/* Styl napisu wewnątrz ramki */
 .section-title {
     font-family: var(--font-heading);
-    font-size: 3.5rem; /* Troszkę mniejszy żeby wszedł w ramkę */
+    font-size: 3.5rem;
     text-transform: uppercase;
     color: transparent;
     -webkit-text-stroke: 2px var(--secondary);
     filter: drop-shadow(0 0 5px rgba(255, 102, 0, 0.3));
     letter-spacing: 2px;
-    margin: 0; /* Box ma padding, margines zbędny */
+    margin: 0;
     line-height: 1.2;
 }
 
 /* =========================================
    9. KARTY ZESPOŁU
    ========================================= */
+.team-section { padding: 30px 5% 50px 5%; }
+
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -585,50 +580,7 @@ nav a:hover {
 }
 
 /* =========================================
-   11. STOPKA
-   ========================================= */
-.cta-section {
-    padding: 80px 20px;
-    background: rgba(0, 242, 255, 0.05);
-    text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    backdrop-filter: blur(5px);
-}
-
-.cta-content h2 {
-    font-family: var(--font-heading);
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-footer {
-    text-align: center;
-    padding: 40px;
-    background: #000;
-    color: #666;
-    font-size: 0.9rem;
-}
-
-@media (max-width: 900px) {
-    .header-content { flex-direction: column; }
-    nav ul { 
-        margin-top: 20px; 
-        flex-wrap: wrap; 
-        justify-content: center; 
-        gap: 15px; 
-    }
-    .hero h1 { font-size: 3rem; }
-    .page-hero h1 { font-size: 2.5rem; }
-    .section-title { font-size: 2rem; }
-    .glass-title-box { padding: 15px 30px; width: 90%; }
-    .logo-container img { height: 70px; }
-    .form-container { padding: 30px 20px; }
-    .page-hero { padding-top: 180px; } 
-    .split-layout { grid-template-columns: 1fr; gap: 40px; }
-    .content-box { padding: 30px; }
-}
-/* =========================================
-   12. PODSTRONA WYDARZENIA (LISTA)
+   11. PODSTRONA WYDARZENIA (LISTA)
    ========================================= */
 .events-list-section {
     padding: 0 5% 50px 5%;
@@ -643,9 +595,17 @@ footer {
     justify-content: space-between;
     margin-bottom: 30px;
     padding: 30px;
-    /* Styl szklany dziedziczony z glass-panel, ale dodajemy flex */
     gap: 30px;
     transition: transform 0.3s;
+}
+
+/* Tutaj dodajemy styl glass-panel bezpośrednio, jeśli używasz klasy w html */
+.glass-panel {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
 }
 
 .event-row:hover {
@@ -698,44 +658,22 @@ footer {
     font-size: 0.9rem;
 }
 
-.event-meta i { margin-right: 5px; }
-
-/* RWD dla listy wydarzeń */
-@media (max-width: 768px) {
-    .event-row {
-        flex-direction: column;
-        text-align: center;
-    }
-    .event-action {
-        width: 100%;
-    }
-    .event-action .btn {
-        display: block;
-        width: 100%;
-        margin: 10px 0 0 0;
-        text-align: center;
-    }
-    .event-row:hover { transform: translateY(-5px); }
-}
-
-
 /* =========================================
-   13. SLIDER WYDARZEŃ (NA STRONĘ GŁÓWNĄ)
+   12. SLIDER WYDARZEŃ (NA STRONĘ GŁÓWNĄ)
    ========================================= */
 .events-slider-section {
     padding: 80px 5%;
     overflow: hidden;
 }
 
-/* To jest Twój nowy GLASSBOX dla slidera */
 .slider-container {
     width: 100%;
-    max-width: 900px; /* Nieco szerszy */
+    max-width: 900px;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
     
-    /* STYL SZKŁA (taki jak w formularzu/sekcjach) */
+    /* STYL SZKŁA */
     background: var(--glass);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
@@ -743,11 +681,10 @@ footer {
     border-radius: 20px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.8);
     
-    /* Padding, żeby tekst nie dotykał krawędzi ramki */
+    /* Padding */
     padding: 0 0 40px 0; 
 }
 
-/* Pasek ozdobny na górze slidera */
 .slider-container::before {
     content: '';
     position: absolute;
@@ -761,13 +698,12 @@ footer {
 
 .slider-track {
     display: flex;
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Płynniejsza animacja */
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     width: 100%;
 }
 
 .slide {
     min-width: 100%;
-    /* Padding wewnątrz slajdu */
     padding: 60px 40px 40px 40px; 
     text-align: center;
     box-sizing: border-box;
@@ -813,7 +749,7 @@ footer {
     justify-content: center;
     gap: 12px;
     position: absolute;
-    bottom: 20px; /* Odstęp od dołu ramki */
+    bottom: 20px;
     width: 100%;
     z-index: 10;
 }
@@ -835,3 +771,52 @@ footer {
     box-shadow: 0 0 10px var(--primary);
 }
 
+/* =========================================
+   13. STOPKA
+   ========================================= */
+.cta-section {
+    padding: 80px 20px;
+    background: rgba(0, 242, 255, 0.05);
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    backdrop-filter: blur(5px);
+}
+
+.cta-content h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    background: #000;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   14. RWD (MOBILE)
+   ========================================= */
+@media (max-width: 900px) {
+    .header-content { flex-direction: column; }
+    nav ul { 
+        margin-top: 20px; 
+        flex-wrap: wrap; 
+        justify-content: center; 
+        gap: 15px; 
+    }
+    .hero h1 { font-size: 3rem; }
+    .page-hero h1 { font-size: 2.5rem; }
+    .section-title { font-size: 2rem; }
+    .glass-title-box { padding: 15px 30px; width: 90%; }
+    .logo-container img { height: 70px; }
+    .form-container { padding: 30px 20px; }
+    .page-hero { padding-top: 180px; } 
+    .split-layout { grid-template-columns: 1fr; gap: 40px; }
+    .content-box { padding: 30px; }
+    
+    .event-row { flex-direction: column; text-align: center; }
+    .slide h3 { font-size: 2rem; }
+}
