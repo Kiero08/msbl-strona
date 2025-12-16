@@ -1,13 +1,14 @@
-/* --- ZMIENNE KOLORYSTYCZNE --- */
+/* --- ZMIENNE I RESET --- */
 :root {
-    --primary-color: #00d2ff; /* Jasny błękit pasujący do zorzy */
-    --accent-color: #ff8c00;  /* Pomarańczowy nawiązujący do piłki */
-    --glass-bg: rgba(20, 30, 48, 0.65); /* Ciemne półprzezroczyste tło kart */
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --text-color: #ffffff;
+    --primary: #00f2ff; /* Neonowy cyjan (pasuje do zorzy) */
+    --secondary: #ff6600; /* Intensywny pomarańcz (koszykówka) */
+    --dark-bg: #0b1120; /* Bardzo ciemny granat */
+    --glass: rgba(11, 17, 32, 0.85); /* Ciemne szkło */
+    --text-main: #ffffff;
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Roboto', sans-serif;
 }
 
-/* --- RESET I BAZA --- */
 * {
     margin: 0;
     padding: 0;
@@ -15,144 +16,260 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    color: var(--text-color);
-    /* Ustawienie Twojego tła - plik musi nazywać się tlo.jpg */
+    font-family: var(--font-body);
+    background-color: var(--dark-bg);
+    color: var(--text-main);
+    /* WAŻNE: Upewnij się, że nazwa pliku to tlo.png */
     background-image: url('tlo.png'); 
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Efekt paralaksy */
-    background-repeat: no-repeat;
-    min-height: 100vh;
+    background-attachment: fixed;
     line-height: 1.6;
 }
 
-/* --- NAGŁÓWEK (HEADER) --- */
+/* --- NAGŁÓWEK --- */
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+    transition: background 0.3s;
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%;
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(5px);
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    border-bottom: 1px solid var(--glass-border);
 }
 
+/* ZWIĘKSZONE LOGO */
 .logo-container img {
-    height: 60px;
-    width: auto;
+    height: 100px; /* Duże, wyraźne logo */
+    filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.3)); /* Lekka poświata */
+    transition: transform 0.3s;
+}
+
+.logo-container img:hover {
+    transform: scale(1.05);
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 30px;
+    align-items: center;
+    gap: 40px;
 }
 
 nav a {
     text-decoration: none;
     color: white;
+    font-family: var(--font-heading);
     font-weight: 700;
+    font-size: 1.1rem;
     text-transform: uppercase;
-    font-size: 0.9rem;
+    letter-spacing: 1px;
     transition: color 0.3s;
 }
 
 nav a:hover {
-    color: var(--primary-color);
+    color: var(--primary);
 }
 
-/* --- SEKCJA GŁÓWNA (HERO) --- */
+.nav-btn {
+    border: 2px solid var(--primary);
+    padding: 8px 25px;
+    border-radius: 50px;
+    color: var(--primary);
+}
+
+.nav-btn:hover {
+    background: var(--primary);
+    color: #000;
+}
+
+/* --- HERO SECTION --- */
 .hero {
     height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
+    position: relative;
     padding: 0 20px;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+}
+
+/* Ciemniejsza warstwa, żeby tekst był czytelny na tle miasta */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+}
+
+.sub-title {
+    color: var(--primary);
+    font-family: var(--font-heading);
+    letter-spacing: 4px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 10px;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    line-height: 1.1;
+    text-transform: uppercase;
     margin-bottom: 20px;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.hero h1 .highlight {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--secondary); /* Efekt obrysu (outline) */
 }
 
 .hero p {
-    font-size: 1.2rem;
-    max-width: 600px;
+    font-size: 1.3rem;
     margin-bottom: 40px;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    color: #ddd;
 }
 
-.cta-button {
+/* --- PRZYCISKI --- */
+.btn {
+    display: inline-block;
     padding: 15px 40px;
-    background: linear-gradient(45deg, var(--accent-color), #ff4500);
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 700;
+    font-family: var(--font-heading);
     text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 5px;
     letter-spacing: 1px;
-    box-shadow: 0 10px 20px rgba(255, 69, 0, 0.3);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all 0.3s;
+    margin: 0 10px;
+    clip-path: polygon(10% 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%); /* Ścięte rogi - styl sportowy */
 }
 
-.cta-button:hover {
+.btn-primary {
+    background: var(--secondary);
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.4);
+}
+
+.btn-primary:hover {
+    background: #ff4500;
     transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(255, 69, 0, 0.5);
 }
 
-/* --- KARTY (GLASSMORPHISM) --- */
-.content-section {
-    padding: 80px 5%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+.btn-secondary {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: black;
+}
+
+/* --- SEKCJA KARTY (O NAS) --- */
+.features {
+    padding: 100px 5%;
+}
+
+.container {
     max-width: 1200px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
 }
 
-.glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
+.feature-card {
+    background: var(--glass);
     padding: 40px;
+    border-left: 5px solid var(--primary); /* Akcent z lewej */
+    backdrop-filter: blur(10px);
     transition: transform 0.3s, background 0.3s;
+    position: relative;
+    overflow: hidden;
 }
 
-.glass-card:hover {
+.feature-card:hover {
     transform: translateY(-10px);
-    background: rgba(20, 30, 48, 0.8);
-    border-color: var(--primary-color);
+    background: rgba(11, 17, 32, 0.95);
+    border-left-color: var(--secondary);
 }
 
-.glass-card h3 {
-    color: var(--primary-color);
+.icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
     margin-bottom: 15px;
-    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+/* --- CTA SECTION --- */
+.cta-section {
+    padding: 80px 20px;
+    background: rgba(0, 242, 255, 0.1); /* Delikatny cyjan w tle */
+    text-align: center;
+    backdrop-filter: blur(5px);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.cta-content h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
 }
 
 /* --- STOPKA --- */
 footer {
     text-align: center;
     padding: 40px;
-    background: rgba(0, 0, 0, 0.8);
+    background: #000;
+    color: #666;
     font-size: 0.9rem;
-    color: #aaa;
 }
 
 /* --- RWD (MOBILE) --- */
 @media (max-width: 768px) {
-    .hero h1 { font-size: 2.5rem; }
-    nav { display: none; }
-    header { justify-content: center; }
+    .header-content {
+        flex-direction: column;
+    }
+    nav ul {
+        margin-top: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    .hero h1 {
+        font-size: 3rem;
+    }
+    .logo-container img {
+        height: 80px;
+    }
 }
-
