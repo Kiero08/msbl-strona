@@ -3,55 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wydarzenia - MSBL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Wydarzenia - Północna Strona Koszykówki</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
     <header>
-        <img src="logo.png" alt="Logo MSBL" class="logo">
-        <div class="header-text">
-            <h1>Kalendarz Rozgrywek</h1>
-            <p>Bądź na bieżąco</p>
+        <div class="header-content">
+            <div class="logo-container">
+                <a href="index.html"><img src="logo.png" alt="Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Strona Główna</a></li>
+                    <li><a href="o-nas.html">O nas</a></li>
+                    <li><a href="wydarzenia.html" style="color: var(--primary);">Wydarzenia</a></li>
+                    <li><a href="dolacz.html">Dołącz</a></li>
+                    <li><a href="index.html#kontakt" class="nav-btn">Kontakt</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="index.html"><span>Start</span></a></li>
-            <li><a href="o-nas.html"><span>O nas</span></a></li>
-            <li><a href="wydarzenia.html" class="active"><span>Wydarzenia</span></a></li>
-            <li><a href="kontakt.html"><span>Kontakt</span></a></li>
-        </ul>
-    </nav>
+    <section class="page-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="sub-title">KALENDARZ IMPREZ</span>
+            <h1>NADCHODZĄCE <span class="highlight">WYDARZENIA</span></h1>
+        </div>
+    </section>
 
-    <main>
-        <section>
-            <h2>Nadchodzące Eventy</h2>
+    <section class="events-list-section">
+        <div class="container">
             
-            <div class="news-card">
-                <span class="news-date">09.12.2025</span>
-                <h3>Wielkie Otwarcie Sezonu Zimowego</h3>
-                <p>Zapraszamy wszystkich na halę przy ul. Sportowej. Startujemy o 10:00. W programie turniej 3x3, konkurs wsadów i warsztaty dla najmłodszych.</p>
+            <div class="event-row glass-panel">
+                <div class="event-date">
+                    <span class="day">15</span>
+                    <span class="month">MAJ</span>
+                </div>
+                <div class="event-details">
+                    <h3>Turniej Otwarcia Lata 3x3</h3>
+                    <p class="event-meta"><i class="far fa-clock"></i> 10:00 - 18:00 | <i class="fas fa-map-marker-alt"></i> Boisko przy Molo</p>
+                    <p>Wielkie otwarcie sezonu letniego! Zapraszamy drużyny 3-osobowe do rywalizacji w scenerii morza. Nagrody rzeczowe i puchary dla najlepszych.</p>
+                </div>
+                <div class="event-action">
+                    <a href="#" class="btn btn-primary">Zapisz się</a>
+                </div>
             </div>
 
-            <div class="news-card">
-                <span class="news-date">15.11.2025</span>
-                <h3>Podsumowanie Ligi Letniej</h3>
-                <p>Dziękujemy wszystkim za niesamowity sezon na asfalcie! Sprawdźcie galerię zdjęć na naszym Facebooku. Gratulacje dla zwycięzców!</p>
+            <div class="event-row glass-panel">
+                <div class="event-date">
+                    <span class="day">28</span>
+                    <span class="month">CZE</span>
+                </div>
+                <div class="event-details">
+                    <h3>Nocny Maraton Koszykówki</h3>
+                    <p class="event-meta"><i class="far fa-clock"></i> 20:00 - 02:00 | <i class="fas fa-map-marker-alt"></i> Hala Milenium</p>
+                    <p>Sprawdź swoją wytrzymałość! Gramy non-stop przez 6 godzin. Muzyka na żywo, konkurs wsadów i wyjątkowa atmosfera.</p>
+                </div>
+                <div class="event-action">
+                    <a href="#" class="btn btn-secondary">Więcej info</a>
+                </div>
             </div>
 
-            <div class="news-card">
-                <span class="news-date">01.11.2025</span>
-                <h3>Nabór do sekcji młodzieżowej</h3>
-                <p>Szukamy młodych talentów! Treningi odbywają się w każdy wtorek i czwartek.</p>
+            <div class="event-row glass-panel">
+                <div class="event-date">
+                    <span class="day">10</span>
+                    <span class="month">LIP</span>
+                </div>
+                <div class="event-details">
+                    <h3>Camp Szkoleniowy Junior</h3>
+                    <p class="event-meta"><i class="far fa-clock"></i> 3 dni | <i class="fas fa-map-marker-alt"></i> Obiekty MOSiR</p>
+                    <p>Intensywne szkolenie dla młodzieży w wieku 12-16 lat. Treningi prowadzone przez byłych reprezentantów polski.</p>
+                </div>
+                <div class="event-action">
+                    <a href="#" class="btn btn-primary">Zapisz dziecko</a>
+                </div>
             </div>
-        </section>
-    </main>
+
+             <div class="event-row glass-panel">
+                <div class="event-date">
+                    <span class="day">22</span>
+                    <span class="month">SIE</span>
+                </div>
+                <div class="event-details">
+                    <h3>Charytatywny Mecz Gwiazd</h3>
+                    <p class="event-meta"><i class="far fa-clock"></i> 17:00 | <i class="fas fa-map-marker-alt"></i> Hala Milenium</p>
+                    <p>Gramy dla lokalnego szpitala. Zobacz w akcji znanych sportowców i samorządowców. Wstęp: cegiełka na szczytny cel.</p>
+                </div>
+                <div class="event-action">
+                    <a href="#" class="btn btn-secondary">Kup bilet</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; 2025 MSBL.</p>
+        <div class="footer-content">
+            <p>&copy; 2024 Stowarzyszenie Północna Strona Koszykówki.</p>
+        </div>
     </footer>
 
 </body>
