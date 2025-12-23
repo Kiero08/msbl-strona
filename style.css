@@ -1,15 +1,16 @@
 /* ==========================================================================
-   PÓŁNOCNA STRONA KOSZYKÓWKI - ARCHITEKTURA WIZUALNA "AURORA TOTAL"
+   PÓŁNOCNA STRONA KOSZYKÓWKI - ARCHITEKTURA WIZUALNA "AURORA ULTIMATE"
    ========================================================================== */
 
-/* 1. ZMIENNE I KONFIGURACJA */
+/* 1. FUNDAMENTY I ZMIENNE */
 :root {
+    /* Kolory Główne */
     --primary: #00f2ff;       /* Neonowy Cyjan */
     --secondary: #ff6600;     /* Intensywny Pomarańcz */
     --aurora: linear-gradient(90deg, #00f2ff, #7000ff, #ff6600, #00f2ff);
     --dark-bg: #0b1120;
     
-    /* Kolory Metali dla Sponsora i Zarządu */
+    /* Kolory Metali dla Sponsorów i Zarządu */
     --gold: #ffcc00;      
     --gold-glow: rgba(255, 204, 0, 0.4);
     --silver: #e0e6ed;    
@@ -17,20 +18,23 @@
     --bronze: #cd853f;    
     --bronze-glow: rgba(205, 133, 63, 0.3);
 
-    /* Parametry Szkła */
+    /* Parametry Szkła (Glassmorphism) */
     --glass-bg: rgba(15, 20, 35, 0.85);
     --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
+    /* Typografia */
     --text-main: #ffffff;
     --font-heading: 'Oswald', sans-serif;
     --font-body: 'Roboto', sans-serif;
 }
 
-/* 2. RESET I OCHRONA TREŚCI */
+/* 2. RESET I OCHRONA TREŚCI (TEKST NIE WYCHODZI POZA KONTENER) */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-wrap: break-word; /* Tekst nigdy nie wyjdzie poza kontener */
+    overflow-wrap: break-word; /* Kluczowe dla bezpieczeństwa tekstów */
     word-wrap: break-word;
 }
 
@@ -41,10 +45,11 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     background-color: var(--dark-bg);
+    padding-top: 110px; /* Miejsce na fixed header */
     overflow-x: hidden;
-    padding-top: 110px; /* Miejsce na nagłówek na PC */
 }
 
+/* Tło z zorzą widoczne pod szkłem */
 body::before {
     content: '';
     position: fixed;
@@ -127,9 +132,11 @@ nav a:hover { color: var(--primary); }
     animation: aurora-animation 8s linear infinite;
 }
 
-/* 5. SYSTEM KART AURORA */
+/* ========================================================
+   5. SYSTEM KART AURORA (PEŁNA RAMKA I KRESKA)
+   ======================================================== */
 
-/* [A] PEŁNA RAMKA (Np. Kalendarz, Formularz) */
+/* [A] PEŁNA RAMKA (Np. Kalendarz, Kapsuła w Hero, Formularz) */
 .aurora-card {
     position: relative;
     border-radius: 20px;
@@ -141,7 +148,7 @@ nav a:hover { color: var(--primary); }
 .aurora-card::before {
     content: ""; position: absolute; top: -3px; left: -3px; right: -3px; bottom: -3px;
     background: var(--aurora); background-size: 300% 300%;
-    z-index: -2; border-radius: 23px;
+    z-index: -2; border-radius: 23px; /* Dopasowanie zaokrąglenia kreski */
     animation: aurora-animation 8s linear infinite;
     filter: blur(8px); opacity: 0.8;
 }
@@ -152,42 +159,33 @@ nav a:hover { color: var(--primary); }
     border: 1px solid var(--glass-border);
 }
 
-/* [B] KRESKA TYLKO NA GÓRZE (Poprawiona - idealne zaokrąglenie) */
+/* [B] KRESKA NA GÓRZE (Partnerzy) - POPRAWIONE ZAOKRĄGLENIA */
 .aurora-top-line {
     position: relative;
-    /* Tło szklane */
     background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    /* Zaokrąglamy TYLKO górę */
     border-radius: 20px 20px 0 0;
     padding: 60px 40px;
-    /* Cieniutkie ramki po bokach i na dole dla definicji */
     border: 1px solid var(--glass-border);
-    border-top: none; /* Górę zostawiamy czystą dla zorzy */
+    border-top: none;
     isolation: isolate;
-    margin-top: 50px;
+    backdrop-filter: blur(20px);
 }
-
-/* Świecąca warstwa zorzy POD spodem */
 .aurora-top-line::before {
     content: "";
     position: absolute;
-    /* Wystaje dokładnie o 3px w górę i na boki */
+    /* Kreska wystaje 3px ponad górę i na boki */
     top: -3px; left: -3px; right: -3px;
-    /* Schodzi do dołu, ale zaraz ją zamaskujemy */
-    bottom: 0;
+    height: 80px; /* Wysokość poświaty idącej w dół */
     background: var(--aurora);
     background-size: 300% 300%;
-    z-index: -2;
-    /* Kluczowe: Zaokrąglenie musi być większe o grubość ramki (20px + 3px = 23px) */
+    z-index: -1;
+    /* ZAOKRĄGLENIE KRESKI TAKIE JAK BOXA */
     border-radius: 23px 23px 0 0;
     animation: aurora-animation 8s linear infinite;
-    filter: blur(8px); /* Efekt neonowego glow */
-    opacity: 0.9;
-    /* Maska: sprawia, że świeci mocno na górze i płynnie zanika w dół po bokach */
-    -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 85%);
-    mask-image: linear-gradient(to bottom, black 20%, transparent 85%);
+    /* Maska wycina dół, zostawiając świecący "kaptur" na górze */
+    -webkit-mask-image: linear-gradient(to bottom, black 5px, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 5px, transparent 100%);
+    filter: blur(4px);
 }
 
 @keyframes aurora-animation {
@@ -198,10 +196,10 @@ nav a:hover { color: var(--primary); }
 
 /* 6. SLIDER I WYDARZENIA */
 .slider-container { width: 100%; max-width: 1000px; margin: 0 auto; overflow: hidden; position: relative; }
-.slider-track { display: flex; transition: transform 0.6s ease; }
+.slider-track { display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); width: 100%; }
 .slide { min-width: 100%; padding: 60px 40px; text-align: center; }
 .slide-date { background: var(--secondary); padding: 5px 25px; border-radius: 50px; font-weight: 700; margin-bottom: 20px; display: inline-block; }
-.dot { width: 10px; height: 10px; background: rgba(255,255,255,0.2); border-radius: 50%; cursor: pointer; margin: 0 8px; }
+.dot { width: 10px; height: 10px; background: rgba(255,255,255,0.2); border-radius: 50%; cursor: pointer; margin: 0 8px; transition: 0.3s; }
 .dot.active { background: var(--primary); transform: scale(1.3); }
 
 /* 7. PRZYCISKI */
@@ -214,12 +212,14 @@ nav a:hover { color: var(--primary); }
 .btn-primary { background: linear-gradient(135deg, var(--secondary), #ff3300); color: white; box-shadow: 0 10px 20px rgba(255, 102, 0, 0.3); }
 .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 102, 0, 0.5); }
 .btn-secondary { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; }
-.btn-secondary:hover { background: white; color: black; }
+.btn-secondary:hover { background: white; color: #000; }
 
-/* 8. PAKIETY SPONSORSKIE (KOLORY METALI) */
+/* 8. PAKIETY SPONSORSKIE (METALIC GLOW) */
 .sponsor-tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.tier-card h3 { font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 10px; }
+.tier-price { font-weight: 700; margin-bottom: 25px; display: block; text-transform: uppercase; letter-spacing: 1px; }
 
-/* Specyficzne poświaty zamiast ramek */
+/* Specyficzne glow dla typów sponsora */
 .tier-card.gold::before { background: var(--gold); }
 .tier-card.gold h3, .tier-card.gold .tier-price { color: var(--gold); }
 
@@ -230,9 +230,9 @@ nav a:hover { color: var(--primary); }
 .tier-card.bronze h3, .tier-card.bronze .tier-price { color: var(--bronze); }
 
 .benefit-list { list-style: none; text-align: left; margin: 30px 0; }
-.benefit-list li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-size: 0.95rem; }
+.benefit-list li { margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; font-size: 0.95rem; }
 
-/* 9. ZESPÓŁ I ZARZĄD */
+/* 9. ZARZĄD I ZESPÓŁ */
 .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
 .team-photo { width: 130px; height: 130px; margin: 0 auto 25px; border-radius: 50%; background: #222; border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: white; }
 
@@ -246,15 +246,15 @@ nav a:hover { color: var(--primary); }
 .form-group label { display: block; margin-bottom: 10px; color: var(--primary); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 1px; }
 .form-group input, .form-group select, .form-group textarea {
     width: 100%; padding: 18px; background: rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white;
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white; font-family: inherit;
 }
 .form-group input:focus { border-color: var(--primary); outline: none; }
 
-.map-container { height: 450px; border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border); }
+.map-container { height: 500px; border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border); box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
 .map-container iframe { width: 100%; height: 100%; filter: invert(90%) hue-rotate(180deg) brightness(95%); }
 
 /* 11. PARTNERZY (LOGOTYPY) */
-.partners-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+.partners-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
 .partner-logo-box {
     width: 220px; height: 120px; display: flex; align-items: center; justify-content: center;
     background: rgba(255, 255, 255, 0.03); border-radius: 15px; transition: 0.3s;
@@ -267,15 +267,19 @@ footer { text-align: center; padding: 60px; background: #050810; color: #555; bo
 
 /* 13. RWD (RESPONSYWNOŚĆ) */
 @media (max-width: 900px) {
-    body { padding-top: 200px; }
+    body { padding-top: 200px; } /* Nagłówek mobilny potrzebuje więcej miejsca */
     .header-content { flex-direction: column; }
     nav ul { gap: 15px; margin-top: 20px; flex-wrap: wrap; justify-content: center; }
     
-    .hero h1 { font-size: 3rem; }
-    .page-hero h1 { font-size: 2.5rem; }
+    .hero h1 { font-size: 2.8rem; }
+    .page-hero h1 { font-size: 2.4rem; }
     .glass-title-box { padding: 30px 20px; width: 100%; }
     .aurora-card, .aurora-top-line { padding: 30px 20px; }
     
     .team-grid, .sponsor-tiers, .split-layout { grid-template-columns: 1fr; }
 }
 
+@media (max-width: 480px) {
+    .hero h1 { font-size: 2.2rem; }
+    .logo-container img { height: 60px; }
+}
