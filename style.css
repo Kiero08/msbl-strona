@@ -41,7 +41,6 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     background-color: var(--dark-bg);
-    /* Dynamiczny odstęp ustawiany niżej w Media Queries */
     padding-top: 180px; 
     overflow-x: hidden;
 }
@@ -57,7 +56,7 @@ body::before {
     background-repeat: no-repeat;
 }
 
-/* 3. NAGŁÓWEK I MIENIĄCE SIĘ LOGO */
+/* 3. NAGŁÓWEK I LOGO (Z PEŁNĄ SYNCHRONIZACJĄ KOLORÓW) */
 header {
     position: fixed; top: 0; width: 100%; z-index: 1000;
     padding: 15px 0;
@@ -72,7 +71,6 @@ header {
     display: flex; justify-content: space-between; align-items: center;
 }
 
-/* KONTENER LOGO Z MIENIĄCĄ SIĘ POŚWIATĄ */
 .logo-container {
     position: relative;
     display: flex;
@@ -80,32 +78,32 @@ header {
     justify-content: center;
 }
 
+/* POŚWIATA LOGO - TERAZ IDENTYCZNA JAK W SEKACJACH */
 .logo-container::before {
     content: "";
     position: absolute;
-    width: 110px;
-    height: 110px;
+    width: 130px; /* Nieco większa, by kolory wychodziły poza logo */
+    height: 130px;
     background: var(--aurora);
     background-size: 300% 300%;
-    animation: aurora-animation 6s linear infinite;
-    filter: blur(25px);
-    opacity: 0.7;
+    /* Zmieniono na 8s, by pasowało do reszty strony */
+    animation: aurora-animation 8s linear infinite; 
+    filter: blur(20px); /* Zredukowany blur, by widzieć kolory wyraźniej */
+    opacity: 0.8;
     z-index: -1;
     border-radius: 50%;
 }
 
 .logo-container img {
     height: 120px; 
-    filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.6)) 
-            drop-shadow(0 0 30px rgba(112, 0, 255, 0.4));
+    /* Dodatkowy ostrejszy cień dla efektu neonu */
+    filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.4));
     transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
 }
 
 .logo-container img:hover {
     transform: scale(1.08);
-    filter: drop-shadow(0 0 25px rgba(0, 242, 255, 0.8)) 
-            drop-shadow(0 0 45px rgba(112, 0, 255, 0.6));
 }
 
 nav ul { list-style: none; display: flex; gap: 25px; align-items: center; }
@@ -124,17 +122,14 @@ nav a:hover { color: var(--primary); }
     background: rgba(0, 242, 255, 0.05);
 }
 
-/* 4. HERO I TYTUŁY SEKACJI */
+/* 4. HERO I TYTUŁY SEKACJI (CENTROWANIE + POMARAŃCZ) */
 .hero, .page-hero {
     position: relative;
     display: flex; align-items: center; justify-content: center;
     text-align: center; padding: 60px 20px;
 }
 .hero { min-height: calc(100vh - 180px); }
-.hero h1 { font-size: 5rem; font-family: var(--font-heading); text-transform: uppercase; line-height: 1.1; }
-.page-hero h1 { font-size: 3.5rem; font-family: var(--font-heading); text-transform: uppercase; }
 
-/* POPRAWKA: Wycentrowanie zawartości Hero */
 .hero-content {
     display: flex;
     flex-direction: column;
@@ -143,7 +138,10 @@ nav a:hover { color: var(--primary); }
     z-index: 1;
 }
 
-/* PRZYWRÓCONA POMARAŃCZOWA CZCIONKA */
+.hero h1 { font-size: 5rem; font-family: var(--font-heading); text-transform: uppercase; line-height: 1.1; }
+.page-hero h1 { font-size: 3.5rem; font-family: var(--font-heading); text-transform: uppercase; }
+
+/* POMARAŃCZOWY SUB-TITLE */
 .sub-title {
     color: var(--secondary); 
     letter-spacing: 5px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 10px; display: block;
@@ -250,7 +248,7 @@ nav a:hover { color: var(--primary); }
 .btn-secondary { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; }
 .btn-secondary:hover { background: white; color: #000; }
 
-/* 8. PAKIETY SPONSORSKIE (BRĄZ, SREBRO, ZŁOTO) */
+/* 8. PAKIETY I ZESPÓŁ (METAL GLOW) */
 .sponsor-tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 .tier-card h3 { font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 10px; }
 .tier-price { font-weight: 700; margin-bottom: 25px; display: block; text-transform: uppercase; letter-spacing: 1px; }
@@ -265,7 +263,7 @@ nav a:hover { color: var(--primary); }
 .benefit-list { list-style: none; text-align: left; margin: 30px 0; }
 .benefit-list li { margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; font-size: 0.95rem; }
 
-/* 9. ZARZĄD I EKIPA */
+/* Zarząd */
 .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
 .team-photo { width: 130px; height: 130px; margin: 0 auto 25px; border-radius: 50%; background: #222; border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: white; }
 
@@ -292,25 +290,15 @@ nav a:hover { color: var(--primary); }
 .partner-logo-box img { max-width: 80%; filter: grayscale(1) brightness(1.5); }
 .partner-logo-box:hover img { filter: grayscale(0) brightness(1); }
 
-/* 12. STOPKA */
+/* 12. STOPKA I RWD */
 footer { text-align: center; padding: 60px; background: #050810; color: #555; border-top: 1px solid var(--glass-border); }
 
-/* 13. RWD (RESPONSYWNOŚĆ) */
 @media (max-width: 900px) {
     body { padding-top: 240px; }
     .header-content { flex-direction: column; }
     
-    /* ZMNIEJSZENIE LOGO I POŚWIATY NA MOBILE */
-    .logo-container img { 
-        height: 75px; 
-        filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.5));
-    }
-
-    .logo-container::before {
-        width: 65px;
-        height: 65px;
-        filter: blur(15px);
-    }
+    .logo-container img { height: 75px; }
+    .logo-container::before { width: 85px; height: 85px; } /* Skalowanie poświaty logo */
     
     nav ul { gap: 12px; margin-top: 20px; flex-wrap: wrap; justify-content: center; }
     .hero h1 { font-size: 2.8rem; }
@@ -322,6 +310,6 @@ footer { text-align: center; padding: 60px; background: #050810; color: #555; bo
     body { padding-top: 260px; }
     .hero h1 { font-size: 2.2rem; }
     .logo-container img { height: 60px; }
-    .logo-container::before { width: 50px; height: 50px; }
+    .logo-container::before { width: 65px; height: 65px; }
     .aurora-card, .aurora-top-line { padding: 30px 20px; }
 }
