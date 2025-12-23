@@ -57,7 +57,7 @@ body::before {
     background-repeat: no-repeat;
 }
 
-/* 3. NAGŁÓWEK I LOGO (RESPONSYWNE) */
+/* 3. NAGŁÓWEK I MIENIĄCE SIĘ LOGO */
 header {
     position: fixed; top: 0; width: 100%; z-index: 1000;
     padding: 15px 0;
@@ -72,12 +72,34 @@ header {
     display: flex; justify-content: space-between; align-items: center;
 }
 
-/* LOGO: Duże na PC, Aurora Glow */
+/* KONTENER LOGO Z MIENIĄCĄ SIĘ POŚWIATĄ */
+.logo-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container::before {
+    content: "";
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    background: var(--aurora);
+    background-size: 300% 300%;
+    animation: aurora-animation 6s linear infinite;
+    filter: blur(25px);
+    opacity: 0.7;
+    z-index: -1;
+    border-radius: 50%;
+}
+
 .logo-container img {
     height: 120px; 
     filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.6)) 
             drop-shadow(0 0 30px rgba(112, 0, 255, 0.4));
     transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
 }
 
 .logo-container img:hover {
@@ -121,9 +143,9 @@ nav a:hover { color: var(--primary); }
     z-index: 1;
 }
 
-/* POPRAWKA: Przywrócenie pomarańczowego koloru */
+/* PRZYWRÓCONA POMARAŃCZOWA CZCIONKA */
 .sub-title {
-    color: var(--secondary); /* Było var(--primary), teraz jest z powrotem pomarańczowy */
+    color: var(--secondary); 
     letter-spacing: 5px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 10px; display: block;
 }
 .highlight { color: transparent; -webkit-text-stroke: 1px var(--secondary); filter: drop-shadow(0 0 5px var(--secondary)); }
@@ -275,13 +297,19 @@ footer { text-align: center; padding: 60px; background: #050810; color: #555; bo
 
 /* 13. RWD (RESPONSYWNOŚĆ) */
 @media (max-width: 900px) {
-    body { padding-top: 240px; } /* Więcej miejsca pod logo na mobile */
+    body { padding-top: 240px; }
     .header-content { flex-direction: column; }
     
-    /* ZMNIEJSZENIE LOGO NA MOBILE */
+    /* ZMNIEJSZENIE LOGO I POŚWIATY NA MOBILE */
     .logo-container img { 
         height: 75px; 
         filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.5));
+    }
+
+    .logo-container::before {
+        width: 65px;
+        height: 65px;
+        filter: blur(15px);
     }
     
     nav ul { gap: 12px; margin-top: 20px; flex-wrap: wrap; justify-content: center; }
@@ -294,5 +322,6 @@ footer { text-align: center; padding: 60px; background: #050810; color: #555; bo
     body { padding-top: 260px; }
     .hero h1 { font-size: 2.2rem; }
     .logo-container img { height: 60px; }
+    .logo-container::before { width: 50px; height: 50px; }
     .aurora-card, .aurora-top-line { padding: 30px 20px; }
 }
