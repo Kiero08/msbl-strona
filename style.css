@@ -270,3 +270,46 @@ footer { text-align: center; padding: 60px; background: #050810; color: #555; bo
     .hero h1 { font-size: 2.2rem; }
     .logo-container img { height: 60px; }
 }
+/* NOWOŚĆ: Ramka zorzy tylko na górze i rogach */
+.aurora-top-only {
+    position: relative;
+    border-radius: 20px 20px 0 0; /* Zaokrąglone tylko górne rogi */
+    padding: 60px 40px;
+    border: none;
+    isolation: isolate;
+    margin-top: 50px;
+}
+
+.aurora-top-only::before {
+    content: "";
+    position: absolute;
+    /* Ramka wystaje tylko w górę, w lewo i w prawo */
+    top: -3px; left: -3px; right: -3px; bottom: 50%; 
+    background: var(--aurora);
+    background-size: 300% 300%;
+    z-index: -2;
+    border-radius: 23px 23px 0 0;
+    animation: aurora-animation 8s linear infinite;
+    filter: blur(10px);
+    opacity: 0.9;
+}
+
+.aurora-top-only::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--glass-bg);
+    border-radius: 20px 20px 0 0;
+    z-index: -1;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255,255,255,0.2);
+    border-left: 1px solid rgba(255,255,255,0.1);
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Mocniejszy glow dla kalendarza */
+.slider-container.aurora-card::before {
+    filter: blur(12px);
+    opacity: 1;
+}
