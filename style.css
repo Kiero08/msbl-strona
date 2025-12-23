@@ -179,4 +179,199 @@ nav a:hover { color: var(--primary); }
 }
 .slider-container::before {
     content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
-    background: linear-gradient(90deg, var
+    background: linear-gradient(90deg, var(--secondary), var(--primary)); z-index: 5;
+}
+.slider-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
+.slide {
+    min-width: 100%; padding: 60px 40px; text-align: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.slide h3 { font-family: var(--font-heading); font-size: 2.5rem; color: white; margin: 20px 0; text-transform: uppercase; }
+.slide p { color: #e2e8f0; font-size: 1.1rem; max-width: 700px; margin-bottom: 30px; }
+.slide-date {
+    background: var(--secondary); color: white; padding: 5px 20px;
+    border-radius: 50px; font-weight: 700; font-family: var(--font-heading);
+}
+.slider-dots {
+    position: absolute; bottom: 20px; width: 100%;
+    display: flex; justify-content: center; gap: 10px; z-index: 10;
+}
+.dot { width: 12px; height: 12px; background: rgba(255,255,255,0.3); border-radius: 50%; cursor: pointer; transition: 0.3s; }
+.dot.active { background: var(--primary); transform: scale(1.3); box-shadow: 0 0 10px var(--primary); }
+
+
+/* 8. LISTA WYDARZEŃ I INNE SZKLANE ELEMENTY (POPRAWIONE) */
+.event-row, .join-card, .contact-info-card, .content-box {
+    background: var(--glass); 
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px; padding: 40px; /* Zwiększony padding */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+    transition: 0.3s;
+}
+.event-row {
+    display: flex; align-items: center; gap: 30px; margin-bottom: 30px;
+}
+.event-row:hover, .join-card:hover { transform: translateY(-10px); border-color: var(--primary); background: rgba(11, 17, 32, 0.98); }
+
+.event-date {
+    background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px;
+    text-align: center; min-width: 100px; border: 1px solid var(--secondary); flex-shrink: 0;
+}
+.event-date .day { display: block; font-size: 2.5rem; font-weight: 700; line-height: 1; font-family: var(--font-heading); }
+.event-date .month { color: var(--secondary); font-weight: 700; text-transform: uppercase; }
+
+/* 9. O NAS I ZESPÓŁ */
+.about-section { padding-bottom: 50px; }
+.content-box { position: relative; overflow: hidden; }
+.content-box::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+.split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; text-align: left; }
+.text-column h2 { font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 20px; border-bottom: 2px solid var(--primary); display: inline-block; }
+
+.team-section { padding: 50px 0; }
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
+.team-card {
+    background: var(--glass); border: 1px solid rgba(0, 242, 255, 0.3); 
+    border-radius: 15px; padding: 40px 20px; text-align: center; transition: 0.3s;
+}
+.team-card:hover { transform: translateY(-10px); background: rgba(11, 17, 32, 0.98); }
+.team-photo {
+    width: 120px; height: 120px; margin: 0 auto 20px; border-radius: 50%;
+    background: #222; border: 3px solid var(--primary);
+    display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white;
+}
+.team-role { color: var(--secondary); font-weight: 700; display: block; margin-bottom: 15px; text-transform: uppercase; }
+.board-card { border-color: var(--gold); box-shadow: 0 0 20px var(--gold-glow); }
+.board-card .team-photo { border-color: var(--gold); color: var(--gold); }
+.board-card .team-role { color: var(--gold); }
+
+/* 10. KARTY DOŁĄCZ */
+.join-options { padding: 50px 5%; }
+.join-options .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+.join-card { border-bottom: 5px solid var(--secondary); text-align: center; }
+.card-icon { color: var(--secondary); font-size: 2.5rem; margin-bottom: 20px; }
+.join-card h3 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 15px; text-transform: uppercase; }
+.join-card p { color: #ccc; font-size: 0.95rem; margin-bottom: 20px; }
+
+/* 11. FORMULARZ (POPRAWIONY) */
+.form-section { padding: 50px 5% 100px 5%; display: flex; justify-content: center; }
+.form-container {
+    width: 100%; max-width: 700px;
+    background: var(--glass); padding: 50px; border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+}
+.form-container h2 {
+    font-family: var(--font-heading); color: white; margin-bottom: 30px;
+    text-align: center; font-size: 2.2rem; text-transform: uppercase;
+}
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 15px; background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px;
+    color: white; font-size: 1rem; transition: 0.3s;
+}
+.form-group input:focus { border-color: var(--primary); outline: none; background: rgba(0, 0, 0, 0.6); box-shadow: 0 0 10px rgba(0, 242, 255, 0.2); }
+.full-width { width: 100%; }
+
+/* 12. KONTAKT INFO I MAPA */
+.contact-page-section { padding: 50px 0; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+.contact-list li { margin-bottom: 15px; display: flex; align-items: center; color: #ddd; }
+.contact-list i { color: var(--primary); width: 30px; text-align: center; margin-right: 15px; }
+.map-container {
+    margin-top: 50px; height: 450px; border-radius: 20px; overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.15); box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+.map-container iframe { width: 100%; height: 100%; filter: invert(90%) hue-rotate(180deg) brightness(95%); }
+
+/* 13. STOPKA */
+.cta-section { padding: 80px 20px; text-align: center; background: rgba(0, 242, 255, 0.05); backdrop-filter: blur(5px); }
+footer { text-align: center; padding: 50px; background: #050810; color: #777; border-top: 1px solid rgba(255,255,255,0.05); }
+
+
+/* =========================================
+   16. PODSTRONA DLA SPONSORA (KOLOROWE RAMKI)
+   ========================================= */
+.sponsor-tiers {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px; padding: 50px 0;
+}
+.tier-card {
+    background: var(--glass); padding: 50px 30px; border-radius: 20px;
+    text-align: center; 
+    /* Domyślna ramka (np. dla srebra/brązu jeśli nie zdefiniowane inaczej) */
+    border: 2px solid rgba(255, 255, 255, 0.1); 
+    transition: all 0.4s ease; position: relative; overflow: hidden;
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+.tier-card:hover { transform: translateY(-15px); background: rgba(11, 17, 32, 0.98); }
+
+.tier-card h3 {
+    font-family: var(--font-heading); font-size: 2.2rem;
+    margin-bottom: 20px; text-transform: uppercase; color: white;
+}
+
+/* --- KOLORY PAKIETÓW --- */
+
+/* ZŁOTY */
+.tier-card.gold {
+    border-color: var(--gold);
+    box-shadow: 0 0 35px var(--gold-glow);
+}
+.tier-card.gold h3, .tier-card.gold .tier-price, .tier-card.gold li i { color: var(--gold); }
+.tier-card.gold:hover { box-shadow: 0 0 50px var(--gold-glow), inset 0 0 20px rgba(255, 215, 0, 0.1); }
+
+/* SREBRNY */
+.tier-card.silver {
+    border-color: var(--silver);
+    box-shadow: 0 0 25px rgba(192, 192, 192, 0.3);
+}
+.tier-card.silver h3, .tier-card.silver .tier-price, .tier-card.silver li i { color: var(--silver); }
+.tier-card.silver:hover { box-shadow: 0 0 40px rgba(192, 192, 192, 0.4); }
+
+/* BRĄZOWY */
+.tier-card.bronze {
+    border-color: var(--bronze);
+    box-shadow: 0 0 25px rgba(205, 127, 50, 0.3);
+}
+.tier-card.bronze h3, .tier-card.bronze .tier-price, .tier-card.bronze li i { color: var(--bronze); }
+.tier-card.bronze:hover { box-shadow: 0 0 40px rgba(205, 127, 50, 0.4); }
+
+/* --- Reszta stylów kart --- */
+.tier-price {
+    font-size: 1.1rem; font-weight: 700; margin-bottom: 30px;
+    display: block; letter-spacing: 1px;
+}
+.benefit-list { list-style: none; text-align: left; margin-bottom: 40px; padding: 0 20px; }
+.benefit-list li { margin-bottom: 15px; color: #e2e8f0; display: flex; align-items: center; font-size: 1rem; }
+.benefit-list li i { margin-right: 15px; font-size: 0.9rem; }
+
+
+/* 14. RESPONSIVE (POPRAWIONE PADDINGI KONTENERÓW) */
+@media (max-width: 900px) {
+    body { padding-top: 180px; } 
+    .header-content { flex-direction: column; }
+    .logo-container img { height: 70px; } 
+    nav ul { flex-wrap: wrap; justify-content: center; margin-top: 15px; gap: 15px; }
+    
+    .hero h1 { font-size: 2.8rem; }
+    .page-hero h1 { font-size: 2.2rem; }
+    .section-title { font-size: 1.8rem; }
+    
+    /* Zwiększone paddingi na mobilu, żeby się nie rozjeżdżało */
+    .glass-title-box { padding: 30px 40px; width: 95%; }
+    .form-container, .join-card, .contact-info-card, .tier-card { padding: 40px 30px; } 
+
+    .split-layout, .contact-grid, .event-row, .join-options .container { 
+        grid-template-columns: 1fr; flex-direction: column; text-align: center; 
+    }
+    .event-details { text-align: center; margin-bottom: 20px; }
+    .event-action { width: 100%; }
+    .event-action .btn { width: 100%; margin: 0; }
+    .benefit-list { padding: 0; }
+}
