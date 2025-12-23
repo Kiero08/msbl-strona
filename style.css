@@ -1,18 +1,24 @@
 /* ==========================================================================
-   PÓŁNOCNA STRONA KOSZYKÓWKI - ARCHITEKTURA WIZUALNA "AURORA MASTER 2025"
+   PÓŁNOCNA STRONA KOSZYKÓWKI - ARCHITEKTURA WIZUALNA "AURORA ULTIMATE 2025"
    ========================================================================== */
 
+/* 1. FUNDAMENTY I ZMIENNE */
 :root {
-    --primary: #00f2ff;
-    --secondary: #ff6600;
-    --aurora: linear-gradient(90deg, #00f2ff, #7000ff, #ff6600, #00f2ff);
+    --primary: #00f2ff;       /* Neonowy Cyjan */
+    --secondary: #ff6600;     /* Intensywny Pomarańcz */
+    /* Pełny gradient zorzy: Cyjan -> Fiolet -> Magenta -> Pomarańcz */
+    --aurora: linear-gradient(90deg, #00f2ff, #7000ff, #ff00c8, #ff6600, #00f2ff);
     --dark-bg: #0b1120;
+    
+    /* Kolory Metali dla Sponsorów i Zarządu */
     --gold: #ffcc00;      
     --gold-glow: rgba(255, 204, 0, 0.4);
     --silver: #e0e6ed;    
     --silver-glow: rgba(224, 230, 237, 0.3);
     --bronze: #cd853f;    
     --bronze-glow: rgba(205, 133, 63, 0.3);
+
+    /* Parametry Szkła (Glassmorphism) */
     --glass-bg: rgba(15, 20, 35, 0.85);
     --glass-border: rgba(255, 255, 255, 0.1);
     --text-main: #ffffff;
@@ -20,7 +26,11 @@
     --font-body: 'Roboto', sans-serif;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; overflow-wrap: break-word; }
+/* 2. RESET I ZABEZPIECZENIE TREŚCI */
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    overflow-wrap: break-word;
+}
 
 html { scroll-behavior: smooth; }
 
@@ -33,6 +43,7 @@ body {
     overflow-x: hidden;
 }
 
+/* Tło z zorzą pod spodem */
 body::before {
     content: '';
     position: fixed;
@@ -43,7 +54,7 @@ body::before {
     background-position: center;
 }
 
-/* 3. NAGŁÓWEK I LOGO */
+/* 3. NAGŁÓWEK I MIENIĄCE SIĘ LOGO (8S SYNCHRO) */
 header {
     position: fixed; top: 0; width: 100%; z-index: 1000;
     padding: 15px 0;
@@ -61,30 +72,28 @@ header {
 .logo-container {
     position: relative;
     display: flex; align-items: center; justify-content: center;
-    /* Naprawa kwadratów pod logo */
-    transform: translateZ(0);
+    transform: translateZ(0); /* Akceleracja GPU */
 }
 
+/* ANIMOWANA SFERA ZORZY POD LOGO */
 .logo-container::before {
     content: "";
     position: absolute;
-    width: 140px; height: 140px;
+    width: 135px; height: 135px;
     background: var(--aurora);
     background-size: 300% 300%;
-    animation: aurora-animation 8s linear infinite;
+    animation: aurora-animation 8s linear infinite; 
     filter: blur(25px);
-    opacity: 0.7;
+    opacity: 0.8;
     z-index: -1;
     border-radius: 50%;
-    /* Wymuszenie GPU */
     will-change: filter, transform;
-    transform: translateZ(0);
 }
 
 .logo-container img {
     height: 120px; 
-    filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.3));
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 0 8px rgba(0, 242, 255, 0.3));
+    transition: 0.4s ease;
 }
 
 nav ul { list-style: none; display: flex; gap: 25px; align-items: center; }
@@ -102,25 +111,38 @@ nav a:hover { color: var(--primary); }
     background: rgba(0, 242, 255, 0.05);
 }
 
-/* 4. HERO I TYTUŁY */
+/* 4. HERO I TYTUŁY (WYCENTROWANE + POMARAŃCZ) */
 .hero, .page-hero {
     position: relative;
     display: flex; align-items: center; justify-content: center;
     text-align: center; padding: 60px 20px;
 }
+.hero { min-height: calc(100vh - 180px); }
 
 .hero-content {
-    display: flex; flex-direction: column; align-items: center;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
     width: 100%; z-index: 1;
 }
 
 .hero h1 { font-size: 5rem; font-family: var(--font-heading); text-transform: uppercase; line-height: 1.1; }
+
+/* POMARAŃCZOWY SUB-TITLE */
 .sub-title { 
     color: var(--secondary); 
     letter-spacing: 5px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 10px; display: block; 
 }
-.highlight { color: transparent; -webkit-text-stroke: 1px var(--secondary); }
 
+/* EFEKT HOLLOW (PUSTY W ŚRODKU Z OBRYSEM) */
+.highlight { 
+    color: transparent !important; 
+    -webkit-text-stroke: 1.5px var(--secondary) !important; 
+    filter: drop-shadow(0 0 5px rgba(255, 102, 0, 0.4));
+    display: inline-block;
+}
+
+/* Szklane boksy tytułów z paskiem na górze */
+.glass-title-wrapper { display: flex; justify-content: center; margin-bottom: 50px; }
 .glass-title-box {
     padding: 40px 80px; background: var(--glass-bg);
     border-radius: 20px; backdrop-filter: blur(15px);
@@ -131,54 +153,49 @@ nav a:hover { color: var(--primary); }
     content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 8px;
     background: var(--aurora); background-size: 200% 200%;
     animation: aurora-animation 8s linear infinite;
+    z-index: 2;
 }
 
-/* 5. AURORA SYSTEM - POPRAWKA NA KWADRATY */
+/* 5. AURORA SYSTEM (KARTY I KRESKI + ANTI-SQUARE) */
 .aurora-card {
     position: relative; border-radius: 20px; padding: 40px;
-    border: none; isolation: isolate;
-    /* Wymuszenie GPU dla całego kontenera */
+    border: none; isolation: isolate; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     transform: translateZ(0);
 }
 
+/* Poświata wokół kart (Fix na kwadraty) */
 .aurora-card::before {
     content: ""; position: absolute; 
-    /* Powiększony obszar poświaty, by blur nie "uderzał" w krawędź */
-    top: -15px; left: -15px; right: -15px; bottom: -15px;
+    top: -12px; left: -12px; right: -12px; bottom: -12px;
     background: var(--aurora); background-size: 300% 300%;
-    z-index: -2; border-radius: 35px;
+    z-index: -2; border-radius: 32px;
     animation: aurora-animation 8s linear infinite;
-    filter: blur(12px); 
-    opacity: 0.8;
+    filter: blur(15px); opacity: 0.85;
     will-change: filter, transform;
-    transform: translateZ(0);
 }
 
 .aurora-card::after {
     content: ""; position: absolute; inset: 0;
     background: var(--glass-bg); border-radius: 20px;
-    z-index: -1; backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
+    z-index: -1; backdrop-filter: blur(20px); border: 1px solid var(--glass-border);
 }
 
+/* Kreska na górze (Partnerzy / Misja) */
 .aurora-top-line {
     position: relative; background: var(--glass-bg);
     border-radius: 20px 20px 0 0; padding: 60px 40px;
     border: 1px solid var(--glass-border); border-top: none;
-    isolation: isolate; backdrop-filter: blur(20px);
-    transform: translateZ(0);
+    isolation: isolate; backdrop-filter: blur(20px); transform: translateZ(0);
 }
 
 .aurora-top-line::before {
-    content: ""; position: absolute; top: -5px; left: -5px; right: -5px;
-    height: 60px; background: var(--aurora); background-size: 300% 300%;
-    z-index: -1; border-radius: 25px 25px 0 0;
+    content: ""; position: absolute; top: -4px; left: -4px; right: -4px;
+    height: 65px; background: var(--aurora); background-size: 300% 300%;
+    z-index: -1; border-radius: 24px 24px 0 0;
     animation: aurora-animation 8s linear infinite;
-    -webkit-mask-image: linear-gradient(to bottom, black 2px, transparent 20px);
-    mask-image: linear-gradient(to bottom, black 2px, transparent 20px);
-    filter: blur(4px);
-    will-change: filter, transform;
-    transform: translateZ(0);
+    -webkit-mask-image: linear-gradient(to bottom, black 5px, transparent 20px);
+    mask-image: linear-gradient(to bottom, black 5px, transparent 20px);
+    filter: blur(3px); will-change: filter, transform;
 }
 
 @keyframes aurora-animation {
@@ -187,51 +204,75 @@ nav a:hover { color: var(--primary); }
     100% { background-position: 0% 50%; }
 }
 
-/* 6. POZOSTAŁE STYLE (SYNCHRONIZACJA) */
+/* 6. SLIDER I PRZYCISKI */
 .slider-container { width: 100%; max-width: 1000px; margin: 0 auto; overflow: hidden; position: relative; }
 .slider-track { display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
 .slide { min-width: 100%; padding: 40px; text-align: center; }
 .slide-date { background: var(--secondary); padding: 5px 25px; border-radius: 50px; font-weight: 700; margin-bottom: 20px; display: inline-block; }
-.dot { width: 10px; height: 10px; background: rgba(255,255,255,0.2); border-radius: 50%; cursor: pointer; margin: 0 8px; }
+.dot { width: 10px; height: 10px; background: rgba(255,255,255,0.2); border-radius: 50%; cursor: pointer; margin: 0 8px; transition: 0.3s; }
 .dot.active { background: var(--primary); transform: scale(1.3); }
 
 .btn {
     display: inline-block; padding: 15px 45px; font-family: var(--font-heading); font-weight: 700;
     text-transform: uppercase; border-radius: 50px; transition: 0.3s; border: none; cursor: pointer; text-decoration: none;
 }
-.btn-primary { background: linear-gradient(135deg, var(--secondary), #ff3300); color: white; }
+.btn-primary { background: linear-gradient(135deg, var(--secondary), #ff3300); color: white; box-shadow: 0 10px 20px rgba(255, 102, 0, 0.3); }
 .btn-secondary { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; }
+.btn-secondary:hover { background: white; color: black; }
 
+/* 7. KARTY SPECJALNE (ZARZĄD I SPONSORZY) */
 .team-grid, .sponsor-tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
-.tier-card.gold::before, .board-card::before { background: var(--gold); }
-.board-card { border: 1px solid var(--gold) !important; box-shadow: 0 10px 40px var(--gold-glow) !important; }
-.team-photo { width: 130px; height: 130px; margin: 0 auto 25px; border-radius: 50%; background: #222; border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: white; }
 
+/* Efekty Kruszców */
+.tier-card.gold::before, .board-card::before { background: var(--gold); }
+.tier-card.gold h3, .tier-card.gold .tier-price, .board-card h3 { color: var(--gold); }
+.tier-card.silver::before { background: var(--silver); }
+.tier-card.silver h3, .tier-card.silver .tier-price { color: var(--silver); }
+.tier-card.bronze::before { background: var(--bronze); }
+.tier-card.bronze h3, .tier-card.bronze .tier-price { color: var(--bronze); }
+
+.board-card { border: 1px solid var(--gold) !important; box-shadow: 0 10px 40px var(--gold-glow) !important; }
+
+.team-photo { width: 130px; height: 130px; margin: 0 auto 25px; border-radius: 50%; background: #222; border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: white; }
+.board-card .team-photo { border-color: var(--gold); color: var(--gold); }
+.team-role { display: block; font-weight: 700; color: var(--primary); font-family: var(--font-heading); text-transform: uppercase; margin-bottom: 10px; }
+
+/* 8. FORMULARZE I MAPA */
+.form-container { width: 100%; max-width: 800px; margin: 0 auto; }
+.form-group { margin-bottom: 25px; text-align: left; }
+.form-group label { display: block; margin-bottom: 10px; color: var(--primary); font-family: var(--font-heading); text-transform: uppercase; }
 .form-group input, .form-group select, .form-group textarea {
     width: 100%; padding: 18px; background: rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white;
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white; font-family: inherit;
 }
 
-.partners-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
-.partner-logo-box { width: 220px; height: 120px; display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.03); border-radius: 15px; }
-.partner-logo-box img { max-width: 80%; filter: grayscale(1) brightness(1.5); }
+.map-container { height: 500px; border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border); box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
+.map-container iframe { width: 100%; height: 100%; filter: invert(90%) hue-rotate(180deg) brightness(95%); }
 
+/* 9. PARTNERZY */
+.partners-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
+.partner-logo-box { width: 220px; height: 120px; display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.03); border-radius: 15px; transition: 0.3s; }
+.partner-logo-box img { max-width: 80%; filter: grayscale(1) brightness(1.5); transition: 0.3s; }
+.partner-logo-box:hover img { filter: grayscale(0) brightness(1); }
+
+/* 10. STOPKA I RWD */
 footer { text-align: center; padding: 60px; background: #050810; color: #555; border-top: 1px solid var(--glass-border); }
 
-/* 13. RWD */
 @media (max-width: 900px) {
     body { padding-top: 240px; }
     .header-content { flex-direction: column; }
-    .logo-container img { height: 75px; }
-    .logo-container::before { width: 90px; height: 90px; filter: blur(15px); }
-    nav ul { gap: 12px; margin-top: 20px; flex-wrap: wrap; justify-content: center; }
+    .logo-container img { height: 80px; }
+    .logo-container::before { width: 95px; height: 95px; filter: blur(15px); }
+    nav ul { gap: 15px; margin-top: 25px; flex-wrap: wrap; justify-content: center; }
     .hero h1 { font-size: 2.8rem; }
+    .page-hero h1 { font-size: 2.4rem; }
+    .glass-title-box { padding: 30px 20px; width: 100%; }
+    .aurora-card, .aurora-top-line { padding: 30px 20px; }
 }
 
 @media (max-width: 480px) {
     body { padding-top: 260px; }
     .hero h1 { font-size: 2.2rem; }
     .logo-container img { height: 60px; }
-    .logo-container::before { width: 70px; height: 70px; }
-    .aurora-card, .aurora-top-line { padding: 30px 20px; }
+    .logo-container::before { width: 75px; height: 75px; }
 }
