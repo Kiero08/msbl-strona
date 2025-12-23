@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wydarzenia - PSK</title>
+    <title>Wydarzenia - Północna Strona Koszykówki</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
     <header>
         <div class="header-content">
-            <div class="logo-container"><a href="index.html"><img src="logo.png" alt="Logo"></a></div>
+            <div class="logo-container">
+                <a href="index.html"><img src="logo.png" alt="Logo"></a>
+            </div>
             <nav>
                 <ul>
                     <li><a href="index.html">Start</a></li>
@@ -29,33 +33,79 @@
         <div class="hero-content">
             <div class="glass-title-wrapper">
                 <div class="glass-title-box">
-                    <span class="sub-title">BĄDŹ Z NAMI</span>
-                    <h1 class="section-title">NADCHODZĄCE <span class="highlight">EVENTY</span></h1>
+                    <span class="sub-title">EMOCJE NA BOISKU</span>
+                    <h1 class="section-title">KALENDARZ <span class="highlight">WYDARZEŃ</span></h1>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="container">
-        <div class="aurora-card" style="margin-bottom: 30px; display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
-            <div class="slide-date">15 MAJ</div>
-            <div style="flex: 1;">
-                <h3>Turniej Otwarcia Lata 3x3</h3>
-                <p>Plac Pokoju, Lębork | Start 10:00</p>
-            </div>
-            <a href="kontakt.html" class="btn btn-primary">Zapisy</a>
+    <section class="container" style="margin-bottom: 80px;">
+        <div class="glass-title-wrapper" style="margin-bottom: 30px; justify-content: flex-start;">
+            <h2 style="font-family: var(--font-heading); color: #fff; text-transform: uppercase; border-left: 5px solid var(--secondary); padding-left: 15px;">Nadchodzące Turnieje</h2>
         </div>
 
-        <div class="aurora-card" style="margin-bottom: 30px; display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
-            <div class="slide-date">22 CZE</div>
-            <div style="flex: 1;">
-                <h3>Nocny Maraton Koszykówki</h3>
-                <p>Hala Miejska | Start 18:00</p>
+        <div class="team-grid">
+            <div class="aurora-card">
+                <div class="slide-date">15 MAJ</div>
+                <h3 style="margin-bottom: 15px; color: var(--primary);">TURNIEJ OTWARCIA LATA 3X3</h3>
+                <p style="margin-bottom: 20px; opacity: 0.9;">Inauguracja sezonu letniego na pomorskim wybrzeżu. Kategorie Open, U18 oraz turniej dla amatorów.</p>
+                
+                <div style="margin-bottom: 25px; font-size: 0.9rem; color: #ccc;">
+                    <p><i class="fas fa-map-marker-alt" style="color: var(--secondary);"></i> Plac Pokoju, Lębork</p>
+                    <p><i class="fas fa-clock" style="color: var(--secondary);"></i> Start: 10:00</p>
+                </div>
+                <a href="dolacz.html" class="btn btn-primary" style="width: 100%; text-align: center;">Zapisz drużynę</a>
             </div>
-            <a href="kontakt.html" class="btn btn-secondary">Szczegóły</a>
+
+            <div class="aurora-card">
+                <div class="slide-date">22 CZE</div>
+                <h3 style="margin-bottom: 15px; color: var(--primary);">NOCNY MARATON BASKETU</h3>
+                <p style="margin-bottom: 20px; opacity: 0.9;">Gramy przy blasku neonów i muzyce DJ-a. Unikalna atmosfera nocnego streetballu w sercu miasta.</p>
+                
+                <div style="margin-bottom: 25px; font-size: 0.9rem; color: #ccc;">
+                    <p><i class="fas fa-map-marker-alt" style="color: var(--secondary);"></i> Hala Miejska, Lębork</p>
+                    <p><i class="fas fa-clock" style="color: var(--secondary);"></i> Start: 20:00</p>
+                </div>
+                <a href="dolacz.html" class="btn btn-primary" style="width: 100%; text-align: center;">Dołącz do gry</a>
+            </div>
         </div>
     </section>
 
-    <footer><p>&copy; 2025 Stowarzyszenie Północna Strona Koszykówki.</p></footer>
+    <section class="container" style="margin-bottom: 100px;">
+        <div class="glass-title-wrapper" style="margin-bottom: 30px; justify-content: flex-start;">
+            <h2 style="font-family: var(--font-heading); color: #fff; text-transform: uppercase; border-left: 5px solid var(--primary); padding-left: 15px;">Stałe Treningi</h2>
+        </div>
+
+        <div class="aurora-top-line" style="border-radius: 20px;">
+            <div class="team-grid" style="gap: 20px;">
+                <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 15px;">
+                    <h4 style="color: var(--secondary); margin-bottom: 10px;">PONIEDZIAŁKI</h4>
+                    <p><strong>18:00 - 19:30</strong></p>
+                    <p style="font-size: 0.85rem; opacity: 0.7;">Trening techniki indywidualnej (Kadeci)</p>
+                </div>
+                <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 15px;">
+                    <h4 style="color: var(--secondary); margin-bottom: 10px;">ŚRODY</h4>
+                    <p><strong>17:30 - 19:00</strong></p>
+                    <p style="font-size: 0.85rem; opacity: 0.7;">Taktyka zespołowa i sparingi (Open)</p>
+                </div>
+                <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 15px;">
+                    <h4 style="color: var(--secondary); margin-bottom: 10px;">PIĄTKI</h4>
+                    <p><strong>19:00 - 20:30</strong></p>
+                    <p style="font-size: 0.85rem; opacity: 0.7;">Wieczorny rzutowy trening (Wszyscy)</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; text-align: center;">
+                <p style="margin-bottom: 20px;">Chcesz dołączyć do treningów? Pierwsze zajęcia są zawsze darmowe!</p>
+                <a href="kontakt.html" class="btn btn-secondary">Zapytaj o wolne miejsca</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Stowarzyszenie Północna Strona Koszykówki.</p>
+    </footer>
+
 </body>
 </html>
