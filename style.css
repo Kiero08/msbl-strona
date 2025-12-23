@@ -152,28 +152,42 @@ nav a:hover { color: var(--primary); }
     border: 1px solid var(--glass-border);
 }
 
-/* [B] KRESKA NA GÓRZE (Partnerzy) */
+/* [B] KRESKA TYLKO NA GÓRZE (Poprawiona - idealne zaokrąglenie) */
 .aurora-top-line {
     position: relative;
+    /* Tło szklane */
     background: var(--glass-bg);
-    border-radius: 20px;
-    padding: 60px 40px;
-    border: 1px solid var(--glass-border);
-    border-top: none;
-    isolation: isolate;
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    /* Zaokrąglamy TYLKO górę */
+    border-radius: 20px 20px 0 0;
+    padding: 60px 40px;
+    /* Cieniutkie ramki po bokach i na dole dla definicji */
+    border: 1px solid var(--glass-border);
+    border-top: none; /* Górę zostawiamy czystą dla zorzy */
+    isolation: isolate;
+    margin-top: 50px;
 }
+
+/* Świecąca warstwa zorzy POD spodem */
 .aurora-top-line::before {
     content: "";
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px; /* TWOJA KRESKA */
+    /* Wystaje dokładnie o 3px w górę i na boki */
+    top: -3px; left: -3px; right: -3px;
+    /* Schodzi do dołu, ale zaraz ją zamaskujemy */
+    bottom: 0;
     background: var(--aurora);
     background-size: 300% 300%;
-    z-index: 10;
-    border-radius: 20px 20px 0 0;
+    z-index: -2;
+    /* Kluczowe: Zaokrąglenie musi być większe o grubość ramki (20px + 3px = 23px) */
+    border-radius: 23px 23px 0 0;
     animation: aurora-animation 8s linear infinite;
-    box-shadow: 0 0 15px var(--primary);
+    filter: blur(8px); /* Efekt neonowego glow */
+    opacity: 0.9;
+    /* Maska: sprawia, że świeci mocno na górze i płynnie zanika w dół po bokach */
+    -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 85%);
+    mask-image: linear-gradient(to bottom, black 20%, transparent 85%);
 }
 
 @keyframes aurora-animation {
@@ -264,3 +278,4 @@ footer { text-align: center; padding: 60px; background: #050810; color: #555; bo
     
     .team-grid, .sponsor-tiers, .split-layout { grid-template-columns: 1fr; }
 }
+
