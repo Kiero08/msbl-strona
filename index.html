@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
     <header>
         <div class="header-content">
             <div class="logo-container"><a href="index.html"><img src="logo.png" alt="Logo"></a></div>
@@ -30,21 +31,51 @@
         <div class="hero-content">
             <span class="sub-title">STOWARZYSZENIE</span>
             <h1>PÓŁNOCNA STRONA <br><span class="highlight">KOSZYKÓWKI</span></h1>
-            <p style="max-width:750px; margin: 25px auto; font-size: 1.2rem;">Budujemy koszykarską tożsamość regionu. Pasja, rywalizacja i społeczność, która nie zna granic.</p>
+            <p style="max-width:700px; margin: 20px auto;">Budujemy koszykarską tożsamość regionu. Dołącz do społeczności pasjonatów znad Bałtyku.</p>
             <a href="dolacz.html" class="btn btn-primary">Dołącz do gry</a>
             <a href="sponsorzy.html" class="btn btn-secondary">Zostań Sponsorem</a>
         </div>
     </section>
 
-    <section class="partners-section">
+    <section class="events-slider-section">
         <div class="container">
             <div class="glass-title-wrapper">
                 <div class="glass-title-box">
-                    <span class="sub-title">WSPÓŁPRACA</span>
-                    <h2 style="font-family: var(--font-heading); font-size: 2.2rem; text-transform: uppercase;">ZAUFALI NAM</h2>
+                    <span class="sub-title">BĄDŹ NA BIEŻĄCO</span>
+                    <h2 style="font-family: var(--font-heading); font-size: 2rem; text-transform: uppercase;">KALENDARZ WYDARZEŃ</h2>
                 </div>
             </div>
-            <div class="aurora-card">
+
+            <div class="slider-container aurora-card">
+                <div class="slider-track" id="sliderTrack">
+                    <div class="slide">
+                        <div class="slide-date">15 MAJ</div>
+                        <h3>Turniej Otwarcia Lata 3x3</h3>
+                        <p>Plac Pokoju, Lębork. Największe basket party w regionie!</p>
+                        <a href="wydarzenia.html" class="btn btn-primary">Szczegóły</a>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-date">22 CZE</div>
+                        <h3>Nocny Maraton Basketu</h3>
+                        <p>Gramy do rana przy muzyce DJ-ów i blasku neonów.</p>
+                        <a href="wydarzenia.html" class="btn btn-primary">Szczegóły</a>
+                    </div>
+                </div>
+                <div class="slider-dots" id="sliderDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="partners-section" style="padding-bottom: 0;">
+        <div class="container">
+            <div class="glass-title-wrapper">
+                <div class="glass-title-box">
+                    <span class="sub-title">PARTNERZY</span>
+                    <h2 style="font-family: var(--font-heading); font-size: 2rem; text-transform: uppercase;">ZAUFALI NAM</h2>
+                </div>
+            </div>
+            
+            <div class="aurora-top-only">
                 <div class="partners-grid">
                     <div class="partner-logo-box"><img src="logo.png" alt="Partner 1"></div>
                     <div class="partner-logo-box"><img src="logo.png" alt="Partner 2"></div>
@@ -55,35 +86,16 @@
         </div>
     </section>
 
-    <section class="events-slider-section">
-        <div class="container">
-            <div class="slider-container aurora-card">
-                <div class="slider-track" id="sliderTrack">
-                    <div class="slide">
-                        <div class="slide-date">15 MAJ</div>
-                        <h3>Turniej Otwarcia Lata 3x3</h3>
-                        <p>Wielkie otwarcie sezonu streetballowego. Plac Pokoju, Lębork.</p>
-                        <a href="wydarzenia.html" class="btn btn-primary">Szczegóły</a>
-                    </div>
-                    <div class="slide">
-                        <div class="slide-date">22 CZE</div>
-                        <h3>Nocny Maraton Basketu</h3>
-                        <p>6 godzin grania pod gwiazdami. Muzyka, konkursy, emocje.</p>
-                        <a href="wydarzenia.html" class="btn btn-primary">Szczegóły</a>
-                    </div>
-                </div>
-                <div class="slider-dots" id="sliderDots"></div>
-            </div>
-        </div>
-    </section>
-
-    <footer><p>&copy; 2025 Stowarzyszenie Północna Strona Koszykówki.</p></footer>
+    <footer style="margin-top: 0;">
+        <p>&copy; 2025 Stowarzyszenie Północna Strona Koszykówki.</p>
+    </footer>
 
     <script>
         const track = document.getElementById('sliderTrack');
         const slides = document.querySelectorAll('.slide');
         const dotsContainer = document.getElementById('sliderDots');
         let index = 0;
+
         slides.forEach((_, i) => {
             const dot = document.createElement('div');
             dot.classList.add('dot');
@@ -91,12 +103,15 @@
             dot.addEventListener('click', () => { index = i; updateSlider(); resetTimer(); });
             dotsContainer.appendChild(dot);
         });
+
         const dots = document.querySelectorAll('.dot');
+
         function updateSlider() {
             track.style.transform = `translateX(-${index * 100}%)`;
             dots.forEach(d => d.classList.remove('active'));
             dots[index].classList.add('active');
         }
+
         function nextSlide() { index = (index + 1) % slides.length; updateSlider(); }
         let timer = setInterval(nextSlide, 4000);
         function resetTimer() { clearInterval(timer); timer = setInterval(nextSlide, 4000); }
