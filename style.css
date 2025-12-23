@@ -310,6 +310,7 @@ footer { text-align: center; padding: 60px; background: #050810; color: #555; bo
 
 /* Mocniejszy glow dla kalendarza */
 .slider-container.aurora-card::before {
-    filter: blur(12px);
+    filter: blur(15px);
     opacity: 1;
 }
+
