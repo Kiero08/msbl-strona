@@ -9,17 +9,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
     <header>
         <div class="header-content">
             <div class="logo-container"><a href="index.html"><img src="logo.png" alt="Logo"></a></div>
             <nav>
                 <ul>
-                    <li><a href="index.html" style="color: var(--primary);">Strona Główna</a></li>
+                    <li><a href="index.html" style="color: var(--primary);">Start</a></li>
                     <li><a href="o-nas.html">O nas</a></li>
                     <li><a href="wydarzenia.html">Wydarzenia</a></li>
                     <li><a href="dolacz.html">Dołącz</a></li>
-                    <li><a href="sponsorzy.html">Dla Sponsora</a></li>
+                    <li><a href="sponsorzy.html">Sponsorzy</a></li>
                     <li><a href="kontakt.html" class="nav-btn">Kontakt</a></li>
                 </ul>
             </nav>
@@ -31,7 +30,7 @@
         <div class="hero-content">
             <span class="sub-title">STOWARZYSZENIE</span>
             <h1>PÓŁNOCNA STRONA <br><span class="highlight">KOSZYKÓWKI</span></h1>
-            <p style="max-width:700px; margin: 20px auto;">Budujemy koszykarską tożsamość nad Bałtykiem. Pasja, rywalizacja, społeczność. Dołącz do gry!</p>
+            <p style="max-width:750px; margin: 25px auto; font-size: 1.2rem;">Budujemy koszykarską tożsamość regionu. Pasja, rywalizacja i społeczność, która nie zna granic.</p>
             <a href="dolacz.html" class="btn btn-primary">Dołącz do gry</a>
             <a href="sponsorzy.html" class="btn btn-secondary">Zostań Sponsorem</a>
         </div>
@@ -42,16 +41,15 @@
             <div class="glass-title-wrapper">
                 <div class="glass-title-box">
                     <span class="sub-title">WSPÓŁPRACA</span>
-                    <h2 style="font-family: var(--font-heading); font-size: 2rem; text-transform: uppercase;">ZAUFALI NAM</h2>
+                    <h2 style="font-family: var(--font-heading); font-size: 2.2rem; text-transform: uppercase;">ZAUFALI NAM</h2>
                 </div>
             </div>
-            
             <div class="aurora-card">
                 <div class="partners-grid">
-                    <div class="partner-logo-box"><img src="partner1.png" alt="Partner 1"></div>
-                    <div class="partner-logo-box"><img src="partner2.png" alt="Partner 2"></div>
-                    <div class="partner-logo-box"><img src="partner3.png" alt="Partner 3"></div>
-                    <div class="partner-logo-box"><img src="partner4.png" alt="Partner 4"></div>
+                    <div class="partner-logo-box"><img src="logo.png" alt="Partner 1"></div>
+                    <div class="partner-logo-box"><img src="logo.png" alt="Partner 2"></div>
+                    <div class="partner-logo-box"><img src="logo.png" alt="Partner 3"></div>
+                    <div class="partner-logo-box"><img src="logo.png" alt="Partner 4"></div>
                 </div>
             </div>
         </div>
@@ -59,12 +57,19 @@
 
     <section class="events-slider-section">
         <div class="container">
-            <div class="slider-container aurora-card"> <div class="slider-track" id="sliderTrack">
+            <div class="slider-container aurora-card">
+                <div class="slider-track" id="sliderTrack">
                     <div class="slide">
                         <div class="slide-date">15 MAJ</div>
                         <h3>Turniej Otwarcia Lata 3x3</h3>
-                        <p>Wielkie otwarcie sezonu streetballowego przy molo.</p>
-                        <a href="wydarzenia.html" class="btn-text" style="color:var(--primary); text-decoration:none; font-weight:700;">Szczegóły →</a>
+                        <p>Wielkie otwarcie sezonu streetballowego. Plac Pokoju, Lębork.</p>
+                        <a href="wydarzenia.html" class="btn btn-primary">Szczegóły</a>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-date">22 CZE</div>
+                        <h3>Nocny Maraton Basketu</h3>
+                        <p>6 godzin grania pod gwiazdami. Muzyka, konkursy, emocje.</p>
+                        <a href="wydarzenia.html" class="btn btn-primary">Szczegóły</a>
                     </div>
                 </div>
                 <div class="slider-dots" id="sliderDots"></div>
@@ -72,12 +77,29 @@
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2025 Stowarzyszenie Północna Strona Koszykówki.</p>
-    </footer>
+    <footer><p>&copy; 2025 Stowarzyszenie Północna Strona Koszykówki.</p></footer>
 
     <script>
-        // ... (skrypt slidera pozostaje bez zmian) ...
+        const track = document.getElementById('sliderTrack');
+        const slides = document.querySelectorAll('.slide');
+        const dotsContainer = document.getElementById('sliderDots');
+        let index = 0;
+        slides.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if(i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => { index = i; updateSlider(); resetTimer(); });
+            dotsContainer.appendChild(dot);
+        });
+        const dots = document.querySelectorAll('.dot');
+        function updateSlider() {
+            track.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach(d => d.classList.remove('active'));
+            dots[index].classList.add('active');
+        }
+        function nextSlide() { index = (index + 1) % slides.length; updateSlider(); }
+        let timer = setInterval(nextSlide, 4000);
+        function resetTimer() { clearInterval(timer); timer = setInterval(nextSlide, 4000); }
     </script>
 </body>
 </html>
