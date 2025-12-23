@@ -1,19 +1,25 @@
 /* =========================================
-   MASTER STYLE.CSS - WERSJA OSTATECZNA (FULL)
+   MASTER STYLE.CSS - WERSJA "MODERN GLOW"
    ========================================= */
 
 /* 1. ZMIENNE I BAZA */
 :root {
     --primary: #00f2ff; /* Neonowy cyjan */
     --secondary: #ff6600; /* Intensywny pomarańcz */
-    --gold: #ffd700;      /* ZŁOTY */
-    --gold-glow: rgba(255, 215, 0, 0.4);
-    --silver: #c0c0c0;    /* SREBRNY */
-    --silver-glow: rgba(192, 192, 192, 0.3);
-    --bronze: #cd7f32;    /* BRĄZOWY */
-    --bronze-glow: rgba(205, 127, 50, 0.3);
+    /* Nowoczesne, bardziej jaskrawe kolory metali */
+    --gold: #ffcc00;      
+    --gold-glow: rgba(255, 204, 0, 0.6);
+    --silver: #e0e6ed;    
+    --silver-glow: rgba(224, 230, 237, 0.5);
+    --bronze: #cd853f;    
+    --bronze-glow: rgba(205, 133, 63, 0.5);
+    
     --dark-bg: #0b1120;
-    --glass: rgba(11, 17, 32, 0.82); /* Efekt szkła - zorza prześwituje */
+    /* Nowoczesne szkło: jaśniejsze, z wewnętrznym światłem */
+    --glass-bg: rgba(20, 25, 40, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
     --text-main: #ffffff;
     --font-heading: 'Oswald', sans-serif;
     --font-body: 'Roboto', sans-serif;
@@ -27,7 +33,7 @@ body {
     line-height: 1.6;
     background-color: var(--dark-bg);
     overflow-x: hidden;
-    padding-top: 110px; /* Miejsce na nagłówek na PC */
+    padding-top: 110px; 
 }
 
 body::before {
@@ -45,10 +51,10 @@ body::before {
 header {
     position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
     padding: 15px 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.95), rgba(0,0,0,0.4));
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    background: rgba(11, 17, 32, 0.8); /* Bardziej przejrzysty */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .header-content {
@@ -56,170 +62,210 @@ header {
     display: flex; justify-content: space-between; align-items: center;
 }
 
-.logo-container img {
-    height: 90px;
-    filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.3));
-    transition: transform 0.3s;
-}
+.logo-container img { height: 90px; filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.4)); transition: 0.3s; }
+.logo-container img:hover { transform: scale(1.05); filter: drop-shadow(0 0 25px rgba(0, 242, 255, 0.6)); }
 
 nav ul { list-style: none; display: flex; align-items: center; gap: 30px; }
-
 nav a {
     text-decoration: none; color: white;
     font-family: var(--font-heading); font-weight: 700;
-    font-size: 1.1rem; text-transform: uppercase;
-    letter-spacing: 1px; transition: color 0.3s;
+    font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;
+    transition: 0.3s; position: relative;
+}
+/* Nowoczesny efekt hover pod linkami */
+nav a::after {
+    content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
+    background: var(--primary); transition: 0.3s; box-shadow: 0 0 10px var(--primary);
 }
 nav a:hover { color: var(--primary); }
+nav a:hover::after { width: 100%; }
+/* Wyjątek dla przycisku kontakt */
+nav a.nav-btn::after { display: none; }
 
+/* Nowoczesny przycisk w menu */
 .nav-btn {
-    border: 2px solid var(--primary); padding: 8px 25px;
-    border-radius: 50px; color: var(--primary);
-    transition: 0.3s;
+    padding: 8px 30px; border-radius: 50px; color: var(--primary);
+    background: rgba(0, 242, 255, 0.1); /* Lekkie tło */
+    border: 1px solid var(--primary); /* Cienka ramka */
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
 }
-.nav-btn:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px var(--primary); }
+.nav-btn:hover { background: var(--primary); color: #000; box-shadow: 0 0 30px var(--primary); }
 
 /* 3. HERO I SEKCJE TYTUŁOWE */
-.hero, .page-hero {
-    position: relative;
-    display: flex; align-items: center; justify-content: center;
-    text-align: center;
-    padding: 0 20px;
-}
+.hero, .page-hero { position: relative; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 20px; }
 .hero { min-height: calc(100vh - 110px); } 
 .page-hero { min-height: 45vh; }
 
-.hero-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
-    z-index: -1;
-}
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, rgba(0,242,255,0.1) 0%, rgba(11,17,32,0.9) 80%); z-index: -1; }
 
 .hero h1, .page-hero h1 {
     font-family: var(--font-heading); text-transform: uppercase;
     margin-bottom: 20px; line-height: 1.1;
-    text-shadow: 0 5px 15px rgba(0,0,0,0.9);
+    text-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 .hero h1 { font-size: 5rem; }
 .page-hero h1 { font-size: 3.5rem; }
 
 .sub-title {
     color: var(--primary); font-family: var(--font-heading);
-    letter-spacing: 4px; font-size: 1.2rem; font-weight: 700;
-    display: block; margin-bottom: 10px;
+    letter-spacing: 6px; font-size: 1.1rem; font-weight: 700;
+    display: block; margin-bottom: 15px; text-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
 }
 .highlight {
-    color: transparent; -webkit-text-stroke: 1px var(--secondary); font-weight: 700;
+    color: transparent; -webkit-text-stroke: 1px var(--secondary);
+    /* Dodatkowy glow dla tekstu */
+    filter: drop-shadow(0 0 8px rgba(255, 102, 0, 0.5));
 }
 
-/* 4. GLOBALNE SZKLANE PUDEŁKA (GLASSBOX) */
-.glass-title-box, .event-row, .join-card, .contact-info-card, .content-box, .form-container, .tier-card, .team-card, .slider-container {
-    background: var(--glass);
-    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 15px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-}
-
-.glass-title-wrapper { display: flex; justify-content: center; width: 100%; margin-bottom: 40px; }
-.glass-title-box { padding: 40px 70px; position: relative; }
-.glass-title-box::before {
-    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
-    background: linear-gradient(90deg, var(--secondary), var(--primary));
-}
-
-/* 5. PRZYCISKI (NAPRAWIONE: DOMKNIĘTE RAMKI) */
-.btn {
-    display: inline-block; padding: 15px 40px;
-    font-family: var(--font-heading); text-transform: uppercase; font-weight: 700;
-    text-decoration: none; border-radius: 8px; letter-spacing: 1px;
-    transition: all 0.3s; margin: 10px;
-    border: 2px solid transparent; 
-    cursor: pointer;
-}
-.btn-primary { background: var(--secondary); color: white; border-color: var(--secondary); }
-.btn-primary:hover { background: #ff4500; border-color: #ff4500; transform: translateY(-3px); }
-.btn-secondary { border: 2px solid white; color: white; background: rgba(255,255,255,0.05); }
-.btn-secondary:hover { background: white; color: black; }
-
-/* 6. SLIDER (STRONA GŁÓWNA) */
-.events-slider-section { padding: 50px 0 100px 0; }
-.slider-container {
-    width: 100%; max-width: 900px; margin: 0 auto;
-    overflow: hidden; position: relative;
+/* 4. NOWOCZESNE SZKLANE KONTENERY (BEZ GRUBYCH RAMEK) */
+/* Wspólna klasa dla wszystkich szklanych elementów */
+.glass-box, .glass-title-box, .event-row, .join-card, .contact-info-card, .content-box, .form-container, .tier-card, .team-card, .slider-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    /* Cieniutka, subtelna ramka */
+    border: 1px solid var(--glass-border);
     border-radius: 20px;
-    padding-bottom: 40px;
+    /* Wewnętrzna poświata + głęboki cień zewnętrzny */
+    box-shadow: inset 0 0 30px rgba(255,255,255,0.05), var(--glass-shadow);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
 }
-.slider-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
-.slide {
-    min-width: 100%; padding: 60px 40px; text-align: center;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
+
+/* Hover effect dla interaktywnych kontenerów */
+.event-row:hover, .join-card:hover, .team-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(0, 242, 255, 0.4);
+    box-shadow: 0 15px 40px rgba(0, 242, 255, 0.15), inset 0 0 20px rgba(0, 242, 255, 0.1);
 }
-.slide-date { background: var(--secondary); padding: 5px 20px; border-radius: 50px; font-weight: 700; margin-bottom: 20px; }
-.slider-dots { position: absolute; bottom: 20px; width: 100%; display: flex; justify-content: center; gap: 10px; }
-.dot { width: 12px; height: 12px; background: rgba(255,255,255,0.3); border-radius: 50%; cursor: pointer; transition: 0.3s; }
-.dot.active { background: var(--primary); transform: scale(1.3); }
 
-/* 7. WYDARZENIA */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-.event-row { display: flex; align-items: center; gap: 30px; padding: 30px; margin-bottom: 25px; transition: 0.3s; }
-.event-row:hover { transform: translateX(10px); border-color: var(--primary); }
-.event-date { background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; text-align: center; min-width: 100px; border: 1px solid var(--secondary); flex-shrink: 0; }
-.event-date .day { display: block; font-size: 2.5rem; font-weight: 700; line-height: 1; font-family: var(--font-heading); }
-.event-date .month { color: var(--secondary); font-weight: 700; text-transform: uppercase; }
+.glass-title-wrapper { display: flex; justify-content: center; width: 100%; margin-bottom: 50px; }
+.glass-title-box { padding: 40px 80px; position: relative; overflow: hidden; }
+/* Nowoczesny pasek gradientowy na górze tytułu */
+.glass-title-box::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--secondary), var(--primary), transparent);
+}
 
-/* 8. O NAS I ZESPÓŁ */
-.split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; text-align: left; }
-.values-list { list-style: none; margin-top: 20px; }
-.values-list li { display: flex; align-items: center; margin-bottom: 15px; }
-.values-list i { color: var(--secondary); margin-right: 15px; }
+/* 5. PRZYCISKI (MODERN) */
+.btn {
+    display: inline-block; padding: 15px 45px;
+    font-family: var(--font-heading); text-transform: uppercase; font-weight: 700;
+    text-decoration: none; border-radius: 50px; letter-spacing: 2px; font-size: 0.9rem;
+    transition: all 0.3s; margin: 10px; cursor: pointer; position: relative; overflow: hidden;
+}
+
+/* Przycisk główny - Gradient */
+.btn-primary {
+    background: linear-gradient(135deg, var(--secondary), #ff3300);
+    color: white; border: none;
+    box-shadow: 0 10px 30px rgba(255, 102, 0, 0.4);
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(255, 102, 0, 0.6); }
+
+/* Przycisk wtórny - Szklany */
+.btn-secondary {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3); color: white;
+    backdrop-filter: blur(5px);
+}
+.btn-secondary:hover { background: white; color: black; border-color: white; box-shadow: 0 0 25px rgba(255,255,255,0.3); }
+
+.btn-text {
+    color: var(--primary); text-decoration: none; font-weight: 700;
+    text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;
+    border-bottom: 2px solid rgba(0, 242, 255, 0.3); transition: 0.3s; padding-bottom: 5px;
+}
+.btn-text:hover { border-bottom-color: var(--primary); color: white; text-shadow: 0 0 10px var(--primary); }
+
+/* 6. SLIDER */
+.events-slider-section { padding: 80px 0 120px 0; }
+.slider-container { width: 100%; max-width: 1000px; margin: 0 auto; overflow: hidden; position: relative; padding-bottom: 50px; }
+.slider-track { display: flex; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); width: 100%; }
+.slide { min-width: 100%; padding: 70px 40px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.slide-date {
+    background: linear-gradient(135deg, var(--secondary), #ff3300);
+    padding: 8px 25px; border-radius: 50px; font-weight: 700; margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(255, 102, 0, 0.4);
+}
+.slider-dots { position: absolute; bottom: 25px; width: 100%; display: flex; justify-content: center; gap: 12px; }
+.dot { width: 10px; height: 10px; background: rgba(255,255,255,0.2); border-radius: 50%; cursor: pointer; transition: 0.3s; }
+.dot.active { background: var(--primary); transform: scale(1.5); box-shadow: 0 0 15px var(--primary); }
+
+/* 7. LISTY I ELEMENTY */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
+.event-row { display: flex; align-items: center; gap: 40px; padding: 35px; margin-bottom: 30px; }
+.event-date { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px; text-align: center; min-width: 110px; border: 1px solid rgba(255, 102, 0, 0.3); flex-shrink: 0; }
+.event-date .day { display: block; font-size: 2.8rem; font-weight: 700; line-height: 1; font-family: var(--font-heading); }
+.event-date .month { color: var(--secondary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+
+.split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; text-align: left; }
+.values-list li { margin-bottom: 20px; display: flex; align-items: center; font-size: 1.1rem; }
+.values-list i { color: var(--secondary); margin-right: 20px; font-size: 1.2rem; filter: drop-shadow(0 0 5px var(--secondary)); }
 
 .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
-.team-photo { width: 120px; height: 120px; margin: 0 auto 20px; border-radius: 50%; background: #222; border: 3px solid var(--primary); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; }
-.team-role { color: var(--secondary); font-weight: 700; display: block; margin-bottom: 10px; text-transform: uppercase; }
-.board-card { border: 3px solid var(--gold) !important; box-shadow: 0 0 20px var(--gold-glow); }
-.board-card .team-photo { border-color: var(--gold); color: var(--gold); }
+.team-photo { width: 130px; height: 130px; margin: 0 auto 25px; border-radius: 50%; background: radial-gradient(circle, #222 0%, #0b1120 100%); border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: white; box-shadow: 0 0 20px rgba(0, 242, 255, 0.3); }
+.team-role { color: var(--secondary); font-weight: 700; display: block; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
 
-/* 9. PAKIETY SPONSORSKIE (KOLOROWE RAMKI 3PX) */
-.sponsor-tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; padding: 50px 0; }
-.tier-card { padding: 50px 30px; border-radius: 20px; text-align: center; transition: 0.4s; border-width: 3px !important; }
+/* ZARZĄD - ZŁOTY GLOW ZAMIAST RAMKI */
+.board-card { border-color: rgba(255, 215, 0, 0.2); box-shadow: 0 10px 40px var(--gold-glow), inset 0 0 20px rgba(255, 215, 0, 0.1); }
+.board-card:hover { box-shadow: 0 15px 60px var(--gold-glow), inset 0 0 30px rgba(255, 215, 0, 0.2); transform: translateY(-7px); }
+.board-card .team-photo { border-color: var(--gold); color: var(--gold); box-shadow: 0 0 30px var(--gold-glow); }
 
-.tier-card.bronze { border: 3px solid var(--bronze) !important; box-shadow: 0 0 25px var(--bronze-glow); }
-.tier-card.bronze h3, .tier-card.bronze .tier-price, .tier-card.bronze i { color: var(--bronze); }
-
-.tier-card.silver { border: 3px solid var(--silver) !important; box-shadow: 0 0 25px var(--silver-glow); }
-.tier-card.silver h3, .tier-card.silver .tier-price, .tier-card.silver i { color: var(--silver); }
-
-.tier-card.gold { border: 3px solid var(--gold) !important; box-shadow: 0 0 40px var(--gold-glow); }
-.tier-card.gold h3, .tier-card.gold .tier-price, .tier-card.gold i { color: var(--gold); }
-
-.benefit-list { list-style: none; text-align: left; margin-bottom: 30px; padding: 0 10px; }
-.benefit-list li { margin-bottom: 12px; display: flex; align-items: center; font-size: 0.95rem; color: #e2e8f0; }
-.benefit-list i { margin-right: 12px; }
-
-/* 10. FORMULARZE */
-.form-container { padding: 50px; max-width: 750px; margin: 0 auto; }
-.form-group { margin-bottom: 25px; text-align: left; }
-.form-group label { display: block; color: var(--primary); margin-bottom: 8px; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; }
-.form-group input, .form-group select, .form-group textarea {
-    width: 100%; padding: 15px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white; font-family: inherit;
+/* 8. PAKIETY SPONSORSKIE (MODERN GLOW) */
+.sponsor-tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; padding: 60px 0; }
+.tier-card {
+    padding: 60px 40px; text-align: center;
+    /* BARDZO CIENKA RAMKA */
+    border-width: 1px !important; 
 }
-.form-group input:focus { border-color: var(--primary); outline: none; }
-.full-width { width: 100%; }
+.tier-card h3 { font-family: var(--font-heading); font-size: 2.4rem; margin-bottom: 15px; letter-spacing: 1px; }
+.tier-price { font-weight: 700; margin-bottom: 30px; display: block; font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; }
 
-/* 11. MAPA I STOPKA */
-.map-container { margin-top: 50px; height: 450px; border-radius: 20px; overflow: hidden; border: 2px solid rgba(255,255,255,0.15); box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
-.map-container iframe { width: 100%; height: 100%; filter: invert(90%) hue-rotate(180deg) brightness(95%); }
-footer { text-align: center; padding: 60px; background: #050810; color: #555; border-top: 1px solid rgba(255,255,255,0.1); }
+/* Brąz - Glow */
+.tier-card.bronze { border-color: var(--bronze); box-shadow: 0 10px 40px var(--bronze-glow), inset 0 0 20px rgba(205, 127, 50, 0.1); }
+.tier-card.bronze:hover { box-shadow: 0 15px 60px var(--bronze-glow), inset 0 0 30px rgba(205, 127, 50, 0.2); }
+.tier-card.bronze h3, .tier-card.bronze .tier-price, .tier-card.bronze i { color: var(--bronze); text-shadow: 0 0 10px var(--bronze-glow); }
 
-/* 12. RESPONSIVE */
+/* Srebro - Glow */
+.tier-card.silver { border-color: var(--silver); box-shadow: 0 10px 40px var(--silver-glow), inset 0 0 20px rgba(224, 230, 237, 0.1); }
+.tier-card.silver:hover { box-shadow: 0 15px 60px var(--silver-glow), inset 0 0 30px rgba(224, 230, 237, 0.2); }
+.tier-card.silver h3, .tier-card.silver .tier-price, .tier-card.silver i { color: var(--silver); text-shadow: 0 0 10px var(--silver-glow); }
+
+/* Złoto - Intensywny Glow */
+.tier-card.gold { border-color: var(--gold); box-shadow: 0 10px 50px var(--gold-glow), inset 0 0 30px rgba(255, 204, 0, 0.15); transform: scale(1.05); z-index: 2; }
+.tier-card.gold:hover { box-shadow: 0 20px 70px var(--gold-glow), inset 0 0 50px rgba(255, 204, 0, 0.25); transform: scale(1.05) translateY(-10px); }
+.tier-card.gold h3, .tier-card.gold .tier-price, .tier-card.gold i { color: var(--gold); text-shadow: 0 0 15px var(--gold-glow); }
+
+.benefit-list { list-style: none; text-align: left; margin-bottom: 40px; padding: 0 10px; }
+.benefit-list li { margin-bottom: 15px; display: flex; align-items: center; font-size: 1rem; color: #e2e8f0; }
+.benefit-list i { margin-right: 15px; font-size: 1.1rem; }
+
+/* 9. FORMULARZE I MAPA */
+.form-container { padding: 60px; max-width: 800px; margin: 0 auto; }
+.form-group label { letter-spacing: 1px; }
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 18px; background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; font-family: inherit; transition: 0.3s;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--primary); outline: none; background: rgba(0,0,0,0.5); box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+}
+.map-container { margin-top: 60px; height: 500px; border-radius: 25px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
+
+/* 10. STOPKA I RESPONSIVE */
+.cta-section { padding: 100px 20px; text-align: center; background: linear-gradient(to bottom, transparent, rgba(0, 242, 255, 0.05)); }
+footer { text-align: center; padding: 60px; background: #050810; color: #777; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
+
 @media (max-width: 900px) {
     body { padding-top: 200px; }
     .header-content { flex-direction: column; }
-    nav ul { flex-wrap: wrap; justify-content: center; margin-top: 15px; gap: 10px; }
+    nav ul { gap: 15px; margin-top: 20px; }
+    .nav-btn { padding: 6px 20px; font-size: 0.9rem; }
     .hero h1 { font-size: 3rem; }
     .page-hero h1 { font-size: 2.5rem; }
-    .split-layout, .event-row, .contact-grid, .sponsor-tiers { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
+    .glass-title-box { padding: 30px 20px; width: 100%; }
+    .split-layout, .event-row, .contact-grid, .sponsor-tiers, .join-options .container { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
     .event-date { margin: 0 auto; }
-    .glass-title-box { padding: 30px 40px; width: 95%; }
+    .tier-card.gold { transform: scale(1); }
+    .tier-card.gold:hover { transform: translateY(-10px); }
+    .form-container, .tier-card, .join-card, .event-row { padding: 40px 25px; }
 }
