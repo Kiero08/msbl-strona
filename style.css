@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PÓŁNOCNA STRONA KOSZYKÓWKI - ARCHITEKTURA WIZUALNA "AURORA 2.0"
+   PÓŁNOCNA STRONA KOSZYKÓWKI - ARCHITEKTURA WIZUALNA "AURORA TOTAL"
    ========================================================================== */
 
 /* 1. ZMIENNE I KONFIGURACJA */
@@ -9,24 +9,28 @@
     --aurora: linear-gradient(90deg, #00f2ff, #7000ff, #ff6600, #00f2ff);
     --dark-bg: #0b1120;
     
-    /* Kolory Metali dla Sponsora */
+    /* Kolory Metali dla Sponsora i Zarządu */
     --gold: #ffcc00;      
+    --gold-glow: rgba(255, 204, 0, 0.4);
     --silver: #e0e6ed;    
+    --silver-glow: rgba(224, 230, 237, 0.3);
     --bronze: #cd853f;    
+    --bronze-glow: rgba(205, 133, 63, 0.3);
 
-    /* Szklane Tło */
+    /* Parametry Szkła */
     --glass-bg: rgba(15, 20, 35, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.1);
     --text-main: #ffffff;
     --font-heading: 'Oswald', sans-serif;
     --font-body: 'Roboto', sans-serif;
 }
 
-/* 2. RESET I ZABEZPIECZENIA TEKSTU */
+/* 2. RESET I OCHRONA TREŚCI */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-wrap: break-word; /* Chroni przed wychodzeniem tekstu */
+    overflow-wrap: break-word; /* Tekst nigdy nie wyjdzie poza kontener */
     word-wrap: break-word;
 }
 
@@ -38,10 +42,9 @@ body {
     line-height: 1.6;
     background-color: var(--dark-bg);
     overflow-x: hidden;
-    padding-top: 110px; /* Miejsce na nagłówek */
+    padding-top: 110px; /* Miejsce na nagłówek na PC */
 }
 
-/* Stałe tło z zorzą */
 body::before {
     content: '';
     position: fixed;
@@ -60,7 +63,7 @@ header {
     background: rgba(11, 17, 32, 0.9);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .header-content {
@@ -71,7 +74,7 @@ header {
 .logo-container img {
     height: 80px;
     filter: drop-shadow(0 0 10px var(--primary));
-    transition: 0.4s;
+    transition: 0.4s ease;
 }
 
 nav ul { list-style: none; display: flex; gap: 25px; align-items: center; }
@@ -89,45 +92,44 @@ nav a:hover { color: var(--primary); }
     color: var(--primary) !important;
     background: rgba(0, 242, 255, 0.05);
 }
-
 .nav-btn:hover {
     background: var(--primary) !important;
     color: #000 !important;
     box-shadow: 0 0 20px var(--primary);
 }
 
-/* 4. HERO I TYTUŁY */
+/* 4. HERO I TYTUŁY SEKACJI */
 .hero, .page-hero {
     position: relative;
     display: flex; align-items: center; justify-content: center;
     text-align: center; padding: 60px 20px;
 }
 .hero { min-height: calc(100vh - 110px); }
-.page-hero { min-height: 45vh; }
+.hero h1 { font-size: 5rem; font-family: var(--font-heading); text-transform: uppercase; line-height: 1.1; }
+.page-hero h1 { font-size: 3.5rem; font-family: var(--font-heading); text-transform: uppercase; }
 
-.hero-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(11,17,32,0.9) 100%);
-    z-index: -1;
+.sub-title { color: var(--primary); letter-spacing: 5px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 10px; display: block; }
+.highlight { color: transparent; -webkit-text-stroke: 1px var(--secondary); filter: drop-shadow(0 0 5px var(--secondary)); }
+
+.glass-title-wrapper { display: flex; justify-content: center; margin-bottom: 50px; }
+.glass-title-box {
+    padding: 40px 80px;
+    background: var(--glass-bg);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    position: relative;
+    border: 1px solid var(--glass-border);
+    text-align: center;
+}
+.glass-title-box::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+    background: var(--aurora); background-size: 200% 200%;
+    animation: aurora-animation 8s linear infinite;
 }
 
-.hero h1, .page-hero h1 {
-    font-family: var(--font-heading); text-transform: uppercase;
-    line-height: 1.1; margin-bottom: 20px;
-}
-.hero h1 { font-size: 5rem; }
-.page-hero h1 { font-size: 3.5rem; }
+/* 5. SYSTEM KART AURORA */
 
-.sub-title {
-    color: var(--primary); font-family: var(--font-heading);
-    letter-spacing: 5px; font-weight: 700; margin-bottom: 10px; display: block;
-}
-.highlight {
-    color: transparent; -webkit-text-stroke: 1px var(--secondary);
-    filter: drop-shadow(0 0 5px var(--secondary));
-}
-
-/* 5. POPRAWIONA RAMKA ZORZY (AURORA CARD) */
+/* [A] PEŁNA RAMKA (Np. Kalendarz, Formularz) */
 .aurora-card {
     position: relative;
     border-radius: 20px;
@@ -135,34 +137,43 @@ nav a:hover { color: var(--primary); }
     border: none;
     isolation: isolate; 
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    margin-bottom: 30px;
 }
-
-/* Animowany neon pod spodem */
 .aurora-card::before {
-    content: "";
-    position: absolute;
-    top: -3px; left: -3px; right: -3px; bottom: -3px;
-    background: var(--aurora);
-    background-size: 300% 300%;
-    z-index: -2;
-    border-radius: 23px;
+    content: ""; position: absolute; top: -3px; left: -3px; right: -3px; bottom: -3px;
+    background: var(--aurora); background-size: 300% 300%;
+    z-index: -2; border-radius: 23px;
     animation: aurora-animation 8s linear infinite;
-    filter: blur(8px); /* Efekt poświaty */
-    opacity: 0.8;
+    filter: blur(8px); opacity: 0.8;
+}
+.aurora-card::after {
+    content: ""; position: absolute; inset: 0;
+    background: var(--glass-bg); border-radius: 20px;
+    z-index: -1; backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
 }
 
-/* Szklane wnętrze */
-.aurora-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
+/* [B] KRESKA NA GÓRZE (Partnerzy) */
+.aurora-top-line {
+    position: relative;
     background: var(--glass-bg);
     border-radius: 20px;
-    z-index: -1;
+    padding: 60px 40px;
+    border: 1px solid var(--glass-border);
+    border-top: none;
+    isolation: isolate;
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.1);
+}
+.aurora-top-line::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px; /* TWOJA KRESKA */
+    background: var(--aurora);
+    background-size: 300% 300%;
+    z-index: 10;
+    border-radius: 20px 20px 0 0;
+    animation: aurora-animation 8s linear infinite;
+    box-shadow: 0 0 15px var(--primary);
 }
 
 @keyframes aurora-animation {
@@ -171,21 +182,13 @@ nav a:hover { color: var(--primary); }
     100% { background-position: 0% 50%; }
 }
 
-/* 6. SZKLANE TYTUŁY SEKTCJI */
-.glass-title-wrapper { display: flex; justify-content: center; margin-bottom: 50px; }
-.glass-title-box {
-    padding: 40px 80px;
-    background: var(--glass-bg);
-    border-radius: 20px;
-    backdrop-filter: blur(15px);
-    position: relative;
-    border: 1px solid rgba(255,255,255,0.1);
-    text-align: center;
-}
-.glass-title-box::before {
-    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
-    background: var(--aurora); background-size: 200% 200%;
-}
+/* 6. SLIDER I WYDARZENIA */
+.slider-container { width: 100%; max-width: 1000px; margin: 0 auto; overflow: hidden; position: relative; }
+.slider-track { display: flex; transition: transform 0.6s ease; }
+.slide { min-width: 100%; padding: 60px 40px; text-align: center; }
+.slide-date { background: var(--secondary); padding: 5px 25px; border-radius: 50px; font-weight: 700; margin-bottom: 20px; display: inline-block; }
+.dot { width: 10px; height: 10px; background: rgba(255,255,255,0.2); border-radius: 50%; cursor: pointer; margin: 0 8px; }
+.dot.active { background: var(--primary); transform: scale(1.3); }
 
 /* 7. PRZYCISKI */
 .btn {
@@ -194,144 +197,70 @@ nav a:hover { color: var(--primary); }
     text-transform: uppercase; border-radius: 50px;
     transition: 0.3s; text-decoration: none; cursor: pointer; border: none;
 }
-.btn-primary {
-    background: linear-gradient(135deg, var(--secondary), #ff3300);
-    color: white; box-shadow: 0 10px 20px rgba(255, 102, 0, 0.3);
-}
-.btn-primary:hover {
-    transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 102, 0, 0.5);
-}
-.btn-secondary {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2); color: white;
-}
+.btn-primary { background: linear-gradient(135deg, var(--secondary), #ff3300); color: white; box-shadow: 0 10px 20px rgba(255, 102, 0, 0.3); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 102, 0, 0.5); }
+.btn-secondary { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; }
 .btn-secondary:hover { background: white; color: black; }
 
-/* 8. SLIDER I WYDARZENIA */
-.slider-container { width: 100%; max-width: 1000px; margin: 0 auto; overflow: hidden; position: relative; }
-.slider-track { display: flex; transition: transform 0.6s ease; }
-.slide { min-width: 100%; padding: 60px 40px; text-align: center; }
-.slide-date {
-    background: var(--secondary); padding: 5px 25px; border-radius: 50px;
-    font-weight: 700; margin-bottom: 20px; display: inline-block;
-}
-.dot { width: 12px; height: 12px; background: rgba(255,255,255,0.2); border-radius: 50%; cursor: pointer; margin: 0 8px; transition: 0.3s; }
-.dot.active { background: var(--primary); transform: scale(1.3); box-shadow: 0 0 10px var(--primary); }
-
-/* 9. PAKIETY SPONSORSKIE */
+/* 8. PAKIETY SPONSORSKIE (KOLORY METALI) */
 .sponsor-tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.tier-card h3 { font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 15px; }
-.tier-price { font-weight: 700; margin-bottom: 25px; display: block; text-transform: uppercase; letter-spacing: 1px; }
+
+/* Specyficzne poświaty zamiast ramek */
+.tier-card.gold::before { background: var(--gold); }
+.tier-card.gold h3, .tier-card.gold .tier-price { color: var(--gold); }
+
+.tier-card.silver::before { background: var(--silver); }
+.tier-card.silver h3, .tier-card.silver .tier-price { color: var(--silver); }
+
+.tier-card.bronze::before { background: var(--bronze); }
+.tier-card.bronze h3, .tier-card.bronze .tier-price { color: var(--bronze); }
 
 .benefit-list { list-style: none; text-align: left; margin: 30px 0; }
 .benefit-list li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-size: 0.95rem; }
 
-/* Kolory specyficzne dla pakietów (opcjonalne nadpisanie zorzy) */
-.tier-card.gold h3 { color: var(--gold); }
-.tier-card.silver h3 { color: var(--silver); }
-.tier-card.bronze h3 { color: var(--bronze); }
+/* 9. ZESPÓŁ I ZARZĄD */
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+.team-photo { width: 130px; height: 130px; margin: 0 auto 25px; border-radius: 50%; background: #222; border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: white; }
+
+.board-card { border: 1px solid var(--gold) !important; box-shadow: 0 10px 40px var(--gold-glow) !important; }
+.board-card h3 { color: var(--gold); }
+.board-card .team-photo { border-color: var(--gold); color: var(--gold); }
 
 /* 10. FORMULARZE I KONTAKT */
-.form-group { margin-bottom: 20px; text-align: left; }
-.form-group label { display: block; margin-bottom: 8px; color: var(--primary); font-family: var(--font-heading); text-transform: uppercase; }
+.form-container { width: 100%; max-width: 800px; margin: 0 auto; }
+.form-group { margin-bottom: 25px; text-align: left; }
+.form-group label { display: block; margin-bottom: 10px; color: var(--primary); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 1px; }
 .form-group input, .form-group select, .form-group textarea {
-    width: 100%; padding: 15px; background: rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white;
+    width: 100%; padding: 18px; background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white;
 }
-.full-width { width: 100%; }
+.form-group input:focus { border-color: var(--primary); outline: none; }
 
-.map-container { height: 450px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
-.map-container iframe { width: 100%; height: 100%; filter: invert(90%) hue-rotate(180deg); }
+.map-container { height: 450px; border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border); }
+.map-container iframe { width: 100%; height: 100%; filter: invert(90%) hue-rotate(180deg) brightness(95%); }
 
-/* 11. PARTNERZY */
+/* 11. PARTNERZY (LOGOTYPY) */
 .partners-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
 .partner-logo-box {
-    width: 200px; height: 100px; background: rgba(255,255,255,0.03);
-    border-radius: 15px; display: flex; align-items: center; justify-content: center;
+    width: 220px; height: 120px; display: flex; align-items: center; justify-content: center;
+    background: rgba(255, 255, 255, 0.03); border-radius: 15px; transition: 0.3s;
 }
-.partner-logo-box img { max-width: 70%; filter: grayscale(1) brightness(1.5); transition: 0.3s; }
+.partner-logo-box img { max-width: 80%; filter: grayscale(1) brightness(1.5); transition: 0.3s; }
 .partner-logo-box:hover img { filter: grayscale(0) brightness(1); }
 
 /* 12. STOPKA */
-footer { text-align: center; padding: 60px; background: #050810; color: #555; border-top: 1px solid rgba(255,255,255,0.1); }
+footer { text-align: center; padding: 60px; background: #050810; color: #555; border-top: 1px solid var(--glass-border); }
 
 /* 13. RWD (RESPONSYWNOŚĆ) */
 @media (max-width: 900px) {
     body { padding-top: 200px; }
     .header-content { flex-direction: column; }
     nav ul { gap: 15px; margin-top: 20px; flex-wrap: wrap; justify-content: center; }
+    
     .hero h1 { font-size: 3rem; }
-    .page-hero h1 { font-size: 2.2rem; }
+    .page-hero h1 { font-size: 2.5rem; }
     .glass-title-box { padding: 30px 20px; width: 100%; }
-    .aurora-card { padding: 30px 20px; }
+    .aurora-card, .aurora-top-line { padding: 30px 20px; }
+    
+    .team-grid, .sponsor-tiers, .split-layout { grid-template-columns: 1fr; }
 }
-
-@media (max-width: 480px) {
-    .hero h1 { font-size: 2.2rem; }
-    .logo-container img { height: 60px; }
-}
-/* =========================================
-   POPRAWKA: AURORA TOP-ONLY (NAGŁÓWEK PARTNERZY)
-   ========================================= */
-.aurora-top-only {
-    position: relative;
-    border-radius: 20px 20px 0 0; 
-    padding: 60px 40px;
-    border: none;
-    isolation: isolate;
-    /* Cień tylko na boki i dół, żeby nie gryzł się z ramką */
-    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-    margin-top: 50px;
-    background: var(--glass-bg); /* Tło bezpośrednio tutaj dla stabilności */
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    /* Subtelne krawędzie boczne */
-    border-left: 1px solid rgba(255,255,255,0.1);
-    border-right: 1px solid rgba(255,255,255,0.1);
-}
-
-/* Świecący gradient zorzy - TYLKO GÓRA */
-.aurora-top-only::before {
-    content: "";
-    position: absolute;
-    /* Wystaje o 3px poza górę, lewo i prawo, ale kończy się w połowie wysokości */
-    top: -3px; 
-    left: -3px; 
-    right: -3px; 
-    bottom: 50%; 
-    background: var(--aurora);
-    background-size: 300% 300%;
-    z-index: -1;
-    border-radius: 23px 23px 0 0;
-    animation: aurora-animation 8s linear infinite;
-    /* Mocny blur dla efektu glow */
-    filter: blur(10px);
-    opacity: 0.9;
-    /* Maska wycinająca dół po skosie/płasko, aby nie było widać ucięcia */
-    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-}
-
-/* Cienka, ostra linia na samej krawędzi górnej */
-.aurora-top-only::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--aurora);
-    background-size: 300% 300%;
-    border-radius: 20px 20px 0 0;
-    animation: aurora-animation 8s linear infinite;
-    opacity: 0.8;
-}
-
-/* POPRAWKA KALENDARZA - PEŁNY GLOW */
-.slider-container.aurora-card {
-    border: none !important;
-}
-.slider-container.aurora-card::before {
-    filter: blur(12px);
-    opacity: 1;
-}
-
-
