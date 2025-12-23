@@ -33,8 +33,8 @@
         <div class="hero-content">
             <div class="glass-title-wrapper">
                 <div class="glass-title-box">
-                    <span class="sub-title" style="display:block; margin-bottom:10px;">PRZEJDŹ NA PÓŁNOCNĄ STRONĘ</span>
-                    <h1 class="section-title">DOŁĄCZ DO <span class="highlight">STOWARZYSZENIA</span></h1>
+                    <span class="sub-title">PRZEJDŹ NA PÓŁNOCNĄ STRONĘ</span>
+                    <h1 class="section-title">DOŁĄCZ DO <span class="highlight">DRUŻYNY</span></h1>
                 </div>
             </div>
         </div>
@@ -42,61 +42,78 @@
 
     <section class="join-options">
         <div class="container">
-            <div class="join-card">
-                <div class="card-icon"><i class="fas fa-basketball-ball"></i></div>
-                <h3>Rekreacja</h3>
-                <p>Organizujemy gry towarzyskie dla amatorów i pasjonatów koszykówki, którzy chcą aktywnie spędzać czas w dobrej atmosferze.</p>
-                <a href="#" class="btn-text">Więcej o terminach →</a>
-            </div>
-            
-            <div class="join-card">
-                <div class="card-icon"><i class="fas fa-child"></i></div>
-                <h3>Dla Młodzieży</h3>
-                <p>Kładziemy nacisk na promocję aktywności fizycznej i naukę pracy w zespole. Sport w naszym wydaniu uczy dyscypliny i wytrwałości.</p>
-                <a href="#" class="btn-text">Zobacz harmonogram →</a>
-            </div>
-            
-            <div class="join-card">
-                <div class="card-icon"><i class="fas fa-hands-helping"></i></div>
-                <h3>Wsparcie</h3>
-                <p>Jeśli jesteś pełnoletni, możesz dołączyć do nas jako wolontariusz, sędzia lub członek sztabu wsparcia technicznego.</p>
-                <a href="#" class="btn-text">Zostań wolontariuszem →</a>
+            <div class="sponsor-tiers"> <div class="tier-card aurora-card">
+                    <div class="card-icon" style="font-size: 3rem; margin-bottom: 20px; color: var(--primary);">
+                        <i class="fas fa-basketball-ball"></i>
+                    </div>
+                    <h3>Rekreacja</h3>
+                    <span class="tier-price" style="color: var(--primary);">Dla Amatrów i Pasjonatów</span>
+                    <ul class="benefit-list">
+                        <li><i class="fas fa-check" style="color: var(--primary);"></i> Gry towarzyskie 5x5</li>
+                        <li><i class="fas fa-check" style="color: var(--primary);"></i> Brak ograniczeń wiekowych</li>
+                        <li><i class="fas fa-check" style="color: var(--primary);"></i> Świetna atmosfera</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">Terminy gier</a>
+                </div>
+
+                <div class="tier-card aurora-card">
+                    <div class="card-icon" style="font-size: 3rem; margin-bottom: 20px; color: var(--secondary);">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>Dla Młodzieży</h3>
+                    <span class="tier-price" style="color: var(--secondary);">Aktywność i Rozwój</span>
+                    <ul class="benefit-list">
+                        <li><i class="fas fa-check" style="color: var(--secondary);"></i> Treningi ogólnorozwojowe</li>
+                        <li><i class="fas fa-check" style="color: var(--secondary);"></i> Nauka dyscypliny</li>
+                        <li><i class="fas fa-check" style="color: var(--secondary);"></i> Turnieje młodzieżowe</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Harmonogram</a>
+                </div>
+
+                <div class="tier-card aurora-card">
+                    <div class="card-icon" style="font-size: 3rem; margin-bottom: 20px; color: #a855f7;">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Wsparcie</h3>
+                    <span class="tier-price" style="color: #a855f7;">Zostań Wolontariuszem</span>
+                    <ul class="benefit-list">
+                        <li><i class="fas fa-check" style="color: #a855f7;"></i> Pomoc przy eventach</li>
+                        <li><i class="fas fa-check" style="color: #a855f7;"></i> Obsługa techniczna meczów</li>
+                        <li><i class="fas fa-check" style="color: #a855f7;"></i> Rozwój kompetencji</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">Zgłoś się</a>
+                </div>
+
             </div>
         </div>
     </section>
 
     <section class="form-section">
         <div class="container">
-            <div class="form-container">
-                <h2>Formularz zgłoszeniowy</h2>
+            <div class="form-container aurora-card"> <h2 style="font-family: var(--font-heading); color: white; margin-bottom: 30px; text-align: center; text-transform: uppercase;">Zgłoszenie do stowarzyszenia</h2>
                 <form action="#">
                     <div class="form-group">
                         <label for="name">Imię i Nazwisko</label>
-                        <input type="text" id="name" placeholder="Jan Kowalski" required>
+                        <input type="text" id="name" placeholder="np. Jan Kowalski" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="age">Wiek</label>
-                        <input type="number" id="age" placeholder="np. 14" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="category">Interesująca Cię kategoria</label>
+                        <label for="category">Wybierz grupę</label>
                         <select id="category">
-                            <option value="junior">Grupa Młodzieżowa (do 18 lat)</option>
-                            <option value="senior">Grupa Seniorów / Rekreacja</option>
-                            <option value="wolontariat">Wolontariat / Wsparcie</option>
+                            <option value="rekreacja">Rekreacja</option>
+                            <option value="mlodziez">Młodzież</option>
+                            <option value="wsparcie">Wolontariat / Wsparcie</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="experience">Doświadczenie (lata)</label>
-                        <input type="number" id="experience" placeholder="np. 2">
+                        <label for="contact">Email lub Telefon</label>
+                        <input type="text" id="contact" placeholder="Twoje dane kontaktowe" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="contact">Email lub Telefon kontaktowy</label>
-                        <input type="text" id="contact" placeholder="email@przyklad.pl" required>
+                        <label for="message">Kilka słów o Tobie (opcjonalnie)</label>
+                        <textarea id="message" rows="4" placeholder="Twoje doświadczenie z koszykówką..."></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-primary full-width">Wyślij zgłoszenie</button>
@@ -107,7 +124,7 @@
 
     <footer>
         <div class="footer-content">
-            <p>© 2025 Stowarzyszenie Północna Strona Koszykówki.</p>
+            <p>&copy; 2025 Stowarzyszenie Północna Strona Koszykówki.</p>
         </div>
     </footer>
 
