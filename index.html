@@ -29,24 +29,24 @@
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="aurora-card" style="display: inline-block; padding: 40px 60px; margin-bottom: 30px;">
+            <div class="aurora-card" style="display: inline-block; padding: 40px 60px;">
                 <span class="sub-title">STOWARZYSZENIE</span>
                 <h1>PÓŁNOCNA STRONA <br><span class="highlight">KOSZYKÓWKI</span></h1>
-                <p style="max-width:700px; margin: 20px auto;">Pasja, rywalizacja, społeczność znad Bałtyku.</p>
-            </div>
-            <div>
-                <a href="dolacz.html" class="btn btn-primary">Dołącz do gry</a>
-                <a href="sponsorzy.html" class="btn btn-secondary">Zostań Sponsorem</a>
+                <p style="margin: 20px 0; max-width: 600px;">Budujemy sportową tożsamość regionu.</p>
+                <div style="margin-top: 30px;">
+                    <a href="dolacz.html" class="btn btn-primary">Dołącz</a>
+                    <a href="o-nas.html" class="btn btn-secondary">Poznaj nas</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="events-slider-section" style="padding-bottom: 40px;">
+    <section class="events-slider-section">
         <div class="container">
             <div class="glass-title-wrapper">
                 <div class="glass-title-box">
                     <span class="sub-title">BĄDŹ NA BIEŻĄCO</span>
-                    <h2 style="font-family: var(--font-heading); color:white; font-size: 2rem; text-transform: uppercase;">KALENDARZ WYDARZEŃ</h2>
+                    <h2 style="font-family: var(--font-heading); font-size: 2rem; color: white;">WYDARZENIA</h2>
                 </div>
             </div>
 
@@ -55,14 +55,8 @@
                     <div class="slide">
                         <div class="slide-date">15 MAJ</div>
                         <h3>Turniej Otwarcia Lata 3x3</h3>
-                        <p>Plac Pokoju, Lębork. Wielkie otwarcie sezonu!</p>
-                        <a href="wydarzenia.html" class="btn btn-primary">Szczegóły</a>
-                    </div>
-                    <div class="slide">
-                        <div class="slide-date">22 CZE</div>
-                        <h3>Nocny Maraton Basketu</h3>
-                        <p>Hala Miejska, startujemy po zachodzie słońca.</p>
-                        <a href="wydarzenia.html" class="btn btn-primary">Szczegóły</a>
+                        <p>Plac Pokoju, Lębork. Największy turniej w regionie!</p>
+                        <a href="wydarzenia.html" class="btn btn-primary" style="margin-top: 20px;">Szczegóły</a>
                     </div>
                 </div>
                 <div class="slider-dots" id="sliderDots"></div>
@@ -70,21 +64,21 @@
         </div>
     </section>
 
-    <section class="partners-section" style="padding-top: 20px; padding-bottom: 60px;">
+    <section class="partners-section" style="padding-top: 40px; margin-bottom: 0;">
         <div class="container">
             <div class="glass-title-wrapper">
                 <div class="glass-title-box">
-                    <span class="sub-title">PARTNERZY</span>
-                    <h2 style="font-family: var(--font-heading); color:white; font-size: 2rem; text-transform: uppercase;">ZAUFALI NAM</h2>
+                    <span class="sub-title">WSPÓŁPRACA</span>
+                    <h2 style="font-family: var(--font-heading); font-size: 2rem; color: white;">ZAUFALI NAM</h2>
                 </div>
             </div>
             
             <div class="aurora-top-line">
                 <div class="partners-grid">
-                    <div class="partner-logo-box"><img src="logo.png" alt="Partner"></div>
-                    <div class="partner-logo-box"><img src="logo.png" alt="Partner"></div>
-                    <div class="partner-logo-box"><img src="logo.png" alt="Partner"></div>
-                    <div class="partner-logo-box"><img src="logo.png" alt="Partner"></div>
+                    <div class="partner-logo-box"><img src="logo.png" alt="P1"></div>
+                    <div class="partner-logo-box"><img src="logo.png" alt="P2"></div>
+                    <div class="partner-logo-box"><img src="logo.png" alt="P3"></div>
+                    <div class="partner-logo-box"><img src="logo.png" alt="P4"></div>
                 </div>
             </div>
         </div>
@@ -103,18 +97,14 @@
             const dot = document.createElement('div');
             dot.classList.add('dot');
             if(i === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => { index = i; updateSlider(); resetTimer(); });
+            dot.addEventListener('click', () => { index = i; updateSlider(); });
             dotsContainer.appendChild(dot);
         });
-        const dots = document.querySelectorAll('.dot');
         function updateSlider() {
             track.style.transform = `translateX(-${index * 100}%)`;
-            dots.forEach(d => d.classList.remove('active'));
-            dots[index].classList.add('active');
+            document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === index));
         }
-        function nextSlide() { index = (index + 1) % slides.length; updateSlider(); }
-        let timer = setInterval(nextSlide, 4000);
-        function resetTimer() { clearInterval(timer); timer = setInterval(nextSlide, 4000); }
+        setInterval(() => { index = (index + 1) % slides.length; updateSlider(); }, 5000);
     </script>
 </body>
 </html>
