@@ -270,47 +270,68 @@ footer { text-align: center; padding: 60px; background: #050810; color: #555; bo
     .hero h1 { font-size: 2.2rem; }
     .logo-container img { height: 60px; }
 }
-/* NOWOŚĆ: Ramka zorzy tylko na górze i rogach */
+/* =========================================
+   POPRAWKA: AURORA TOP-ONLY (NAGŁÓWEK PARTNERZY)
+   ========================================= */
 .aurora-top-only {
     position: relative;
-    border-radius: 20px 20px 0 0; /* Zaokrąglone tylko górne rogi */
+    border-radius: 20px 20px 0 0; 
     padding: 60px 40px;
     border: none;
     isolation: isolate;
+    /* Cień tylko na boki i dół, żeby nie gryzł się z ramką */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
     margin-top: 50px;
-}
-
-.aurora-top-only::before {
-    content: "";
-    position: absolute;
-    /* Ramka wystaje tylko w górę, w lewo i w prawo */
-    top: -3px; left: -3px; right: -3px; bottom: 50%; 
-    background: var(--aurora);
-    background-size: 300% 300%;
-    z-index: -2;
-    border-radius: 23px 23px 0 0;
-    animation: aurora-animation 8s linear infinite;
-    filter: blur(10px);
-    opacity: 0.9;
-}
-
-.aurora-top-only::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: var(--glass-bg);
-    border-radius: 20px 20px 0 0;
-    z-index: -1;
+    background: var(--glass-bg); /* Tło bezpośrednio tutaj dla stabilności */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(255,255,255,0.2);
+    /* Subtelne krawędzie boczne */
     border-left: 1px solid rgba(255,255,255,0.1);
     border-right: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Mocniejszy glow dla kalendarza */
+/* Świecący gradient zorzy - TYLKO GÓRA */
+.aurora-top-only::before {
+    content: "";
+    position: absolute;
+    /* Wystaje o 3px poza górę, lewo i prawo, ale kończy się w połowie wysokości */
+    top: -3px; 
+    left: -3px; 
+    right: -3px; 
+    bottom: 50%; 
+    background: var(--aurora);
+    background-size: 300% 300%;
+    z-index: -1;
+    border-radius: 23px 23px 0 0;
+    animation: aurora-animation 8s linear infinite;
+    /* Mocny blur dla efektu glow */
+    filter: blur(10px);
+    opacity: 0.9;
+    /* Maska wycinająca dół po skosie/płasko, aby nie było widać ucięcia */
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+/* Cienka, ostra linia na samej krawędzi górnej */
+.aurora-top-only::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--aurora);
+    background-size: 300% 300%;
+    border-radius: 20px 20px 0 0;
+    animation: aurora-animation 8s linear infinite;
+    opacity: 0.8;
+}
+
+/* POPRAWKA KALENDARZA - PEŁNY GLOW */
+.slider-container.aurora-card {
+    border: none !important;
+}
 .slider-container.aurora-card::before {
-    filter: blur(15px);
+    filter: blur(12px);
     opacity: 1;
 }
+
 
