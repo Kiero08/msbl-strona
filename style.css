@@ -135,8 +135,8 @@ nav a:hover { color: var(--primary); }
 
 /* EFEKT HOLLOW (PUSTY W ŚRODKU Z OBRYSEM) */
 .highlight { 
-    color: transparent !important; 
-    -webkit-text-stroke: 1.5px var(--secondary) !important; 
+    color: transparent !important; /* To robi pusty środek */
+    -webkit-text-stroke: 1.5px var(--secondary) !important; /* To robi pomarańczową ramkę */
     filter: drop-shadow(0 0 5px rgba(255, 102, 0, 0.4));
     display: inline-block;
 }
@@ -276,3 +276,4 @@ footer { text-align: center; padding: 60px; background: #050810; color: #555; bo
     .logo-container img { height: 60px; }
     .logo-container::before { width: 75px; height: 75px; }
 }
+
