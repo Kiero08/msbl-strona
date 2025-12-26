@@ -144,26 +144,29 @@ nav a:hover { color: var(--primary); }
 
 /* EFEKT HOLLOW (PUSTY W ŚRODKU Z OBRYSEM) */
 .highlight {
-    /* 1. Zmiana czcionki na Roboto (jest szersza niż Oswald) */
+    /* 1. Zmiana na szerszą czcionkę (Roboto), żeby zlikwidować ścisk wewnątrz liter */
     font-family: 'Roboto', sans-serif !important;
     
-    /* 2. Maksymalna grubość, żeby napis był "mięsisty" */
+    /* 2. Maksymalna grubość - napis będzie potężny i szeroki */
     font-weight: 900 !important;
     
-    /* 3. EFEKT PUSTEGO ŚRODKA */
+    /* 3. EFEKT HOLLOW */
     color: transparent !important;
     -webkit-text-fill-color: transparent !important;
     
-    /* 4. Obrys - przy Roboto możemy dać 1.5px, bo litery są szersze i się nie zleją */
+    /* 4. Obrys - 1.5px tutaj będzie wyglądać czysto, bo Roboto ma więcej miejsca */
     -webkit-text-stroke: 1.5px var(--secondary) !important;
     
-    /* 5. Poświata */
-    filter: drop-shadow(0 0 5px rgba(255, 102, 0, 0.5)) !important;
+    /* 5. FIX NA KRESKI - wymusza rysowanie obrysu pod wypełnieniem (nawet przezroczystym) */
+    paint-order: stroke fill;
     
-    /* 6. Techniczne */
+    /* 6. Poświata */
+    filter: drop-shadow(0 0 8px rgba(255, 102, 0, 0.6)) !important;
+    
+    /* 7. Techniczne */
     display: inline-block !important;
-    text-transform: uppercase !important; /* Upewniamy się, że są wielkie litery */
-    letter-spacing: 1px !important; /* Lekki odstęp dla czytelności */
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important; /* Dodatkowy oddech między literami */
 }
 
 /* Szklane boksy tytułów z paskiem na górze */
@@ -307,6 +310,7 @@ footer { text-align: center; padding: 60px; background: #050810; color: #555; bo
     .logo-container img { height: 60px; }
     .logo-container::before { width: 75px; height: 75px; }
 }
+
 
 
 
