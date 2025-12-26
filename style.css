@@ -358,7 +358,7 @@ footer { text-align: center; padding: 60px; background: #050810; color: #555; bo
 
 .partners-grid-track {
     display: flex;
-    width: calc(250px * 8); /* Szerokość boxa (220px + gap) pomnożona przez liczbę elementów (oryginały + kopie) */
+    width: calc(250px * 12); /* Szerokość boxa (220px + gap) pomnożona przez liczbę elementów (oryginały + kopie) */
     animation: scroll-logos 30s linear infinite;
     gap: 40px; /* Musi być taki sam jak gap w Twoim gridzie */
 }
@@ -381,3 +381,4 @@ footer { text-align: center; padding: 60px; background: #050810; color: #555; bo
 .partners-grid-track .partner-logo-box {
     flex-shrink: 0;
 }
+
