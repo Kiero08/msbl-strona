@@ -144,22 +144,26 @@ nav a:hover { color: var(--primary); }
 
 /* EFEKT HOLLOW (PUSTY W ŚRODKU Z OBRYSEM) */
 .highlight {
-    /* 1. Używamy zwykłej grubości, bo obrys i tak ją pogrubi! */
-    font-weight: 400 !important; 
+    /* 1. Zmiana czcionki na Roboto (jest szersza niż Oswald) */
+    font-family: 'Roboto', sans-serif !important;
     
-    /* 2. Kolor i Wypełnienie */
+    /* 2. Maksymalna grubość, żeby napis był "mięsisty" */
+    font-weight: 900 !important;
+    
+    /* 3. EFEKT PUSTEGO ŚRODKA */
     color: transparent !important;
-    -webkit-text-fill-color: transparent !important; /* To jest mus dla Chrome */
+    -webkit-text-fill-color: transparent !important;
     
-    /* 3. Obrys - 1.5px na chudszej literze będzie wyglądać idealnie */
+    /* 4. Obrys - przy Roboto możemy dać 1.5px, bo litery są szersze i się nie zleją */
     -webkit-text-stroke: 1.5px var(--secondary) !important;
     
-    /* 4. Poświata */
+    /* 5. Poświata */
     filter: drop-shadow(0 0 5px rgba(255, 102, 0, 0.5)) !important;
     
-    /* 5. Techniczne */
+    /* 6. Techniczne */
     display: inline-block !important;
-    font-family: 'Oswald', sans-serif !important; /* Upewniamy się, że to Oswald */
+    text-transform: uppercase !important; /* Upewniamy się, że są wielkie litery */
+    letter-spacing: 1px !important; /* Lekki odstęp dla czytelności */
 }
 
 /* Szklane boksy tytułów z paskiem na górze */
@@ -303,6 +307,7 @@ footer { text-align: center; padding: 60px; background: #050810; color: #555; bo
     .logo-container img { height: 60px; }
     .logo-container::before { width: 75px; height: 75px; }
 }
+
 
 
 
