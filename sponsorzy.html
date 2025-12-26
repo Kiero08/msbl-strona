@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dla Sponsora - Północna Strona Koszykówki</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <div class="header-content">
-            <div class="logo-container"><a href="index.html"><img src="logo.png" alt="Logo"></a></div>
+            <div class="logo-container">
+                <a href="index.html"><img src="logo.png" alt="Logo"></a>
+            </div>
             <nav>
                 <ul>
                     <li><a href="index.html">Start</a></li>
@@ -29,7 +36,7 @@
     <section class="page-hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="glass-title-wrapper">
+            <div class="glass-title-wrapper" data-aos="zoom-out">
                 <div class="glass-title-box">
                     <span class="sub-title">WSPIERAJ LOKALNY SPORT</span>
                     <h1 class="section-title">OFERTA <span class="highlight">PARTNERSKA</span></h1>
@@ -39,7 +46,7 @@
     </section>
 
     <section class="container" style="margin-bottom: 60px;">
-        <div class="aurora-top-line">
+        <div class="aurora-top-line" data-aos="fade-up">
             <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 15px;">DLACZEGO WARTO?</h2>
             <p style="font-size: 1.1rem; color: #ddd; max-width: 800px;">
                 Dołączając do grona naszych sponsorów, budujesz pozytywny wizerunek swojej firmy jako mecenasa sportu i rozwoju młodzieży. 
@@ -51,7 +58,7 @@
     <section class="container" style="margin-bottom: 80px;">
         <div class="sponsor-tiers">
             
-            <div class="aurora-card tier-card bronze">
+            <div class="aurora-card tier-card bronze" data-aos="fade-up" data-aos-delay="0" data-tilt data-tilt-glare data-tilt-max-glare="0.2">
                 <i class="fas fa-medal" style="font-size: 3rem; margin-bottom: 15px;"></i>
                 <h3>PAKIET BRĄZOWY</h3>
                 <span class="tier-price">OD 500 PLN / MIESIĄC</span>
@@ -63,7 +70,7 @@
                 <a href="kontakt.html" class="btn btn-secondary">Wybierz Brąz</a>
             </div>
 
-            <div class="aurora-card tier-card gold">
+            <div class="aurora-card tier-card gold" data-aos="fade-up" data-aos-delay="150" data-tilt data-tilt-glare data-tilt-max-glare="0.5">
                 <i class="fas fa-trophy" style="font-size: 3.5rem; margin-bottom: 15px;"></i>
                 <h3>PAKIET ZŁOTY</h3>
                 <span class="tier-price">OD 2500 PLN / MIESIĄC</span>
@@ -76,7 +83,7 @@
                 <a href="kontakt.html" class="btn btn-primary">Wybierz Złoto</a>
             </div>
 
-            <div class="aurora-card tier-card silver">
+            <div class="aurora-card tier-card silver" data-aos="fade-up" data-aos-delay="300" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
                 <i class="fas fa-award" style="font-size: 3rem; margin-bottom: 15px;"></i>
                 <h3>PAKIET SREBRNY</h3>
                 <span class="tier-price">OD 1200 PLN / MIESIĄC</span>
@@ -92,14 +99,14 @@
     </section>
 
     <section class="container" style="margin-bottom: 100px;">
-        <div class="form-container aurora-card" style="text-align: center;">
+        <div class="form-container aurora-card" style="text-align: center;" data-aos="fade-up" data-aos-offset="100">
             <h2 style="font-family: var(--font-heading); margin-bottom: 20px;">POTRZEBUJESZ OFERTY INDYWIDUALNEJ?</h2>
             <p style="margin-bottom: 30px; opacity: 0.9;">
                 Jesteśmy otwarci na niestandardowe formy promocji i barter. Skontaktuj się z nami, a przygotujemy ofertę skrojoną pod Twoją firmę.
             </p>
             <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
                 <a href="mailto:biznes@polnocnastrona.pl" class="btn btn-primary">Napisz e-mail</a>
-                <a href="tel:+48123456789" class="btn btn-secondary">Zadzwoń do nas</a>
+                <a href="kontakt.html" class="btn btn-secondary">Formularz kontaktowy</a>
             </div>
         </div>
     </section>
@@ -108,5 +115,15 @@
         <p>&copy; 2025 Stowarzyszenie Północna Strona Koszykówki.</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
 </body>
 </html>
