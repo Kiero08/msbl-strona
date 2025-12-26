@@ -349,5 +349,35 @@ footer { text-align: center; padding: 60px; background: #050810; color: #555; bo
     border: 2px solid #0b1120; 
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+/* --- AUTOMATYCZNY SLIDER LOGOTYPÓW --- */
+.logo-slider {
+    overflow: hidden;
+    padding: 20px 0;
+    width: 100%;
+}
 
+.partners-grid-track {
+    display: flex;
+    width: calc(250px * 8); /* Szerokość boxa (220px + gap) pomnożona przez liczbę elementów (oryginały + kopie) */
+    animation: scroll-logos 30s linear infinite;
+    gap: 40px; /* Musi być taki sam jak gap w Twoim gridzie */
+}
 
+/* Zatrzymanie animacji po najechaniu myszką (żeby łatwiej było kliknąć link) */
+.logo-slider:hover .partners-grid-track {
+    animation-play-state: paused;
+}
+
+@keyframes scroll-logos {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-250px * 4)); /* Przesunięcie o połowę szerokości toru (tylko oryginalne elementy) */
+    }
+}
+
+/* Upewnienie się, że boxy nie zmieniają rozmiaru */
+.partners-grid-track .partner-logo-box {
+    flex-shrink: 0;
+}
