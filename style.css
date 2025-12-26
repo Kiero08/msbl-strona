@@ -148,15 +148,18 @@ nav a:hover { color: var(--primary); }
     -webkit-text-fill-color: transparent !important;
     color: transparent !important; 
 
-    /* 2. Zmniejszamy grubość do 1px lub 1.2px, żeby nie robiły się "kreski" w środku liter */
+    /* 2. Zmniejszamy grubość do 1px, żeby nie robiły się "kreski" w środku liter */
+    /* Na screenie widać, że 1.5px przy Oswaldzie zjada literę od środka */
     -webkit-text-stroke: 1px var(--secondary) !important; 
     
-    /* 3. Poświata i blok */
+    /* 3. Poświata */
     filter: drop-shadow(0 0 5px rgba(255, 102, 0, 0.5)) !important;
-    display: inline-block !important;
     
-    /* 4. Zabezpieczenie, żeby tło nie wchodziło */
+    /* 4. Fixy techniczne */
+    display: inline-block !important;
     background: none !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
 }
 
 /* Szklane boksy tytułów z paskiem na górze */
@@ -300,6 +303,7 @@ footer { text-align: center; padding: 60px; background: #050810; color: #555; bo
     .logo-container img { height: 60px; }
     .logo-container::before { width: 75px; height: 75px; }
 }
+
 
 
 
