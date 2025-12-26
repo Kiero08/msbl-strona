@@ -80,7 +80,7 @@
         </div>
     </section>
 
-    <section class="partners-section" style="padding-top: 40px; margin-bottom: 0;">
+    <section class="partners-section" style="padding-top: 40px; margin-bottom: 0; overflow: hidden;">
         <div class="container">
             <div class="glass-title-wrapper" data-aos="fade-down">
                 <div class="glass-title-box">
@@ -90,32 +90,24 @@
             </div>
             
             <div class="aurora-top-line" data-aos="fade-up" data-aos-delay="200">
-                <div class="partners-grid">
-                    
-                    <a href="https://www.lebork.pl" target="_blank" class="partner-logo-box">
-                        <img src="POL_Lębork_COA.png" alt="Partner">
-                    </a>
+                <div class="logo-slider">
+                    <div class="partners-grid-track">
+                        
+                        <a href="https://www.lebork.pl" target="_blank" class="partner-logo-box"><img src="POL_Lębork_COA.png" alt="Partner"></a>
+                        <a href="https://www.powiat-lebork.com" target="_blank" class="partner-logo-box"><img src="POL_powiat_lęborski_COA.png" alt="Partner"></a>
+                        <a href="https://www.sp-leczyce.pl/" target="_blank" class="partner-logo-box"><img src="SPLOgo_c.png" alt="Partner"></a>
+                        <a href="https://www.szkolawicko.pl/" target="_blank" class="partner-logo-box"><img src="wicko.png" alt="Partner"></a>
+                        <a href="https://samorzad.gov.pl/web/gmina-leczyce" target="_blank" class="partner-logo-box"><img src="POL_gmina_Leczyce.png" alt="Partner"></a>
+                        <a href="https://www.wicko.pl" target="_blank" class="partner-logo-box"><img src="POL_gmina_Wicko.png" alt="Partner"></a>
 
-                    <a href="https://www.powiat-lebork.com" target="_blank" class="partner-logo-box">
-                        <img src="POL_powiat_lęborski_COA.png" alt="Partner">
-                    </a>
+                        <a href="https://www.lebork.pl" target="_blank" class="partner-logo-box"><img src="POL_Lębork_COA.png" alt="Partner"></a>
+                        <a href="https://www.powiat-lebork.com" target="_blank" class="partner-logo-box"><img src="POL_powiat_lęborski_COA.png" alt="Partner"></a>
+                        <a href="https://www.sp-leczyce.pl/" target="_blank" class="partner-logo-box"><img src="SPLOgo_c.png" alt="Partner"></a>
+                        <a href="https://www.szkolawicko.pl/" target="_blank" class="partner-logo-box"><img src="wicko.png" alt="Partner"></a>
+                        <a href="https://samorzad.gov.pl/web/gmina-leczyce" target="_blank" class="partner-logo-box"><img src="POL_gmina_Leczyce.png" alt="Partner"></a>
+                        <a href="https://www.wicko.pl" target="_blank" class="partner-logo-box"><img src="POL_gmina_Wicko.png" alt="Partner"></a>
 
-                    <a href="https://www.sp-leczyce.pl/" target="_blank" class="partner-logo-box">
-                        <img src="SPLOgo_c.png" alt="Partner">
-                    </a>
-
-                    <a href="https://www.szkolawicko.pl/" target="_blank" class="partner-logo-box">
-                        <img src="wicko.png" alt="Partner">
-                    </a>
-
-                    <a href="https://samorzad.gov.pl/web/gmina-leczyce" target="_blank" class="partner-logo-box">
-                        <img src="POL_gmina_Leczyce.png" alt="Partner">
-                    </a>
-
-                     <a href="https://www.wicko.pl" target="_blank" class="partner-logo-box">
-                        <img src="POL_gmina_Wicko.png" alt="Partner">
-                    </a>
-
+                    </div>
                 </div>
             </div>
         </div>
@@ -126,20 +118,16 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
-    
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
     <script>
-        // Inicjalizacja AOS
         AOS.init({
             duration: 1000,
             once: true,
             offset: 100
         });
 
-        // Inicjalizacja Typed.js (Maszyna do pisania)
         var typed = new Typed('.auto-type', {
             strings: ["KOSZYKÓWKI", "PASJI", "EMOCJI", "POLSKI"],
             typeSpeed: 100,
@@ -147,7 +135,6 @@
             loop: true
         });
 
-        // Twój Slider
         const track = document.getElementById('sliderTrack');
         const slides = document.querySelectorAll('.slide');
         const dotsContainer = document.getElementById('sliderDots');
@@ -170,6 +157,3 @@
     </script>
 </body>
 </html>
-
-
-
