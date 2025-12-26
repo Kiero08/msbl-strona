@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dołącz do nas - Północna Strona Koszykówki</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <div class="header-content">
-            <div class="logo-container"><a href="index.html"><img src="logo.png" alt="Logo"></a></div>
+            <div class="logo-container">
+                <a href="index.html"><img src="logo.png" alt="Logo"></a>
+            </div>
             <nav>
                 <ul>
                     <li><a href="index.html">Start</a></li>
@@ -29,7 +36,7 @@
     <section class="page-hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="glass-title-wrapper">
+            <div class="glass-title-wrapper" data-aos="zoom-out">
                 <div class="glass-title-box">
                     <span class="sub-title">STAŃ SIĘ CZĘŚCIĄ DRUŻYNY</span>
                     <h1 class="section-title">WYBIERZ SWOJĄ <span class="highlight">STRONĘ</span></h1>
@@ -39,7 +46,7 @@
     </section>
 
     <section class="container" style="margin-bottom: 60px;">
-        <div class="aurora-top-line">
+        <div class="aurora-top-line" data-aos="fade-up">
             <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 15px;">CO ZYSKUJESZ?</h2>
             <p style="font-size: 1.1rem; color: #ddd; max-width: 850px;">
                 Nie ważne, czy jesteś mistrzem rzutów za trzy, czy po prostu kochasz atmosferę na trybunach. 
@@ -52,7 +59,7 @@
     <section class="container" style="margin-bottom: 80px;">
         <div class="sponsor-tiers">
             
-            <div class="aurora-card">
+            <div class="aurora-card" data-aos="fade-up" data-aos-delay="0" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
                 <div style="text-align: center; margin-bottom: 20px;">
                     <i class="fas fa-basketball-ball" style="font-size: 3.5rem; color: var(--primary);"></i>
                 </div>
@@ -66,7 +73,7 @@
                 <a href="#formularz" class="btn btn-primary" style="display: block; text-align: center;">Wybieram</a>
             </div>
 
-            <div class="aurora-card">
+            <div class="aurora-card" data-aos="fade-up" data-aos-delay="150" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
                 <div style="text-align: center; margin-bottom: 20px;">
                     <i class="fas fa-heart" style="font-size: 3.5rem; color: var(--secondary);"></i>
                 </div>
@@ -80,7 +87,7 @@
                 <a href="#formularz" class="btn btn-secondary" style="display: block; text-align: center;">Dołączam</a>
             </div>
 
-            <div class="aurora-card">
+            <div class="aurora-card" data-aos="fade-up" data-aos-delay="300" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
                 <div style="text-align: center; margin-bottom: 20px;">
                     <i class="fas fa-users" style="font-size: 3.5rem; color: #a855f7;"></i>
                 </div>
@@ -99,7 +106,7 @@
 
     <section id="formularz" class="form-section" style="margin-top: 100px; margin-bottom: 100px;">
         <div class="container">
-            <div class="form-container aurora-card">
+            <div class="form-container aurora-card" data-aos="fade-up" data-aos-offset="200">
                 <h2 style="font-family: var(--font-heading); text-align: center; margin-bottom: 30px; text-transform: uppercase;">FORMULARZ REKRUTACYJNY</h2>
                 <form action="#">
                     <div class="form-group">
@@ -137,5 +144,15 @@
         <p>&copy; 2025 Stowarzyszenie Północna Strona Koszykówki.</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
 </body>
 </html>
