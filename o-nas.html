@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O nas - Północna Strona Koszykówki</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <div class="header-content">
-            <div class="logo-container"><a href="index.html"><img src="logo.png" alt="Logo"></a></div>
+            <div class="logo-container">
+                <a href="index.html"><img src="logo.png" alt="Logo"></a>
+            </div>
             <nav>
                 <ul>
                     <li><a href="index.html">Start</a></li>
@@ -29,7 +36,7 @@
     <section class="page-hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="glass-title-wrapper">
+            <div class="glass-title-wrapper" data-aos="zoom-out">
                 <div class="glass-title-box">
                     <span class="sub-title">POZNAJ NASZĄ EKIPĘ</span>
                     <h1 class="section-title">LUDZIE Z <span class="highlight">PASJĄ</span></h1>
@@ -39,7 +46,7 @@
     </section>
 
     <section class="container" style="margin-bottom: 80px;">
-        <div class="aurora-top-line">
+        <div class="aurora-top-line" data-aos="fade-up">
             <h2 style="font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 20px; color: var(--primary);">NASZA MISJA</h2>
             <p style="font-size: 1.1rem; color: #ddd; max-width: 900px;">
                 Stowarzyszenie "Północna Strona Koszykówki" powstało, aby zjednoczyć lokalną społeczność wokół basketu. 
@@ -50,14 +57,14 @@
     </section>
 
     <section class="container" style="margin-bottom: 80px;">
-        <div class="glass-title-wrapper">
+        <div class="glass-title-wrapper" data-aos="fade-down">
             <div class="glass-title-box">
                 <h2 style="font-family: var(--font-heading); text-transform: uppercase;">ZARZĄD STOWARZYSZENIA</h2>
             </div>
         </div>
 
         <div class="team-grid">
-            <div class="aurora-card board-card" style="text-align: center;">
+            <div class="aurora-card board-card" style="text-align: center;" data-aos="fade-up" data-aos-delay="0" data-tilt data-tilt-glare data-tilt-max-glare="0.4">
                 <div class="team-photo">
                     <i class="fas fa-crown"></i>
                 </div>
@@ -65,7 +72,7 @@
                 <span class="team-role">Prezes Zarządu</span>
             </div>
 
-            <div class="aurora-card board-card" style="text-align: center;">
+            <div class="aurora-card board-card" style="text-align: center;" data-aos="fade-up" data-aos-delay="100" data-tilt data-tilt-glare data-tilt-max-glare="0.4">
                 <div class="team-photo">
                     <i class="fas fa-user-tie"></i>
                 </div>
@@ -73,7 +80,7 @@
                 <span class="team-role">Wiceprezes Zarządu</span>
             </div>
 
-            <div class="aurora-card board-card" style="text-align: center;">
+            <div class="aurora-card board-card" style="text-align: center;" data-aos="fade-up" data-aos-delay="200" data-tilt data-tilt-glare data-tilt-max-glare="0.4">
                 <div class="team-photo">
                     <i class="fas fa-coins"></i>
                 </div>
@@ -84,14 +91,14 @@
     </section>
 
     <section class="container" style="margin-bottom: 100px;">
-        <div class="glass-title-wrapper">
+        <div class="glass-title-wrapper" data-aos="fade-down">
             <div class="glass-title-box">
                 <h2 style="font-family: var(--font-heading); text-transform: uppercase;">KOMISJA REWIZYJNA</h2>
             </div>
         </div>
 
         <div class="team-grid">
-            <div class="aurora-card" style="text-align: center;">
+            <div class="aurora-card" style="text-align: center;" data-aos="fade-up" data-aos-delay="0" data-tilt>
                 <div class="team-photo" style="border-color: var(--primary);">
                     <i class="fas fa-gavel" style="color: var(--primary);"></i>
                 </div>
@@ -99,7 +106,7 @@
                 <span class="team-role" style="color: var(--text-muted);">Przewodniczący</span>
             </div>
 
-            <div class="aurora-card" style="text-align: center;">
+            <div class="aurora-card" style="text-align: center;" data-aos="fade-up" data-aos-delay="100" data-tilt>
                 <div class="team-photo" style="border-color: var(--primary);">
                     <i class="fas fa-pen-fancy" style="color: var(--primary);"></i>
                 </div>
@@ -107,7 +114,7 @@
                 <span class="team-role" style="color: var(--text-muted);">Sekretarz Komisji</span>
             </div>
 
-            <div class="aurora-card" style="text-align: center;">
+            <div class="aurora-card" style="text-align: center;" data-aos="fade-up" data-aos-delay="200" data-tilt>
                 <div class="team-photo" style="border-color: var(--primary);">
                     <i class="fas fa-shield-alt" style="color: var(--primary);"></i>
                 </div>
@@ -121,6 +128,15 @@
         <p>&copy; 2025 Stowarzyszenie Północna Strona Koszykówki.</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
 </body>
 </html>
-
