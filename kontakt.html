@@ -67,7 +67,7 @@
                 <i class="fas fa-envelope" style="font-size: 1.5rem; color: var(--secondary);"></i>
                 <div>
                     <strong style="display: block; font-family: var(--font-heading);">EMAIL</strong>
-                    <a href="mailto:kontakt@polnocnastrona.pl" style="color: #ccc; text-decoration: none; transition: 0.3s;">kontakt@polnocnastrona.pl</a>
+                    <a href="mailto:kontakt@psklebork.pl" style="color: #ccc; text-decoration: none; transition: 0.3s;">kontakt@polnocnastrona.pl</a>
                 </div>
             </div>
 
@@ -80,20 +80,15 @@
             </div>
         </div>
 
-        <div class="aurora-card" data-aos="fade-left" data-tilt data-tilt-glare data-tilt-max-glare="0.2">
-            <h3 style="margin-bottom: 20px; color: white;">SZYBKI KONTAKT</h3>
-            <form style="display: flex; flex-direction: column; gap: 15px;">
-                <div class="form-group" style="margin-bottom: 0;">
-                    <input type="text" placeholder="Imię" required>
-                </div>
-                <div class="form-group" style="margin-bottom: 0;">
-                    <input type="email" placeholder="Twój E-mail" required>
-                </div>
-                <div class="form-group" style="margin-bottom: 0;">
-                    <textarea placeholder="Wiadomość..." style="height: 120px;" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Wyślij wiadomość</button>
-            </form>
+        <form action="mail.php" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+    <div class="form-group" style="margin-bottom: 0;">
+        <input type="text" name="name" placeholder="Imię" required> </div>
+    <div class="form-group" style="margin-bottom: 0;">
+        <input type="email" name="email" placeholder="Twój E-mail" required> </div>
+    <div class="form-group" style="margin-bottom: 0;">
+        <textarea name="message" placeholder="Wiadomość..." style="height: 120px;" required></textarea> </div>
+    <button type="submit" class="btn btn-primary" style="width: 100%;">Wyślij wiadomość</button>
+</form>
         </div>
     </section>
 
@@ -126,4 +121,5 @@
     </script>
 </body>
 </html>
+
 
