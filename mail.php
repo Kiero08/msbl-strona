@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 4. WALIDACJA (Czy pola nie są puste?)
     if (empty($imie) || empty($wiadomosc) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         // Jeśli błąd, wróć do formularza (można tu zrobić stronę błędu)
-        header("Location: index.html");
+        header("Location: index.php");
         exit;
     }
 
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 7. WYSYŁKA
     if (mail($adresat, $temat, $tresc, $naglowki)) {
         // Sukces - przekierowanie na stronę z podziękowaniem
-        header("Location: sukces.html");
+        header("Location: sukces.php");
     } else {
         // Błąd serwera
         echo "Wystąpił błąd podczas wysyłania wiadomości.";
@@ -53,6 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 } else {
     // Jeśli ktoś próbuje wejść w plik bezpośrednio, wyrzuć go na główną
-    header("Location: index.html");
+    header("Location: index.php");
 }
 ?>
