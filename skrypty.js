@@ -1,0 +1,82 @@
+/* --- skrypty.js - GŁÓWNY PLIK JS --- */
+
+// 1. INICJALIZACJA AOS (Animacje przy przewijaniu)
+window.addEventListener('load', () => {
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
+});
+
+// 2. PRELOADER SYSTEM (Z Twoimi poprawkami)
+window.addEventListener("load", function () {
+    const loader = document.getElementById("preloader");
+    if (loader) {
+        setTimeout(function() {
+            loader.classList.add("loader-hidden");
+            loader.addEventListener("transitionend", function() {
+                if (document.body.contains(loader)) {
+                    document.body.removeChild(loader);
+                }
+                AOS.refresh();
+            });
+        }, 300);
+    }
+});
+
+// Obsługa kliknięć w linki (Preloader przy wyjściu)
+document.addEventListener("DOMContentLoaded", function() {
+    const links = document.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            const target = this.getAttribute('target');
+
+            // Ignorujemy linki: puste, kotwice, maile, zewnętrzne
+            if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || target === '_blank') {
+                return;
+            }
+            // Ignoruj linki do plików (np. pdf) - opcjonalne
+            
+            e.preventDefault();
+            
+            // Tworzenie loadera jeśli go nie ma
+            let loader = document.getElementById("preloader");
+            if (!loader) {
+                loader = document.createElement('div');
+                loader.id = 'preloader';
+                loader.innerHTML = `
+                    <div class="loader-content">
+                        <img src="logo.png" alt="Ładowanie..." class="pulsing-logo">
+                        <div class="loading-bar"></div>
+                    </div>`;
+                document.body.appendChild(loader);
+            }
+            
+            setTimeout(() => { loader.classList.remove("loader-hidden"); }, 10);
+            
+            // Ponieważ zmieniamy rozszerzenia na .php, musimy podmienić .html na .php w linkach "w locie"
+            // (Chyba że zmienisz je ręcznie w HTML - co zalecam w Kroku 4)
+            let finalHref = href.replace('.html', '.php'); 
+            
+            setTimeout(() => { window.location.href = finalHref; }, 400);
+        });
+    });
+});
+
+// 3. MASZYNA DO PISANIA (Tylko jeśli element istnieje na stronie)
+if (document.querySelector('.auto-type')) {
+    var typed = new Typed('.auto-type', {
+        strings: [
+            "<span class='hero-white'>KOSZYKÓWKI</span>", 
+            "<span class='hero-outline'>PASJI</span>", 
+            "<span class='hero-outline'>EMOCJI</span>", 
+            "<span class='hero-outline'>LĘBORKA</span>"
+        ],
+        typeSpeed: 100,
+        backSpeed: 50,
+        loop: true,
+        contentType: 'html'
+    });
+}
